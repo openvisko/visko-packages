@@ -6,7 +6,7 @@ import edu.utep.trustlab.visko.packages.rdf.RDFWriter;
 
 public class PackageInstaller {
 	
-	private static final String PARTIAL_QUALIFIED_NAME = ".rdfGeneration.RDFWriter";
+	private static final String PARTIAL_QUALIFIED_NAME = ".rdfWriter.RDFWriter";
 	
 	private String packagesRoot;
 	
@@ -71,5 +71,7 @@ public class PackageInstaller {
 			PackageInstaller installer = new PackageInstaller(packagesRootDirectory);
 			installer.installPackages();
 		}
+		else
+			System.out.println("requires one argument...the full path to the packages directory.");
 	}
 }
