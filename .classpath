@@ -4,5 +4,4 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/package-manager.jar"/>
 	<classpathentry kind="lib" path="lib/visko-api.jar"/>
-	<classpathentry kind="output" path="manager/bin"/>
 </classpath>
