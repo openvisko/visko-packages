@@ -25,7 +25,7 @@ public class RDFWriter implements PackageRDFWriter {
 		// TODO Auto-generated method stub
 		ViewerSetWriter wtr = new ViewerSetWriter("paraview");
 		wtr.setLabel("KitWare Paraview");
-		System.out.println(wtr.saveDocument());
+		wtr.saveDocument();
 		paraviewViewerSetURI = wtr.getURI();
 	}
 
@@ -37,6 +37,6 @@ public class RDFWriter implements PackageRDFWriter {
 		wtr.addPartOfSetURI(paraviewViewerSetURI);
 		wtr.addFormatURI("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/XDMF.owl#XDMF");
 		wtr.setViewerComment("XDMF Viewer of the ParaView Distribution");
-		System.out.println(wtr.saveDocument());
+		wtr.saveDocument();
 	}
 }

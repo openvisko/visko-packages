@@ -20,7 +20,7 @@ public class RDFWriter implements PackageRDFWriter {
 		
 		ViewerSetWriter wtr1 = new ViewerSetWriter("internet-explorer");
 		wtr1.setLabel("Internet Explorer");
-		System.out.println(wtr1.saveDocument());
+		wtr1.saveDocument();
 		iexplorerViewerSetURI = wtr1.getURI();
 	}
 

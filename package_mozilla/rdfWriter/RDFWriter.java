@@ -20,7 +20,7 @@ public class RDFWriter implements PackageRDFWriter {
 		
 		ViewerSetWriter wtr1 = new ViewerSetWriter("mozilla-firefox");
 		wtr1.setLabel("Mozilla Firefox");
-		System.out.println(wtr1.saveDocument());
+		wtr1.saveDocument();
 		firefoxViewerSetURI = wtr1.getURI();
 	}
 
