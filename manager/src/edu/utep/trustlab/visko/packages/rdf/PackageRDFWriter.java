@@ -5,5 +5,4 @@ public interface PackageRDFWriter {
 	public void createViewerSets();
 	public void createToolkit();
 	public void createServices();
-	public void setContentManager();
 }

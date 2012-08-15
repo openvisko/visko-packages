@@ -41,9 +41,6 @@ public class PackageInstaller {
 		try{
 			rdfWriterClass = Class.forName(rdfWriterQualifiedClassName);
 			PackageRDFWriter writer = (PackageRDFWriter)rdfWriterClass.newInstance();
-			
-			System.out.println("Set up content manager for this package");
-			writer.setContentManager();
 
 			System.out.println("created toolkit");
 			writer.createToolkit();
@@ -63,15 +60,5 @@ public class PackageInstaller {
 			e.printStackTrace();
 			return false;
 		}
-	}
-	
-	public static void main(String[] args){
-		if(args.length == 1){
-			String packagesRootDirectory = args[0];
-			PackageInstaller installer = new PackageInstaller(packagesRootDirectory);
-			installer.installPackages();
-		}
-		else
-			System.out.println("requires one argument...the full path to the packages directory.");
 	}
 }
