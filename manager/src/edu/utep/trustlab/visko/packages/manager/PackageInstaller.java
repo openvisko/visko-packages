@@ -2,7 +2,7 @@ package edu.utep.trustlab.visko.packages.manager;
 
 import java.io.File;
 
-import edu.utep.trustlab.visko.packages.rdf.RDFWriter;
+import edu.utep.trustlab.visko.packages.rdf.PackageRDFWriter;
 
 public class PackageInstaller {
 	
@@ -40,7 +40,7 @@ public class PackageInstaller {
 		Class<?> rdfWriterClass;
 		try{
 			rdfWriterClass = Class.forName(rdfWriterQualifiedClassName);
-			RDFWriter writer = (RDFWriter)rdfWriterClass.newInstance();
+			PackageRDFWriter writer = (PackageRDFWriter)rdfWriterClass.newInstance();
 			
 			System.out.println("Set up content manager for this package");
 			writer.setContentManager();
