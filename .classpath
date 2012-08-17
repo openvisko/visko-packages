@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry excluding="manager/|lib/" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/package-manager.jar"/>
 	<classpathentry kind="lib" path="lib/visko-api.jar"/>
+	<classpathentry kind="lib" path="lib/installation-tools.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -2,7 +2,7 @@ package package_ghostscript.rdfWriter;
 
 import edu.utep.trustlab.visko.ontology.service.writer.ServiceOperatorWriter;
 import edu.utep.trustlab.visko.ontology.service.writer.ToolkitWriter;
-import edu.utep.trustlab.visko.packages.rdf.PackageRDFWriter;
+import edu.utep.trustlab.visko.installation.packages.PackageRDFWriter;
 
 public class RDFWriter implements PackageRDFWriter {
 
@@ -59,6 +59,12 @@ public class RDFWriter implements PackageRDFWriter {
 
 	@Override
 	public void createViewers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createViews() {
 		// TODO Auto-generated method stub
 		
 	}

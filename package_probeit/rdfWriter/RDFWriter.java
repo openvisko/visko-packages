@@ -2,7 +2,7 @@ package package_probeit.rdfWriter;
 
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerSetWriter;
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerWriter;
-import edu.utep.trustlab.visko.packages.rdf.PackageRDFWriter;
+import edu.utep.trustlab.visko.installation.packages.PackageRDFWriter;
 
 public class RDFWriter implements PackageRDFWriter {
 
@@ -76,5 +76,11 @@ public class RDFWriter implements PackageRDFWriter {
 		wtr4.setLabel("HyperText Markup Language (HTML) Viewer");
 		wtr4.setViewerComment("Renders HTML documents.");
 		wtr4.saveDocument();
+	}
+
+	@Override
+	public void createViews() {
+		// TODO Auto-generated method stub
+		
 	}
 }

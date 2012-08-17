@@ -2,7 +2,7 @@ package package_mozilla.rdfWriter;
 
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerSetWriter;
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerWriter;
-import edu.utep.trustlab.visko.packages.rdf.PackageRDFWriter;
+import edu.utep.trustlab.visko.installation.packages.PackageRDFWriter;
 
 public class RDFWriter implements PackageRDFWriter {
 
@@ -64,6 +64,12 @@ public class RDFWriter implements PackageRDFWriter {
 	
 	@Override
 	public void createServices() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createViews() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,7 +2,7 @@ package package_paraview.rdfWriter;
 
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerSetWriter;
 import edu.utep.trustlab.visko.ontology.operator.writer.ViewerWriter;
-import edu.utep.trustlab.visko.packages.rdf.PackageRDFWriter;
+import edu.utep.trustlab.visko.installation.packages.PackageRDFWriter;
 
 public class RDFWriter implements PackageRDFWriter {
 
@@ -38,5 +38,11 @@ public class RDFWriter implements PackageRDFWriter {
 		wtr.addFormatURI("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/XDMF.owl#XDMF");
 		wtr.setViewerComment("XDMF Viewer of the ParaView Distribution");
 		wtr.saveDocument();
+	}
+
+	@Override
+	public void createViews() {
+		// TODO Auto-generated method stub
+		
 	}
 }
