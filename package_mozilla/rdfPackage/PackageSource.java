@@ -1,4 +1,4 @@
-package package_iexplorer.rdfPackage;
+package package_mozilla.rdfPackage;
 
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
@@ -7,7 +7,6 @@ import edu.utep.trustlab.visko.ontology.operator.Viewer;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 
 public class PackageSource extends RDFPackage {
-
 	private static final class Resources {
 		//formats
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
@@ -36,31 +35,31 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateViewerSets() {
-		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("internet-explorer");
+		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("mozilla-firefox");
 		viewerSet.setComment("Internet Explorer Web Browser");
 		viewerSet.setLabel("Internet Explorer");
 		
-		Viewer viewer1 = viewerSet.createNewViewer("iexplorer-browser-image-viewer");
-		viewer1.setLabel("Internet Explorer Browser Image Viewer");
+		Viewer viewer1 = viewerSet.createNewViewer("firefox-browser-image-viewer");
+		viewer1.setLabel("Mozilla Firefox Browser Image Viewer");
 		viewer1.setComment("Views a few standard image formats");
 		viewer1.addOperatesOnFormat(Resources.gif);
 		viewer1.addOperatesOnFormat(Resources.png);
 		viewer1.addOperatesOnFormat(Resources.jpg);
 		
-		Viewer viewer2 = viewerSet.createNewViewer("iexplorer-pdf-viewer");
+		Viewer viewer2 = viewerSet.createNewViewer("firefox-pdf-viewer");
 		viewer2.setLabel("Adobe Portable Document Format (PDF) Viewer");
 		viewer2.setComment("Renders PDF document and allows for zooming.");
 		viewer2.addOperatesOnFormat(Resources.pdf);
 		
-		Viewer viewer3 = viewerSet.createNewViewer("iexplorer-text-viewer");
+		Viewer viewer3 = viewerSet.createNewViewer("firefox-text-viewer");
 		viewer3.setLabel("Plain Text Viewer");
-		viewer3.setComment("Just a plain old text viewer");
+		viewer3.setComment("Just a plain old text viewer.");
 		viewer3.addOperatesOnFormat(Resources.plain);
 		viewer3.addOperatesOnFormat(Resources.plainText);
 		viewer3.addOperatesOnFormat(Resources.latex);
 		viewer3.addOperatesOnFormat(Resources.ps);
 		
-		Viewer viewer4 = viewerSet.createNewViewer("iexplorer-html-viewer");
+		Viewer viewer4 = viewerSet.createNewViewer("firefox-html-viewer");
 		viewer4.setLabel("HyperText Markup Language (HTML) Viewer");
 		viewer4.setComment("Renders HTML documents.");
 		viewer4.addOperatesOnFormat(Resources.html);	
