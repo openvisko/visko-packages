@@ -64,5 +64,11 @@ public class PackageSource extends RDFPackage {
 		viewer4.setLabel("HyperText Markup Language (HTML) Viewer");
 		viewer4.setComment("Renders HTML documents.");
 		viewer4.addOperatesOnFormat(Resources.html);	
+	}
+
+	@Override
+	public void populateParameterBindings() {
+		// TODO Auto-generated method stub
+		
 	}	
 }

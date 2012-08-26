@@ -56,4 +56,10 @@ public class PackageSource extends RDFPackage {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void populateParameterBindings() {
+		// TODO Auto-generated method stub
+		
+	}
 }

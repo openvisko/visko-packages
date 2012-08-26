@@ -56,6 +56,7 @@ public class PackageSource extends RDFPackage {
 		viewer1.addOperatesOnFormat(Resources.tiff);
 		viewer1.addOperatesOnFormat(Resources.fits);
 		viewer1.addOperatesOnFormat(Resources.raw);
+		viewer1.addOperatesOnFormat(Resources.png);
 			
 		Viewer viewer2 = viewerSet.createNewViewer("parvis-viewer");
 		viewer2.setLabel("Parvis Parallel Coordinates Viewer");
@@ -79,5 +80,11 @@ public class PackageSource extends RDFPackage {
 		viewer5.setLabel("HyperText Markup Language (HTML) Viewer");
 		viewer5.setComment("Renders HTML documents.");
 		viewer5.addOperatesOnFormat(Resources.html);	
+	}
+
+	@Override
+	public void populateParameterBindings() {
+		// TODO Auto-generated method stub
+		
 	}
 }

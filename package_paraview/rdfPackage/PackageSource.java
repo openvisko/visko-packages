@@ -36,4 +36,10 @@ public class PackageSource extends RDFPackage {
 		viewer1.setLabel("XDMF Viewer");
 		viewer1.addOperatesOnFormat(Resources.xdmf);
 	}
+
+	@Override
+	public void populateParameterBindings() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,6 +1,7 @@
 package package_ncl.rdfPackage;
 
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
+import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
@@ -18,6 +19,10 @@ public class PackageSource extends RDFPackage {
 		private static final View xyPlot = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/XYPlot.owl#XYPlot");
 		private static final View contour = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/contour-lines.owl#contour-lines");
 		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/raster.owl#raster");
+		
+		private static final String brightnessTemperatureURI = "http://giovanni.gsfc.nasa.gov/data/brightness.owl#brightness";
+		private static final String griddedGravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12";
+		private static final String gravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19";
 	}
 	
 	@Override
@@ -68,5 +73,70 @@ public class PackageSource extends RDFPackage {
 	public void populateViewerSets() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void populateParameterBindings() {
+
+		String operationName = "gsn_csm_contour_map";
+		PackageOperatorService service1 = getPackageWriter().getOperatorService(operationName);
+		
+		PackageInputParameterBindings bindings1 = service1.createNewInputParameterBindings();
+		bindings1.addDataType(Resources.gravityDataURI);
+		bindings1.addDataType(Resources.griddedGravityDataURI);
+		bindings1.addInputBinding("lbOrientation", "vertical");
+		bindings1.addInputBinding("cnLevelSpacingF", "10");
+		bindings1.addInputBinding("colorTable", "WhiteBlueGreenYellowRed");
+		bindings1.addInputBinding("font", "helvetica");
+		bindings1.addInputBinding("cnFillOn", "True");
+		bindings1.addInputBinding("cnLinesOn", "False");
+		bindings1.addInputBinding("latVariable", "y");
+		bindings1.addInputBinding("lonVariable", "x");
+		bindings1.addInputBinding("plotVariable", "z");
+		bindings1.addInputBinding("indexOfX", "1");
+		bindings1.addInputBinding("indexOfY", "0");
+		bindings1.addInputBinding("indexOfZ", "-1");
+		
+		PackageInputParameterBindings bindings2 = service1.createNewInputParameterBindings();
+		bindings2.addDataType(Resources.brightnessTemperatureURI);
+		bindings2.addInputBinding("plotVariable", "ch4");
+		bindings2.addInputBinding("lbOrientation", "vertical");
+		bindings2.addInputBinding("cnLevelSpacingF", "10");
+		bindings2.addInputBinding("colorTable", "WhiteBlueGreenYellowRed");
+		bindings2.addInputBinding("font", "helvetica");
+		bindings2.addInputBinding("cnFillOn", "True");
+		bindings2.addInputBinding("cnLinesOn", "False");
+		bindings2.addInputBinding("latVariable", "latitude");
+		bindings2.addInputBinding("lonVariable", "longitude");
+		bindings2.addInputBinding("indexOfX", "2");
+		bindings2.addInputBinding("indexOfY", "1");
+		bindings2.addInputBinding("indexOfZ", "0");
+		
+		operationName = "gsn_csm_contour_map_raster";
+		PackageOperatorService service2 = getPackageWriter().getOperatorService(operationName);
+		PackageInputParameterBindings bindings3 = service2.createNewInputParameterBindings();
+		bindings3.addDataType(Resources.gravityDataURI);
+		bindings3.addDataType(Resources.griddedGravityDataURI);
+		bindings3.addInputBinding("lbOrientation", "vertical");
+		bindings3.addInputBinding("colorTable", "WhiteBlueGreenYellowRed");
+		bindings3.addInputBinding("font", "helvetica");
+		bindings3.addInputBinding("latVariable", "y");
+		bindings3.addInputBinding("lonVariable", "x");
+		bindings3.addInputBinding("plotVariable", "z");
+		bindings3.addInputBinding("indexOfX", "1");
+		bindings3.addInputBinding("indexOfY", "0");
+		bindings3.addInputBinding("indexOfZ", "-1");
+		
+		PackageInputParameterBindings bindings4 = service2.createNewInputParameterBindings();
+		bindings4.addDataType(Resources.brightnessTemperatureURI);
+		bindings4.addInputBinding("plotVariable", "ch4");
+		bindings4.addInputBinding("lbOrientation", "vertical");
+		bindings4.addInputBinding("colorTable", "WhiteBlueGreenYellowRed");
+		bindings4.addInputBinding("font", "helvetica");
+		bindings4.addInputBinding("latVariable", "latitude");
+		bindings4.addInputBinding("lonVariable", "longitude");
+		bindings4.addInputBinding("indexOfX", "2");
+		bindings4.addInputBinding("indexOfY", "1");
+		bindings4.addInputBinding("indexOfZ", "0");
 	}
 }
