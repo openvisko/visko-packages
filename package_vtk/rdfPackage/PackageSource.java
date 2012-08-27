@@ -1,4 +1,4 @@
-package package_vtk.rdfWriter;
+package package_vtk.rdfPackage;
 
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
@@ -8,7 +8,7 @@ import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
 import edu.utep.trustlab.visko.ontology.view.View;
 
-public class Package extends RDFPackage {
+public class PackageSource extends RDFPackage {
 	
 	private static final class Resources {
 		
