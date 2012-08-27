@@ -99,60 +99,80 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateParameterBindings() {
+		PackageInputParameterBindings bindings1 = getPackageWriter().createNewInputParameterBindings();
+		PackageInputParameterBindings bindings2 = getPackageWriter().createNewInputParameterBindings();
+		
+		addGravityDataBindings(bindings1);
+		addGriddedGravityDataBindings(bindings2);
+	}
+	
+	private void addGravityDataBindings(PackageInputParameterBindings bindingsSet){
 		String region = "-109/-107/33/34";
 		
-		String operationName = "grdcontour";
-		PackageInputParameterBindings bindings1 = getPackageWriter().getOperatorService(operationName).createNewInputParameterBindings();
-		bindings1.addDataType(Resources.gravityDataURI);
-		bindings1.addDataType(Resources.griddedGravityDataURI);
-		bindings1.addInputBinding("C", "10");
-		bindings1.addInputBinding("A", "20");
-		bindings1.addInputBinding("B", "0.5");
-		bindings1.addInputBinding("S", "5");
-		bindings1.addInputBinding("J", "x4c");
-		bindings1.addInputBinding("Wc", "thinnest,black");
-		bindings1.addInputBinding("Wa", "thinnest,black");
-	
-		operationName = "surface";
-		PackageInputParameterBindings bindings2 = getPackageWriter().getOperatorService(operationName).createNewInputParameterBindings();
-		bindings2.addDataType(Resources.gravityDataURI);
-		bindings2.addInputBinding("I","0.02");
-		bindings2.addInputBinding("T","0.25");
-		bindings2.addInputBinding("C", "0.1");
-		bindings2.addInputBinding("indexOfX", "0");
-		bindings2.addInputBinding("indexOfY", "1");
-		bindings2.addInputBinding("indexOfZ", "2");
-		bindings2.addInputBinding("R", region);
+		bindingsSet.addDataType(Resources.gravityDataURI);
 		
-		operationName = "nearneighbor";
-		PackageInputParameterBindings bindings3 = getPackageWriter().getOperatorService(operationName).createNewInputParameterBindings();
-		bindings3.addDataType(Resources.gravityDataURI);
-		bindings3.addInputBinding("I", "0.02");
-		bindings3.addInputBinding("S", "0.2");
-		bindings3.addInputBinding("R", region);
-		bindings3.addInputBinding("indexOfX", "0");
-		bindings3.addInputBinding("indexOfY", "1");
-		bindings3.addInputBinding("indexOfZ", "2");
+		// for GMT psxy
+		bindingsSet.addInputBinding("psxy", "S", "c0.04c");
+		bindingsSet.addInputBinding("psxy", "R", region);
+		bindingsSet.addInputBinding("psxy", "J", "x4c");
+		bindingsSet.addInputBinding("psxy", "G", "blue");
+		bindingsSet.addInputBinding("psxy", "B", "1");
+		bindingsSet.addInputBinding("psxy", "indexOfX", "0");
+		bindingsSet.addInputBinding("psxy", "indexOfY", "1");
 		
-		operationName = "psxy";
-		PackageInputParameterBindings bindings4 = getPackageWriter().getOperatorService(operationName).createNewInputParameterBindings();
-		bindings4.addDataType(Resources.gravityDataURI);
-		bindings4.addInputBinding("S", "c0.04c");
-		bindings4.addInputBinding("R", region);
-		bindings4.addInputBinding("J", "x4c");
-		bindings4.addInputBinding("G", "blue");
-		bindings4.addInputBinding("B", "1");
-		bindings4.addInputBinding("indexOfX", "0");
-		bindings4.addInputBinding("indexOfY", "1");
+		// for GMT nearneighbor
+		bindingsSet.addInputBinding("nearneighbor", "I", "0.02");
+		bindingsSet.addInputBinding("nearneighbor", "S", "0.2");
+		bindingsSet.addInputBinding("nearneighbor", "R", region);
+		bindingsSet.addInputBinding("nearneighbor", "indexOfX", "0");
+		bindingsSet.addInputBinding("nearneighbor", "indexOfY", "1");
+		bindingsSet.addInputBinding("nearneighbor", "indexOfZ", "2");
 		
-		operationName = "grdimage";
-		PackageInputParameterBindings bindings5 = getPackageWriter().getOperatorService(operationName).createNewInputParameterBindings();
-		bindings1.addDataType(Resources.gravityDataURI);
-		bindings1.addDataType(Resources.griddedGravityDataURI);
-		bindings5.addInputBinding("B", "1");
-		bindings5.addInputBinding("J", "x4c");
-		bindings5.addInputBinding("C", "hot");
-		bindings5.addInputBinding("T", "-200/200/10");
-		bindings5.addInputBinding("R", region);
+		// for GMT surface
+		bindingsSet.addInputBinding("surface", "I","0.02");
+		bindingsSet.addInputBinding("surface", "T","0.25");
+		bindingsSet.addInputBinding("surface", "C", "0.1");
+		bindingsSet.addInputBinding("surface", "indexOfX", "0");
+		bindingsSet.addInputBinding("surface", "indexOfY", "1");
+		bindingsSet.addInputBinding("surface", "indexOfZ", "2");
+		bindingsSet.addInputBinding("surface", "R", region);
+
+		// for GMT grdimage
+		bindingsSet.addInputBinding("grdimage", "B", "1");
+		bindingsSet.addInputBinding("grdimage", "J", "x4c");
+		bindingsSet.addInputBinding("grdimage", "C", "hot");
+		bindingsSet.addInputBinding("grdimage", "T", "-200/200/10");
+		bindingsSet.addInputBinding("grdimage", "R", region);
+		
+		// for GMT grdcontour
+		bindingsSet.addInputBinding("grdcontour", "C", "10");
+		bindingsSet.addInputBinding("grdcontour", "A", "20");
+		bindingsSet.addInputBinding("grdcontour", "B", "0.5");
+		bindingsSet.addInputBinding("grdcontour", "S", "5");
+		bindingsSet.addInputBinding("grdcontour", "J", "x4c");
+		bindingsSet.addInputBinding("grdcontour", "Wc", "thinnest,black");
+		bindingsSet.addInputBinding("grdcontour", "Wa", "thinnest,black");
+	}
+
+	private void addGriddedGravityDataBindings(PackageInputParameterBindings bindingsSet){
+		String region = "-109/-107/33/34";
+
+		bindingsSet.addDataType(Resources.griddedGravityDataURI);
+
+		// for GMT grdcontour
+		bindingsSet.addInputBinding("grdcontour", "C", "10");
+		bindingsSet.addInputBinding("grdcontour", "A", "20");
+		bindingsSet.addInputBinding("grdcontour", "B", "0.5");
+		bindingsSet.addInputBinding("grdcontour", "S", "5");
+		bindingsSet.addInputBinding("grdcontour", "J", "x4c");
+		bindingsSet.addInputBinding("grdcontour", "Wc", "thinnest,black");
+		bindingsSet.addInputBinding("grdcontour", "Wa", "thinnest,black");
+
+		// for GMT grdimage
+		bindingsSet.addInputBinding("grdimage", "B", "1");
+		bindingsSet.addInputBinding("grdimage", "J", "x4c");
+		bindingsSet.addInputBinding("grdimage", "C", "hot");
+		bindingsSet.addInputBinding("grdimage", "T", "-200/200/10");
+		bindingsSet.addInputBinding("grdimage", "R", region);		
 	}
 }
