@@ -46,7 +46,7 @@ public class PackageSource extends RDFPackage {
 	public void populateServices() {
 		String wsdlURL = "http://iw.cs.utep.edu:8080/toolkits/services/ToolkitServices?wsdl";
 	
-		String operationName = "int2short";
+		String operationName = "int2Short";
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
 		service1.setInputFormat(Resources.binaryIntArrayLE);
 		service1.setOutputFormat(Resources.binaryShortIntArrayLE);
