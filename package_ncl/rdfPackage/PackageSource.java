@@ -1,5 +1,6 @@
 package package_ncl.rdfPackage;
 
+import package_ncl.servicePackage.ServiceSource;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
@@ -28,8 +29,9 @@ public class PackageSource extends RDFPackage {
 	@Override
 	public void populateServices() {
 		// TODO Auto-generated method stub
-		String wsdlURL = "http://iw.cs.utep.edu:8080/toolkits/services/ToolkitServices?wsdl";
-
+		ServiceSource services = new ServiceSource();
+		String wsdlURL = services.getWSDLURL();
+		
 		String operationName = "gsn_csm_contour_map";
 		
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
