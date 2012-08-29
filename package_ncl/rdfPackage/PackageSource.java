@@ -12,8 +12,8 @@ public class PackageSource extends RDFPackage {
 
 	private static final class Resources{
 		//formats
-		private static final Format netcdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/NETCDF.owl#NETCDF");
-		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
+		private static final Format netcdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDF.owl#NETCDF");
+		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		
 		//views
 		private static final View xyPlot = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/XYPlot.owl#XYPlot");

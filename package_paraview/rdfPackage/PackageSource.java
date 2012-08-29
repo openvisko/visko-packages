@@ -10,7 +10,7 @@ public class PackageSource extends RDFPackage {
 
 	private static final class Resources{
 		//formats
-		private static final Format xdmf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/XDMF.owl#XDMF");
+		private static final Format xdmf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/XDMF.owl#XDMF");
 	}
 	
 	@Override

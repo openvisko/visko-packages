@@ -10,20 +10,20 @@ public class PackageSource extends RDFPackage {
 
 	private static final class Resources{
 		//formats 
-		private static final Format gif = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/GIF.owl#GIF");
-		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PNG.owl#PNG");
-		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/JPEG.owl#JPEG");
-		private static final Format dicom = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/DICOM.owl#DICOM");
-		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/TIFF.owl#TIFF");
-		private static final Format fits = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/FITS.owl#FITS");
-		private static final Format raw = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/RAW.owl#RAW");
-		private static final Format stf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VNDWTSTF.owl#VNDWTSTF");
-		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PDF.owl#PDF");
-		private static final Format plain = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PLAIN.owl#PLAIN");
-		private static final Format plainText = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PLAINTEXT.owl#PLAINTEXT");
-		private static final Format latex = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VNDLATEXZ.owl#VNDLATEXZ");
-		private static final Format html = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/HTML.owl#HTML");
-		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
+		private static final Format gif = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/GIF.owl#GIF");
+		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PNG.owl#PNG");
+		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
+		private static final Format dicom = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/DICOM.owl#DICOM");
+		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/TIFF.owl#TIFF");
+		private static final Format fits = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/FITS.owl#FITS");
+		private static final Format raw = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/RAW.owl#RAW");
+		private static final Format stf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VNDWTSTF.owl#VNDWTSTF");
+		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PDF.owl#PDF");
+		private static final Format plain = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PLAIN.owl#PLAIN");
+		private static final Format plainText = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PLAINTEXT.owl#PLAINTEXT");
+		private static final Format latex = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VNDLATEXZ.owl#VNDLATEXZ");
+		private static final Format html = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/HTML.owl#HTML");
+		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		
 	}
 

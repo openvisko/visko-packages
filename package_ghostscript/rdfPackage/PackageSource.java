@@ -9,9 +9,9 @@ public class PackageSource extends RDFPackage {
 
 	private static final class Resources {
 		//formats
-		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
-		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PDF.owl#PDF");
-		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PNG.owl#PNG");
+		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
+		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PDF.owl#PDF");
+		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PNG.owl#PNG");
 	}
 	
 	@Override

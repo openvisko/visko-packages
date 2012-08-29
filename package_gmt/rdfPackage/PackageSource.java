@@ -12,10 +12,10 @@ public class PackageSource extends RDFPackage {
 
 	private static final class Resources {
 		//formats
-		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
-		private static final Format netCDFGMT = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/NETCDFGMT.owl#NETCDFGMT");
-		private static final Format spaceDelimTabularASCII = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/SPACEDELIMITEDTABULARASCII.owl#SPACEDELIMITEDTABULARASCII");
-		private static final Format csv = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/CSV.owl#CSV");
+		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
+		private static final Format netCDFGMT = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDFGMT.owl#NETCDFGMT");
+		private static final Format spaceDelimTabularASCII = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACEDELIMITEDTABULARASCII.owl#SPACEDELIMITEDTABULARASCII");
+		private static final Format csv = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
 
 		//views
 		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/contour-lines.owl#contour-lines");

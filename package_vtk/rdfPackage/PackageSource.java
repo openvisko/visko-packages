@@ -13,15 +13,15 @@ public class PackageSource extends RDFPackage {
 	private static final class Resources {
 		
 		//formats
-		private static final Format binaryIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/BINARYINTARRAYLENDIAN.owl#BINARYINTARRAYLENDIAN");
-		private static final Format binaryShortIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/BINARYSHORTINTARRAYLENDIAN.owl#BINARYSHORTINTARRAYLENDIAN");
-		private static final Format binaryFloatArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/BINARYFLOATARRAYLENDIAN.owl#BINARYFLOATARRAYLENDIAN");
-		private static final Format vtkImageDataShortInts = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VTKIMAGEDATASHORTINTS.owl#VTKIMAGEDATASHORTINTS");
-		private static final Format vtkImageData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VTKIMAGEDATA.owl#VTKIMAGEDATA");
-		private static final Format vtkPolyData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VTKPOLYDATA.owl#VTKPOLYDATA");
-		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/JPEG.owl#JPEG");
-		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/TIFF.owl#TIFF");
-		private static final Format binaryUnsignedIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/BINARYUNSIGNEDINTARRAYLENDIAN.owl#BINARYUNSIGNEDINTARRAYLENDIAN");
+		private static final Format binaryIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYINTARRAYLENDIAN.owl#BINARYINTARRAYLENDIAN");
+		private static final Format binaryShortIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYSHORTINTARRAYLENDIAN.owl#BINARYSHORTINTARRAYLENDIAN");
+		private static final Format binaryFloatArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYFLOATARRAYLENDIAN.owl#BINARYFLOATARRAYLENDIAN");
+		private static final Format vtkImageDataShortInts = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKIMAGEDATASHORTINTS.owl#VTKIMAGEDATASHORTINTS");
+		private static final Format vtkImageData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKIMAGEDATA.owl#VTKIMAGEDATA");
+		private static final Format vtkPolyData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKPOLYDATA.owl#VTKPOLYDATA");
+		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
+		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/TIFF.owl#TIFF");
+		private static final Format binaryUnsignedIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYUNSIGNEDINTARRAYLENDIAN.owl#BINARYUNSIGNEDINTARRAYLENDIAN");
 	
 		//views
 		private static final View isosurfaces = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/iso-surfaces.owl#iso-surfaces");

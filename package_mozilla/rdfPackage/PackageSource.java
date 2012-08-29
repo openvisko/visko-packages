@@ -9,15 +9,13 @@ import edu.utep.trustlab.visko.ontology.pmlp.Format;
 public class PackageSource extends RDFPackage {
 	private static final class Resources {
 		//formats
-		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/POSTSCRIPT.owl#POSTSCRIPT");
-		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PDF.owl#PDF");
-		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PNG.owl#PNG");
-		private static final Format jpg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/JPEG.owl#JPEG");
-		private static final Format gif = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/GIF.owl#GIF");
-		private static final Format plain = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PLAIN.owl#PLAIN");
-		private static final Format plainText = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/PLAINTEXT.owl#PLAINTEXT");
-		private static final Format latex = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/VNDLATEXZ.owl#VNDLATEXZ");
-		private static final Format html = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/rdf/formats/HTML.owl#HTML");
+		private static final Format pdf = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PDF.owl#PDF");
+		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PNG.owl#PNG");
+		private static final Format jpg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
+		private static final Format gif = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/GIF.owl#GIF");
+		private static final Format plain = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PLAIN.owl#PLAIN");
+		private static final Format plainText = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PLAINTEXT.owl#PLAINTEXT");
+		private static final Format html = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/HTML.owl#HTML");
 	}
 	
 
@@ -36,8 +34,8 @@ public class PackageSource extends RDFPackage {
 	@Override
 	public void populateViewerSets() {
 		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("mozilla-firefox");
-		viewerSet.setComment("Internet Explorer Web Browser");
-		viewerSet.setLabel("Internet Explorer");
+		viewerSet.setComment("Mozilla Firefox Web Browser");
+		viewerSet.setLabel("Mozilla Firefox");
 		
 		Viewer viewer1 = viewerSet.createNewViewer("firefox-browser-image-viewer");
 		viewer1.setLabel("Mozilla Firefox Browser Image Viewer");
@@ -56,8 +54,6 @@ public class PackageSource extends RDFPackage {
 		viewer3.setComment("Just a plain old text viewer.");
 		viewer3.addOperatesOnFormat(Resources.plain);
 		viewer3.addOperatesOnFormat(Resources.plainText);
-		viewer3.addOperatesOnFormat(Resources.latex);
-		viewer3.addOperatesOnFormat(Resources.ps);
 		
 		Viewer viewer4 = viewerSet.createNewViewer("firefox-html-viewer");
 		viewer4.setLabel("HyperText Markup Language (HTML) Viewer");
