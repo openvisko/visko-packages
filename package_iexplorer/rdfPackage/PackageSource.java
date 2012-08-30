@@ -66,5 +66,11 @@ public class PackageSource extends RDFPackage {
 	public void populateParameterBindings() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getWSDLURL() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

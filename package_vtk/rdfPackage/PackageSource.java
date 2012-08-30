@@ -1,6 +1,5 @@
 package package_vtk.rdfPackage;
 
-import package_vtk.servicePackage.ServiceSource;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
@@ -45,8 +44,7 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateServices() {
-		ServiceSource services = new ServiceSource();
-		String wsdlURL = services.getWSDLURL();
+		String wsdlURL = getWSDLURL();
 		
 		String operationName = "int2Short";
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
@@ -376,5 +374,10 @@ public class PackageSource extends RDFPackage {
 		addDuSumParameterBindings(bindings2);
 		addVelocityParameterBindings(bindings3);
 		addGriddedTimeParameterBindings(bindings4);
+	}
+	
+	@Override
+	public String getWSDLURL() {
+		return "http://iw.cs.utep.edu:8080/toolkits/services/ToolkitServices?wsdl";
 	}
 }

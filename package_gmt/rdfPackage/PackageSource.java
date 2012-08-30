@@ -1,6 +1,5 @@
 package package_gmt.rdfPackage;
 
-import package_gmt.servicePackage.ServiceSource;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
@@ -30,8 +29,7 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateServices() {
-		ServiceSource services = new ServiceSource();
-		String wsdlURL = services.getWSDLURL();
+		String wsdlURL = getWSDLURL();
 		
 		String operationName = "grdcontour";
 
@@ -176,5 +174,10 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding("grdimage", "C", "hot");
 		bindingsSet.addInputBinding("grdimage", "T", "-200/200/10");
 		bindingsSet.addInputBinding("grdimage", "R", region);		
+	}
+
+	@Override
+	public String getWSDLURL() {
+		return "http://iw.cs.utep.edu:8080/toolkits/services/ToolkitServices?wsdl";
 	}
 }

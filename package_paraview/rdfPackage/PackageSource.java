@@ -42,4 +42,10 @@ public class PackageSource extends RDFPackage {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String getWSDLURL() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
