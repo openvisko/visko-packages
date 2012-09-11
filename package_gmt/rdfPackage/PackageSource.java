@@ -6,7 +6,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
-import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
 
 public class PackageSource extends RDFPackage {
 
@@ -16,15 +16,18 @@ public class PackageSource extends RDFPackage {
 		private static final Format netCDFGMT = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDFGMT.owl#NETCDFGMT");
 		private static final Format spaceDelimTabularASCII = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACEDELIMITEDTABULARASCII.owl#SPACEDELIMITEDTABULARASCII");
 		private static final Format csv = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
-
-		//views
-		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/contour-lines.owl#contour-lines");
-		private static final View contour = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/raster.owl#raster");
-		private static final View plot = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/plot-2D.owl#plot-2D");
 		
 		//type uris
 		private static final String gravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19";
 		private static final String griddedGravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12";
+		
+		//Data Types		
+		private static final String points2D = ViskoP.CLASS_URI_2DPoint;
+		private static final String pointsPlot = ViskoP.CLASS_URI_2DPOINT_PLOT;
+		
+		private static final String grid2D = ViskoP.CLASS_URI_2DGrid;
+		private static final String rasterMap = ViskoP.CLASS_URI_RASTER_MAP;
+		private static final String contourMap = ViskoP.CLASS_URI_CONTOUR_MAP;
 	}
 
 	@Override
@@ -32,14 +35,15 @@ public class PackageSource extends RDFPackage {
 		String wsdlURL = getWSDLURL();
 		
 		String operationName = "grdcontour";
-
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
 		service1.setComment("Generates contour map from netCDF 2D gridded dataset");
 		service1.setLabel("GMT grdcontour");
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netCDFGMT);
 		service1.setOutputFormat(Resources.ps);
-		service1.setView(Resources.contour);
+		//service1.setView(Resources.contour);
+		service1.setInputDataType(Resources.grid2D);
+		service1.setOutputDataType(Resources.contourMap);
 				
 		operationName = "surface";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
@@ -48,6 +52,8 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.spaceDelimTabularASCII);
 		service2.setOutputFormat(Resources.netCDFGMT);
+		service2.setInputDataType(Resources.points2D);
+		service2.setOutputDataType(Resources.grid2D);
 		
 		operationName = "nearneighbor";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -56,7 +62,9 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.spaceDelimTabularASCII);
 		service3.setOutputFormat(Resources.netCDFGMT);
-			
+		service3.setInputDataType(Resources.points2D);
+		service3.setOutputDataType(Resources.grid2D);
+
 		operationName = "psxy";
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
 		service4.setComment("Generate 2D Plot of point data");
@@ -64,7 +72,9 @@ public class PackageSource extends RDFPackage {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputFormat(Resources.spaceDelimTabularASCII);
 		service4.setOutputFormat(Resources.ps);
-		service4.setView(Resources.plot);
+		//service4.setView(Resources.plot);
+		service4.setInputDataType(Resources.points2D);
+		service4.setOutputDataType(Resources.pointsPlot);
 		
 		operationName = "grdimage";
 		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
@@ -73,8 +83,10 @@ public class PackageSource extends RDFPackage {
 		service5.setWSDLURL(wsdlURL);
 		service5.setInputFormat(Resources.netCDFGMT);
 		service5.setOutputFormat(Resources.ps);
-		service5.setView(Resources.raster);
-
+		//service5.setView(Resources.raster);
+		service5.setInputDataType(Resources.grid2D);
+		service5.setOutputDataType(Resources.rasterMap);
+		
 		operationName = "csv2tabular";
 		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
 		service6.setComment("Convert comma separated values into ASCII tabular data");

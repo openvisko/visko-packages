@@ -7,6 +7,8 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
 import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.vocabulary.ESIPData;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
 
 public class PackageSource extends RDFPackage {
 	
@@ -22,11 +24,13 @@ public class PackageSource extends RDFPackage {
 		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
 		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/TIFF.owl#TIFF");
 		private static final Format binaryUnsignedIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYUNSIGNEDINTARRAYLENDIAN.owl#BINARYUNSIGNEDINTARRAYLENDIAN");
-	
+
+		/*
 		//views
 		private static final View isosurfaces = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/iso-surfaces.owl#iso-surfaces");
 		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/raster.owl#raster");
 		private static final View volume = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/volume.owl#volume");
+		*/
 		
 		//type uris
 		private static final String velocityDataURI_1 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d14-0";
@@ -40,6 +44,12 @@ public class PackageSource extends RDFPackage {
 		
 		private static final String dusumDataURI_1 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0";
 		private static final String dusumDataURI_2 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8";
+		
+		//data types
+		private static final String grid3D = ViskoP.CLASS_URI_3DGrid;
+		private static final String rasterCube = ViskoP.CLASS_URI_RASTER_CUBE;
+		private static final String volume = ESIPData.CLASS_ESIP_VOLUME;
+		private static final String isosurfaces = ViskoP.CLASS_URI_ISO_SURFACES;
 	}
 
 	@Override
@@ -53,6 +63,8 @@ public class PackageSource extends RDFPackage {
 		service1.setLabel(operationName);
 		service1.setComment("Converts integer arrays to short integers");
 		service1.setWSDLURL(wsdlURL);
+		service1.setInputDataType(Resources.grid3D);
+		service1.setInputDataType(Resources.grid3D);
 		
 		operationName = "float2ShortThr";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
@@ -61,6 +73,8 @@ public class PackageSource extends RDFPackage {
 		service2.setLabel(operationName);
 		service2.setComment("Converts float arrays to short ints");
 		service2.setWSDLURL(wsdlURL);
+		service2.setInputDataType(Resources.grid3D);
+		service2.setInputDataType(Resources.grid3D);
 		
 		operationName = "vtkImageDataReader";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -69,15 +83,19 @@ public class PackageSource extends RDFPackage {
 		service3.setLabel(operationName);
 		service3.setComment("Converts binary short integer arrays into vtk image data of short integers");
 		service3.setWSDLURL(wsdlURL);
+		service3.setInputDataType(Resources.grid3D);
+		service3.setInputDataType(Resources.volume);
 		
 		operationName = "vtkContourFilter";
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
 		service4.setInputFormat(Resources.vtkImageData);
 		service4.setOutputFormat(Resources.vtkPolyData);
-		service4.setView(Resources.isosurfaces);
+		//service4.setView(Resources.isosurfaces);
 		service4.setLabel(operationName);
 		service4.setComment("Generates isosurfaces from vtkImageData");
 		service4.setWSDLURL(wsdlURL);
+		service4.setInputDataType(Resources.grid3D);
+		service4.setInputDataType(Resources.isosurfaces);
 		
 		operationName = "vtkPolyDataMapper";
 		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
@@ -91,10 +109,11 @@ public class PackageSource extends RDFPackage {
 		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
 		service6.setInputFormat(Resources.vtkImageDataShortInts);
 		service6.setOutputFormat(Resources.jpeg);
-		service6.setView(Resources.volume);
+		//service6.setView(Resources.volume);
 		service6.setLabel(operationName);
 		service6.setComment("Convert vtkImageData of short integers into a volume JPEG");
 		service6.setWSDLURL(wsdlURL);
+		service6.setInputDataType(Resources.volume);		
 		
 		operationName = "vtkImageDataReaderFloat";
 		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(operationName);
@@ -103,6 +122,8 @@ public class PackageSource extends RDFPackage {
 		service7.setLabel(operationName);
 		service7.setComment("Convert binary float arrays into vtkImageData");
 		service7.setWSDLURL(wsdlURL);
+		service7.setInputDataType(Resources.grid3D);
+		service7.setInputDataType(Resources.volume);
 		
 		operationName = "vtkTIFFReader";
 		PackageOperatorService service8 = getPackageWriter().createNewOperatorService(operationName);
@@ -111,15 +132,19 @@ public class PackageSource extends RDFPackage {
 		service8.setLabel(operationName);
 		service8.setComment("Convert TIFF images into vtkImageData");
 		service8.setWSDLURL(wsdlURL);
-		
+		service8.setInputDataType(Resources.grid3D);
+		service8.setInputDataType(Resources.grid3D);
+
 		operationName = "vtkDataSetMapper";
 		PackageOperatorService service9 = getPackageWriter().createNewOperatorService(operationName);
 		service9.setInputFormat(Resources.vtkImageData);
 		service9.setOutputFormat(Resources.jpeg);
-		service9.setView(Resources.raster);
+		//service9.setView(Resources.raster);
 		service9.setLabel(operationName);
 		service9.setComment("Convert vtkImageData into a raster image");
 		service9.setWSDLURL(wsdlURL);
+		service1.setInputDataType(Resources.grid3D);
+		service1.setInputDataType(Resources.rasterCube);
 		
 		operationName = "vtkImageDataReaderUnsignedInts";
 		PackageOperatorService service10 = getPackageWriter().createNewOperatorService(operationName);
@@ -128,6 +153,9 @@ public class PackageSource extends RDFPackage {
 		service10.setLabel(operationName);
 		service10.setComment("Convert binary unsigned interger array into vtkImageData");
 		service10.setWSDLURL(wsdlURL);
+		service10.setInputDataType(Resources.grid3D);
+		service10.setInputDataType(Resources.volume);
+
 	}
 
 	@Override

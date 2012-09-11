@@ -7,6 +7,8 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.vocabulary.ESIPData;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
 
 public class PackageSource extends RDFPackage {
 
@@ -23,6 +25,14 @@ public class PackageSource extends RDFPackage {
 		private static final String brightnessTemperatureURI = "http://giovanni.gsfc.nasa.gov/data/brightness.owl#brightness";
 		private static final String griddedGravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12";
 		private static final String gravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19";
+		
+		//data types
+		private static final String grid2D = ViskoP.CLASS_URI_2DGrid;
+		private static final String contourMap = ViskoP.CLASS_URI_CONTOUR_MAP;
+		private static final String rasterMap = ViskoP.CLASS_URI_RASTER_MAP;
+		private static final String line = ESIPData.CLASS_ESIP_LINE;
+		private static final String timeSeriesPlot = ViskoP.CLASS_URI_TIMESERIES_PlOT;
+		
 	}
 	
 	@Override
@@ -37,8 +47,11 @@ public class PackageSource extends RDFPackage {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netcdf);
 		service1.setOutputFormat(Resources.ps);
-		service1.setView(Resources.contour);
-
+		//service1.setView(Resources.contour);
+		service1.setInputDataType(Resources.grid2D);
+		service1.setOutputDataType(Resources.contourMap);
+		
+		
 		operationName = "gsn_csm_contour_map_raster";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
 		service2.setComment("Generate raster map from 2D gridded netCDF");
@@ -46,8 +59,9 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.netcdf);
 		service2.setOutputFormat(Resources.ps);
-		service2.setView(Resources.raster);
-
+		//service2.setView(Resources.raster);
+		service2.setInputDataType(Resources.grid2D);
+		service2.setOutputDataType(Resources.rasterMap);
 	
 		operationName = "gsn_csm_xy2_time_series";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -56,7 +70,9 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.netcdf);
 		service3.setOutputFormat(Resources.ps);
-		service3.setView(Resources.xyPlot);
+		//service3.setView(Resources.xyPlot);
+		service3.setInputDataType(Resources.line);
+		service3.setOutputDataType(Resources.timeSeriesPlot);
 	}
 
 	@Override
