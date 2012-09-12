@@ -41,25 +41,25 @@ public class PackageSource extends RDFPackage {
 		Viewer viewer1 = viewerSet.createNewViewer("iexplorer-browser-image-viewer");
 		viewer1.setLabel("Internet Explorer Browser Image Viewer");
 		viewer1.setComment("Views a few standard image formats");
-		viewer1.addOperatesOnFormat(Resources.gif);
-		viewer1.addOperatesOnFormat(Resources.png);
-		viewer1.addOperatesOnFormat(Resources.jpg);
+		viewer1.addInputFormat(Resources.gif);
+		viewer1.addInputFormat(Resources.png);
+		viewer1.addInputFormat(Resources.jpg);
 		
 		Viewer viewer2 = viewerSet.createNewViewer("iexplorer-pdf-viewer");
 		viewer2.setLabel("Adobe Portable Document Format (PDF) Viewer");
 		viewer2.setComment("Renders PDF document and allows for zooming.");
-		viewer2.addOperatesOnFormat(Resources.pdf);
+		viewer2.addInputFormat(Resources.pdf);
 		
 		Viewer viewer3 = viewerSet.createNewViewer("iexplorer-text-viewer");
 		viewer3.setLabel("Plain Text Viewer");
 		viewer3.setComment("Just a plain old text viewer");
-		viewer3.addOperatesOnFormat(Resources.plain);
-		viewer3.addOperatesOnFormat(Resources.plainText);
+		viewer3.addInputFormat(Resources.plain);
+		viewer3.addInputFormat(Resources.plainText);
 		
 		Viewer viewer4 = viewerSet.createNewViewer("iexplorer-html-viewer");
 		viewer4.setLabel("HyperText Markup Language (HTML) Viewer");
 		viewer4.setComment("Renders HTML documents.");
-		viewer4.addOperatesOnFormat(Resources.html);	
+		viewer4.addInputFormat(Resources.html);	
 	}
 
 	@Override

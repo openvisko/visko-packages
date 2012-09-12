@@ -1,12 +1,15 @@
 package package_gmt.rdfPackage;
 
+import com.hp.hpl.jena.ontology.OntResource;
+
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
-import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
+import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 
@@ -17,17 +20,17 @@ public class PackageSource extends RDFPackage {
 		private static final Format spaceDelimTabularASCII = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACEDELIMITEDTABULARASCII.owl#SPACEDELIMITEDTABULARASCII");
 		private static final Format csv = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
 		
-		//type uris
-		private static final String gravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19";
-		private static final String griddedGravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12";
+		//semantic type uris
+		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
+		private static final OntResource griddedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12");
 		
-		//Data Types		
-		private static final String points2D = ViskoP.CLASS_URI_2DPoint;
-		private static final String pointsPlot = ViskoP.CLASS_URI_2DPOINT_PLOT;
+		//views
+		private static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
+		private static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
+		private static final View pointPlotMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_PointPlot);
 		
-		private static final String grid2D = ViskoP.CLASS_URI_2DGrid;
-		private static final String rasterMap = ViskoP.CLASS_URI_RASTER_MAP;
-		private static final String contourMap = ViskoP.CLASS_URI_CONTOUR_MAP;
+		//data types 		
+		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://www.unidata.ucar.edu/software/netcdf/netCDF-data.owl#2D_Grid_COARDS");
 	}
 
 	@Override
@@ -41,10 +44,10 @@ public class PackageSource extends RDFPackage {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netCDFGMT);
 		service1.setOutputFormat(Resources.ps);
-		//service1.setView(Resources.contour);
-		service1.setInputDataType(Resources.grid2D);
-		service1.setOutputDataType(Resources.contourMap);
-				
+		service1.setView(Resources.contourMap);
+		service1.setInputDataType(Resources.COARDS_2D_Grid);
+		// not output type...system will set to owl:Thing
+		
 		operationName = "surface";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
 		service2.setComment("Employ tensioned splines to generate gridded data in netCDF from ascii tabular point data");
@@ -52,8 +55,8 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.spaceDelimTabularASCII);
 		service2.setOutputFormat(Resources.netCDFGMT);
-		service2.setInputDataType(Resources.points2D);
-		service2.setOutputDataType(Resources.grid2D);
+		service2.setInputDataType(Resources.gravityData);
+		service2.setOutputDataType(Resources.COARDS_2D_Grid);
 		
 		operationName = "nearneighbor";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -62,8 +65,8 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.spaceDelimTabularASCII);
 		service3.setOutputFormat(Resources.netCDFGMT);
-		service3.setInputDataType(Resources.points2D);
-		service3.setOutputDataType(Resources.grid2D);
+		service3.setInputDataType(Resources.gravityData);
+		service3.setOutputDataType(Resources.COARDS_2D_Grid);
 
 		operationName = "psxy";
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
@@ -72,9 +75,9 @@ public class PackageSource extends RDFPackage {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputFormat(Resources.spaceDelimTabularASCII);
 		service4.setOutputFormat(Resources.ps);
-		//service4.setView(Resources.plot);
-		service4.setInputDataType(Resources.points2D);
-		service4.setOutputDataType(Resources.pointsPlot);
+		service4.setView(Resources.pointPlotMap);
+		service4.setInputDataType(Resources.gravityData);
+		// not output type...system will set to owl:Thing		
 		
 		operationName = "grdimage";
 		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
@@ -83,9 +86,9 @@ public class PackageSource extends RDFPackage {
 		service5.setWSDLURL(wsdlURL);
 		service5.setInputFormat(Resources.netCDFGMT);
 		service5.setOutputFormat(Resources.ps);
-		//service5.setView(Resources.raster);
-		service5.setInputDataType(Resources.grid2D);
-		service5.setOutputDataType(Resources.rasterMap);
+		service5.setView(Resources.rasterMap);
+		service5.setInputDataType(Resources.COARDS_2D_Grid);
+		// not output type...system will set to owl:Thing
 		
 		operationName = "csv2tabular";
 		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
@@ -121,7 +124,7 @@ public class PackageSource extends RDFPackage {
 	private void addGravityDataBindings(PackageInputParameterBindings bindingsSet){
 		String region = "-109/-107/33/34";
 		
-		bindingsSet.addDataType(Resources.gravityDataURI);
+		bindingsSet.addSemanticType(Resources.gravityData);
 		
 		// for GMT psxy
 		bindingsSet.addInputBinding("psxy", "S", "c0.04c");
@@ -169,7 +172,7 @@ public class PackageSource extends RDFPackage {
 	private void addGriddedGravityDataBindings(PackageInputParameterBindings bindingsSet){
 		String region = "-109/-107/33/34";
 
-		bindingsSet.addDataType(Resources.griddedGravityDataURI);
+		bindingsSet.addSemanticType(Resources.griddedGravityData);
 
 		// for GMT grdcontour
 		bindingsSet.addInputBinding("grdcontour", "C", "10");

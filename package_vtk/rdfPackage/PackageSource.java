@@ -172,7 +172,7 @@ public class PackageSource extends RDFPackage {
 	}
 
 	public void addCoverageParameterBindings(PackageInputParameterBindings bindingsSet){
-		bindingsSet.addDataType(Resources.coverageDataURI);
+		bindingsSet.addSemanticType(Resources.coverageDataURI);
 		
 		String operationName = "float2ShortThr";
 		
@@ -214,8 +214,8 @@ public class PackageSource extends RDFPackage {
 	}
 
 	public void addGriddedTimeParameterBindings(PackageInputParameterBindings bindingsSet){
-		bindingsSet.addDataType(Resources.griddedTimeURI_1);
-		bindingsSet.addDataType(Resources.griddedTimeURI_2);
+		bindingsSet.addSemanticType(Resources.griddedTimeURI_1);
+		bindingsSet.addSemanticType(Resources.griddedTimeURI_2);
 		
 		String operationName = "float2ShortThr";
 		// for float2shortThr
@@ -270,8 +270,8 @@ public class PackageSource extends RDFPackage {
 	}
 	
 	public void addDuSumParameterBindings(PackageInputParameterBindings bindingsSet){
-		bindingsSet.addDataType(Resources.dusumDataURI_1);
-		bindingsSet.addDataType(Resources.dusumDataURI_2);
+		bindingsSet.addSemanticType(Resources.dusumDataURI_1);
+		bindingsSet.addSemanticType(Resources.dusumDataURI_2);
 		
 		String operationName = "float2ShortThr";
 		// for float2shortThr
@@ -326,9 +326,9 @@ public class PackageSource extends RDFPackage {
 	}
 	
 	public void addVelocityParameterBindings(PackageInputParameterBindings bindingsSet) {
-		bindingsSet.addDataType(Resources.velocityDataURI_1);
-		bindingsSet.addDataType(Resources.velocityDataURI_2);
-		bindingsSet.addDataType(Resources.velocityDataURI_3);
+		bindingsSet.addSemanticType(Resources.velocityDataURI_1);
+		bindingsSet.addSemanticType(Resources.velocityDataURI_2);
+		bindingsSet.addSemanticType(Resources.velocityDataURI_3);
 		
 		String operationName = "float2ShortThr";
 		// for float2shortThr

@@ -1,5 +1,7 @@
 package package_ncl.rdfPackage;
 
+import com.hp.hpl.jena.ontology.OntResource;
+
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
@@ -7,8 +9,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.service.Toolkit;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.view.View;
-import edu.utep.trustlab.visko.ontology.vocabulary.ESIPData;
-import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 
@@ -18,21 +19,15 @@ public class PackageSource extends RDFPackage {
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		
 		//views
-		private static final View xyPlot = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/XYPlot.owl#XYPlot");
-		private static final View contour = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/contour-lines.owl#contour-lines");
-		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/raster.owl#raster");
-		
-		private static final String brightnessTemperatureURI = "http://giovanni.gsfc.nasa.gov/data/brightness.owl#brightness";
-		private static final String griddedGravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12";
-		private static final String gravityDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19";
-		
-		//data types
-		private static final String grid2D = ViskoP.CLASS_URI_2DGrid;
-		private static final String contourMap = ViskoP.CLASS_URI_CONTOUR_MAP;
-		private static final String rasterMap = ViskoP.CLASS_URI_RASTER_MAP;
-		private static final String line = ESIPData.CLASS_ESIP_LINE;
-		private static final String timeSeriesPlot = ViskoP.CLASS_URI_TIMESERIES_PlOT;
-		
+		private static final View timeSeriesPlot = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_TimeSeriesPlot);
+		private static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
+		private static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
+				
+		//semantic types
+		private static final OntResource brightnessTemperature = PackageWriter.getDataType("http://giovanni.gsfc.nasa.gov/giovanni-data.owl#BrightnessTemperature");
+		private static final OntResource giovanniTimeSeries = PackageWriter.getDataType("http://giovanni.gsfc.nasa.gov/giovanni-data.owl#Giovanni_Time_Series_Data");
+		private static final OntResource griddedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12");
+		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
 	}
 	
 	@Override
@@ -47,10 +42,8 @@ public class PackageSource extends RDFPackage {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netcdf);
 		service1.setOutputFormat(Resources.ps);
-		//service1.setView(Resources.contour);
-		service1.setInputDataType(Resources.grid2D);
-		service1.setOutputDataType(Resources.contourMap);
-		
+		service1.setView(Resources.contourMap);
+		service1.setInputDataType(Resources.brightnessTemperature);		
 		
 		operationName = "gsn_csm_contour_map_raster";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
@@ -59,9 +52,7 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.netcdf);
 		service2.setOutputFormat(Resources.ps);
-		//service2.setView(Resources.raster);
-		service2.setInputDataType(Resources.grid2D);
-		service2.setOutputDataType(Resources.rasterMap);
+		service2.setView(Resources.rasterMap);
 	
 		operationName = "gsn_csm_xy2_time_series";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -70,9 +61,8 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.netcdf);
 		service3.setOutputFormat(Resources.ps);
-		//service3.setView(Resources.xyPlot);
-		service3.setInputDataType(Resources.line);
-		service3.setOutputDataType(Resources.timeSeriesPlot);
+		service3.setView(Resources.timeSeriesPlot);
+		service3.setInputDataType(Resources.giovanniTimeSeries);
 	}
 
 	@Override
@@ -100,8 +90,8 @@ public class PackageSource extends RDFPackage {
 	}
 	
 	public void addGravityDataBindings(PackageInputParameterBindings bindingsSet){
-		bindingsSet.addDataType(Resources.gravityDataURI);
-		bindingsSet.addDataType(Resources.griddedGravityDataURI);
+		bindingsSet.addSemanticType(Resources.gravityData);
+		bindingsSet.addSemanticType(Resources.griddedGravityData);
 		
 		String operationName = "gsn_csm_contour_map";		
 		bindingsSet.addInputBinding(operationName, "lbOrientation", "vertical");
@@ -131,7 +121,7 @@ public class PackageSource extends RDFPackage {
 
 	public void addBrightnessTemperatureBindings(PackageInputParameterBindings bindingsSet) {
 		
-		bindingsSet.addDataType(Resources.brightnessTemperatureURI);
+		bindingsSet.addSemanticType(Resources.brightnessTemperature);
 		
 		String operationName = "gsn_csm_contour_map";
 		bindingsSet.addInputBinding(operationName, "plotVariable", "ch4");
