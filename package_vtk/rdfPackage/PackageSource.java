@@ -28,7 +28,7 @@ public class PackageSource extends RDFPackage {
 		private static final OntResource array1D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#1D_Array");
 		private static final OntResource vtkImageData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData");
 		private static final OntResource vtkImageDataShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageDataShortIntegers");
-		private static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkIPolyData");
+		private static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkPolyData");
 		
 		//views
 		private static final View isosurfaces = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_IsoSurfaceRendering);
