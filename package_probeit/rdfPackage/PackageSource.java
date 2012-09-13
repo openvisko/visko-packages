@@ -3,8 +3,8 @@ package package_probeit.rdfPackage;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
-import edu.utep.trustlab.visko.ontology.operator.Viewer;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
+import edu.utep.trustlab.visko.ontology.viskoOperator.Viewer;
 
 public class PackageSource extends RDFPackage {
 
@@ -49,37 +49,37 @@ public class PackageSource extends RDFPackage {
 		Viewer viewer1 = viewerSet.createNewViewer("probeit-imagej-viewer");
 		viewer1.setLabel("ImageJ Viewer");
 		viewer1.setComment("ImageJ is a public domain Java image processing program inspired by NIH Image");
-		viewer1.addOperatesOnFormat(Resources.gif);
-		viewer1.addOperatesOnFormat(Resources.pdf);
-		viewer1.addOperatesOnFormat(Resources.jpeg);
-		viewer1.addOperatesOnFormat(Resources.dicom);
-		viewer1.addOperatesOnFormat(Resources.tiff);
-		viewer1.addOperatesOnFormat(Resources.fits);
-		viewer1.addOperatesOnFormat(Resources.raw);
-		viewer1.addOperatesOnFormat(Resources.png);
+		viewer1.addInputFormat(Resources.gif);
+		viewer1.addInputFormat(Resources.pdf);
+		viewer1.addInputFormat(Resources.jpeg);
+		viewer1.addInputFormat(Resources.dicom);
+		viewer1.addInputFormat(Resources.tiff);
+		viewer1.addInputFormat(Resources.fits);
+		viewer1.addInputFormat(Resources.raw);
+		viewer1.addInputFormat(Resources.png);
 			
 		Viewer viewer2 = viewerSet.createNewViewer("parvis-viewer");
 		viewer2.setLabel("Parvis Parallel Coordinates Viewer");
 		viewer2.setComment("Parvis is a tool for parallel coordinates (PC) visualisation of multidimensional data sets, as first described in [Inselberg 1981].");
-		viewer2.addOperatesOnFormat(Resources.stf);
+		viewer2.addInputFormat(Resources.stf);
 		
 		Viewer viewer3 = viewerSet.createNewViewer("probeit-pdf-viewer");
 		viewer3.setLabel("Adobe Portable Document Format (PDF) Viewer");
 		viewer3.setComment("Renders PDF document and allows for zooming.");
-		viewer3.addOperatesOnFormat(Resources.pdf);
+		viewer3.addInputFormat(Resources.pdf);
 		
 		Viewer viewer4 = viewerSet.createNewViewer("probeit-text-viewer");
 		viewer4.setLabel("Plain Text Viewer");
 		viewer4.setComment("Just a plain old text viewer");
-		viewer4.addOperatesOnFormat(Resources.plain);
-		viewer4.addOperatesOnFormat(Resources.plainText);
-		viewer4.addOperatesOnFormat(Resources.latex);
-		viewer4.addOperatesOnFormat(Resources.ps);
+		viewer4.addInputFormat(Resources.plain);
+		viewer4.addInputFormat(Resources.plainText);
+		viewer4.addInputFormat(Resources.latex);
+		viewer4.addInputFormat(Resources.ps);
 		
 		Viewer viewer5 = viewerSet.createNewViewer("probeit-html-viewer");
 		viewer5.setLabel("HyperText Markup Language (HTML) Viewer");
 		viewer5.setComment("Renders HTML documents.");
-		viewer5.addOperatesOnFormat(Resources.html);	
+		viewer5.addInputFormat(Resources.html);	
 	}
 
 	@Override

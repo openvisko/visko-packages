@@ -7,8 +7,8 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBi
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
-import edu.utep.trustlab.visko.ontology.service.Toolkit;
-import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
+import edu.utep.trustlab.visko.ontology.viskoView.View;
 import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
@@ -16,9 +16,9 @@ public class PackageSource extends RDFPackage {
 	private static final class Resources {
 		//formats
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
-		private static final Format netCDFGMT = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDFGMT.owl#NETCDFGMT");
-		private static final Format spaceDelimTabularASCII = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACEDELIMITEDTABULARASCII.owl#SPACEDELIMITEDTABULARASCII");
-		private static final Format csv = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
+		private static final Format netCDF = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDF.owl#NETCDF");
+		private static final Format spaceSeparatedValues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES");
+		private static final Format commaSeparatedvalues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
 		
 		//semantic type uris
 		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
@@ -30,6 +30,7 @@ public class PackageSource extends RDFPackage {
 		private static final View pointPlotMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_PointPlot);
 		
 		//data types 		
+		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
 		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://www.unidata.ucar.edu/software/netcdf/netCDF-data.owl#2D_Grid_COARDS");
 	}
 
@@ -42,7 +43,7 @@ public class PackageSource extends RDFPackage {
 		service1.setComment("Generates contour map from netCDF 2D gridded dataset");
 		service1.setLabel("GMT grdcontour");
 		service1.setWSDLURL(wsdlURL);
-		service1.setInputFormat(Resources.netCDFGMT);
+		service1.setInputFormat(Resources.netCDF);
 		service1.setOutputFormat(Resources.ps);
 		service1.setView(Resources.contourMap);
 		service1.setInputDataType(Resources.COARDS_2D_Grid);
@@ -53,9 +54,9 @@ public class PackageSource extends RDFPackage {
 		service2.setComment("Employ tensioned splines to generate gridded data in netCDF from ascii tabular point data");
 		service2.setLabel("GMT surface");
 		service2.setWSDLURL(wsdlURL);
-		service2.setInputFormat(Resources.spaceDelimTabularASCII);
-		service2.setOutputFormat(Resources.netCDFGMT);
-		service2.setInputDataType(Resources.gravityData);
+		service2.setInputFormat(Resources.spaceSeparatedValues);
+		service2.setOutputFormat(Resources.netCDF);
+		service2.setInputDataType(Resources.xyzData);
 		service2.setOutputDataType(Resources.COARDS_2D_Grid);
 		
 		operationName = "nearneighbor";
@@ -63,9 +64,9 @@ public class PackageSource extends RDFPackage {
 		service3.setComment("Employ nearest neighbor to generate gridded data in netCDF from ascii tabular point data");
 		service3.setLabel("GMT nearneighbor");
 		service3.setWSDLURL(wsdlURL);
-		service3.setInputFormat(Resources.spaceDelimTabularASCII);
-		service3.setOutputFormat(Resources.netCDFGMT);
-		service3.setInputDataType(Resources.gravityData);
+		service3.setInputFormat(Resources.spaceSeparatedValues);
+		service3.setOutputFormat(Resources.netCDF);
+		service3.setInputDataType(Resources.xyzData);
 		service3.setOutputDataType(Resources.COARDS_2D_Grid);
 
 		operationName = "psxy";
@@ -73,10 +74,10 @@ public class PackageSource extends RDFPackage {
 		service4.setComment("Generate 2D Plot of point data");
 		service4.setLabel("GMT psxy");
 		service4.setWSDLURL(wsdlURL);
-		service4.setInputFormat(Resources.spaceDelimTabularASCII);
+		service4.setInputFormat(Resources.spaceSeparatedValues);
 		service4.setOutputFormat(Resources.ps);
 		service4.setView(Resources.pointPlotMap);
-		service4.setInputDataType(Resources.gravityData);
+		service4.setInputDataType(Resources.xyzData);
 		// not output type...system will set to owl:Thing		
 		
 		operationName = "grdimage";
@@ -84,7 +85,7 @@ public class PackageSource extends RDFPackage {
 		service5.setComment("Generate raster map of gridded data encoded in netCDF");
 		service5.setLabel("GMT grdimage");
 		service5.setWSDLURL(wsdlURL);
-		service5.setInputFormat(Resources.netCDFGMT);
+		service5.setInputFormat(Resources.netCDF);
 		service5.setOutputFormat(Resources.ps);
 		service5.setView(Resources.rasterMap);
 		service5.setInputDataType(Resources.COARDS_2D_Grid);
@@ -95,8 +96,8 @@ public class PackageSource extends RDFPackage {
 		service6.setComment("Convert comma separated values into ASCII tabular data");
 		service6.setLabel("CSV to Tabular ASCII");
 		service6.setWSDLURL(wsdlURL);
-		service6.setInputFormat(Resources.csv);
-		service6.setOutputFormat(Resources.spaceDelimTabularASCII);
+		service6.setInputFormat(Resources.commaSeparatedvalues);
+		service6.setOutputFormat(Resources.spaceSeparatedValues);
 	}
 
 	@Override

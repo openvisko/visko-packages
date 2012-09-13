@@ -3,7 +3,7 @@ import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
-import edu.utep.trustlab.visko.ontology.service.Toolkit;
+import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
 
 public class PackageSource extends RDFPackage {
 

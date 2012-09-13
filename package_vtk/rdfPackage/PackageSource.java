@@ -1,160 +1,155 @@
 package package_vtk.rdfPackage;
 
+import com.hp.hpl.jena.ontology.OntResource;
+
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
-import edu.utep.trustlab.visko.ontology.service.Toolkit;
-import edu.utep.trustlab.visko.ontology.view.View;
-import edu.utep.trustlab.visko.ontology.vocabulary.ESIPData;
-import edu.utep.trustlab.visko.ontology.vocabulary.ViskoP;
+import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
+import edu.utep.trustlab.visko.ontology.viskoView.View;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 	
-	private static final class Resources {
-		
-		//formats
-		private static final Format binaryIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYINTARRAYLENDIAN.owl#BINARYINTARRAYLENDIAN");
-		private static final Format binaryShortIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYSHORTINTARRAYLENDIAN.owl#BINARYSHORTINTARRAYLENDIAN");
-		private static final Format binaryFloatArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYFLOATARRAYLENDIAN.owl#BINARYFLOATARRAYLENDIAN");
-		private static final Format vtkImageDataShortInts = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKIMAGEDATASHORTINTS.owl#VTKIMAGEDATASHORTINTS");
-		private static final Format vtkImageData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKIMAGEDATA.owl#VTKIMAGEDATA");
-		private static final Format vtkPolyData = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/VTKPOLYDATA.owl#VTKPOLYDATA");
+	private static final class Resources {		
+		//formats		
+		private static final Format littleEndianIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-INTEGERS.owl#LITTLE-ENDIAN-INTEGERS");
+		private static final Format littleEndianShortIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-SHORT-INTEGERS.owl#LITTLE-ENDIAN-SHORT-INTEGERS");
+		private static final Format littleEndianFloats = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-FLOATS.owl#LITTLE-ENDIAN-FLOATS");
+		private static final Format littleEndianUnsignedIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-UNSIGNED-INTEGERS.owl#LITTLE-ENDIAN-UNSIGNED-INTEGERS");
+		private static final Format xml = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/XML.owl#XML");
 		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
 		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/TIFF.owl#TIFF");
-		private static final Format binaryUnsignedIntArrayLE = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/BINARYUNSIGNEDINTARRAYLENDIAN.owl#BINARYUNSIGNEDINTARRAYLENDIAN");
+		
 
-		/*
+		// data types
+		private static final OntResource array1D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#1D_Array");
+		private static final OntResource vtkImageData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData");
+		private static final OntResource vtkImageDataShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageDataShortIntegers");
+		private static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkIPolyData");
+		
 		//views
-		private static final View isosurfaces = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/iso-surfaces.owl#iso-surfaces");
-		private static final View raster = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/raster.owl#raster");
-		private static final View volume = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/views/volume.owl#volume");
-		*/
+		private static final View isosurfaces = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_IsoSurfaceRendering);
+		private static final View rasterCube = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterCube);
+		private static final View volume = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_VolumeRendering);
 		
 		//type uris
-		private static final String velocityDataURI_1 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d14-0";
-		private static final String velocityDataURI_2 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d2";
-		private static final String velocityDataURI_3 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d2-1";
+		private static final OntResource velocityDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d14-0");
+		private static final OntResource velocityDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d2");
+		private static final OntResource velocityDataURI_3 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d2-1");
 		
-		private static final String coverageDataURI = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d7-0";
+		private static final OntResource coverageDataURI = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d7-0");
 
-		private static final String griddedTimeURI_1 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d4-0";
-		private static final String griddedTimeURI_2 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d4";		
+		private static final OntResource griddedTimeURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d4-0");
+		private static final OntResource griddedTimeURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d4");		
 		
-		private static final String dusumDataURI_1 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0";
-		private static final String dusumDataURI_2 = "http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8";
-		
-		//data types
-		private static final String grid3D = ViskoP.CLASS_URI_3DGrid;
-		private static final String rasterCube = ViskoP.CLASS_URI_RASTER_CUBE;
-		private static final String volume = ESIPData.CLASS_ESIP_VOLUME;
-		private static final String isosurfaces = ViskoP.CLASS_URI_ISO_SURFACES;
+		private static final OntResource dusumDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0");
+		private static final OntResource dusumDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8");		
 	}
 
 	@Override
 	public void populateServices() {
 		String wsdlURL = getWSDLURL();
-		
 		String operationName = "int2Short";
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
-		service1.setInputFormat(Resources.binaryIntArrayLE);
-		service1.setOutputFormat(Resources.binaryShortIntArrayLE);
+		service1.setInputFormat(Resources.littleEndianIntegers);
+		service1.setOutputFormat(Resources.littleEndianShortIntegers);
 		service1.setLabel(operationName);
 		service1.setComment("Converts integer arrays to short integers");
 		service1.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.grid3D);
-		service1.setInputDataType(Resources.grid3D);
+		service1.setInputDataType(Resources.array1D);
+		service1.setOutputDataType(Resources.array1D);
 		
 		operationName = "float2ShortThr";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
-		service2.setInputFormat(Resources.binaryFloatArrayLE);
-		service2.setOutputFormat(Resources.binaryShortIntArrayLE);
+		service2.setInputFormat(Resources.littleEndianFloats);
+		service2.setOutputFormat(Resources.littleEndianShortIntegers);
 		service2.setLabel(operationName);
 		service2.setComment("Converts float arrays to short ints");
 		service2.setWSDLURL(wsdlURL);
-		service2.setInputDataType(Resources.grid3D);
-		service2.setInputDataType(Resources.grid3D);
+		service2.setInputDataType(Resources.array1D);
+		service2.setOutputDataType(Resources.array1D);
 		
 		operationName = "vtkImageDataReader";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
-		service3.setInputFormat(Resources.binaryShortIntArrayLE);
-		service3.setOutputFormat(Resources.vtkImageDataShortInts);
+		service3.setInputFormat(Resources.littleEndianShortIntegers);
+		service3.setOutputFormat(Resources.xml);
 		service3.setLabel(operationName);
 		service3.setComment("Converts binary short integer arrays into vtk image data of short integers");
 		service3.setWSDLURL(wsdlURL);
-		service3.setInputDataType(Resources.grid3D);
-		service3.setInputDataType(Resources.volume);
+		service3.setInputDataType(Resources.array1D);
+		service3.setOutputDataType(Resources.vtkImageDataShortIntegers);
 		
 		operationName = "vtkContourFilter";
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
-		service4.setInputFormat(Resources.vtkImageData);
-		service4.setOutputFormat(Resources.vtkPolyData);
-		//service4.setView(Resources.isosurfaces);
+		service4.setInputFormat(Resources.xml);
+		service4.setOutputFormat(Resources.xml);
 		service4.setLabel(operationName);
 		service4.setComment("Generates isosurfaces from vtkImageData");
 		service4.setWSDLURL(wsdlURL);
-		service4.setInputDataType(Resources.grid3D);
-		service4.setInputDataType(Resources.isosurfaces);
+		service4.setInputDataType(Resources.vtkImageData);
+		service4.setOutputDataType(Resources.vtkPolyData);
+		service4.setView(Resources.isosurfaces);
 		
 		operationName = "vtkPolyDataMapper";
 		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
-		service5.setInputFormat(Resources.vtkPolyData);
+		service5.setInputFormat(Resources.xml);
 		service5.setOutputFormat(Resources.jpeg);
 		service5.setLabel(operationName);
 		service5.setComment("Converts poly data into JPEG");
 		service5.setWSDLURL(wsdlURL);
+		service5.setInputDataType(Resources.vtkPolyData);
 		
 		operationName = "vtkVolume";
 		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
-		service6.setInputFormat(Resources.vtkImageDataShortInts);
+		service6.setInputFormat(Resources.xml);
 		service6.setOutputFormat(Resources.jpeg);
-		//service6.setView(Resources.volume);
+		service6.setView(Resources.volume);
 		service6.setLabel(operationName);
 		service6.setComment("Convert vtkImageData of short integers into a volume JPEG");
 		service6.setWSDLURL(wsdlURL);
-		service6.setInputDataType(Resources.volume);		
+		service6.setInputDataType(Resources.vtkImageDataShortIntegers);		
 		
 		operationName = "vtkImageDataReaderFloat";
 		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(operationName);
-		service7.setInputFormat(Resources.binaryFloatArrayLE);
-		service7.setOutputFormat(Resources.vtkImageData);
+		service7.setInputFormat(Resources.littleEndianFloats);
+		service7.setOutputFormat(Resources.xml);
 		service7.setLabel(operationName);
 		service7.setComment("Convert binary float arrays into vtkImageData");
 		service7.setWSDLURL(wsdlURL);
-		service7.setInputDataType(Resources.grid3D);
-		service7.setInputDataType(Resources.volume);
+		service7.setInputDataType(Resources.array1D);
+		service7.setOutputDataType(Resources.vtkImageData);
 		
 		operationName = "vtkTIFFReader";
 		PackageOperatorService service8 = getPackageWriter().createNewOperatorService(operationName);
 		service8.setInputFormat(Resources.tiff);
-		service8.setOutputFormat(Resources.vtkImageData);
+		service8.setOutputFormat(Resources.xml);
 		service8.setLabel(operationName);
 		service8.setComment("Convert TIFF images into vtkImageData");
 		service8.setWSDLURL(wsdlURL);
-		service8.setInputDataType(Resources.grid3D);
-		service8.setInputDataType(Resources.grid3D);
+		service8.setOutputDataType(Resources.vtkImageData);
 
 		operationName = "vtkDataSetMapper";
 		PackageOperatorService service9 = getPackageWriter().createNewOperatorService(operationName);
-		service9.setInputFormat(Resources.vtkImageData);
+		service9.setInputFormat(Resources.xml);
 		service9.setOutputFormat(Resources.jpeg);
-		//service9.setView(Resources.raster);
+		service9.setView(Resources.rasterCube);
 		service9.setLabel(operationName);
 		service9.setComment("Convert vtkImageData into a raster image");
 		service9.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.grid3D);
-		service1.setInputDataType(Resources.rasterCube);
+		service1.setInputDataType(Resources.vtkImageData);
 		
 		operationName = "vtkImageDataReaderUnsignedInts";
 		PackageOperatorService service10 = getPackageWriter().createNewOperatorService(operationName);
-		service10.setInputFormat(Resources.binaryUnsignedIntArrayLE);
-		service10.setOutputFormat(Resources.vtkImageData);
+		service10.setInputFormat(Resources.littleEndianUnsignedIntegers);
+		service10.setOutputFormat(Resources.xml);
 		service10.setLabel(operationName);
 		service10.setComment("Convert binary unsigned interger array into vtkImageData");
 		service10.setWSDLURL(wsdlURL);
-		service10.setInputDataType(Resources.grid3D);
-		service10.setInputDataType(Resources.volume);
+		service10.setInputDataType(Resources.array1D);
+		service10.setInputDataType(Resources.vtkImageData);
 
 	}
 

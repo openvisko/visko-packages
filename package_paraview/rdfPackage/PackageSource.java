@@ -3,8 +3,8 @@ package package_paraview.rdfPackage;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
-import edu.utep.trustlab.visko.ontology.operator.Viewer;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
+import edu.utep.trustlab.visko.ontology.viskoOperator.Viewer;
 
 public class PackageSource extends RDFPackage {
 
@@ -34,7 +34,7 @@ public class PackageSource extends RDFPackage {
 		Viewer viewer1 = viewerSet.createNewViewer("xdmf-viewer");
 		viewer1.setComment("XDMF Viewer of the ParaView Distribution");
 		viewer1.setLabel("XDMF Viewer");
-		viewer1.addOperatesOnFormat(Resources.xdmf);
+		viewer1.addInputFormat(Resources.xdmf);
 	}
 
 	@Override

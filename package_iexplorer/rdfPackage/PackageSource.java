@@ -3,8 +3,8 @@ package package_iexplorer.rdfPackage;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
-import edu.utep.trustlab.visko.ontology.operator.Viewer;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
+import edu.utep.trustlab.visko.ontology.viskoOperator.Viewer;
 
 public class PackageSource extends RDFPackage {
 

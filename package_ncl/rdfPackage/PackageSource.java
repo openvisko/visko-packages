@@ -6,9 +6,9 @@ import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
-import edu.utep.trustlab.visko.ontology.service.Toolkit;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
-import edu.utep.trustlab.visko.ontology.view.View;
+import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
+import edu.utep.trustlab.visko.ontology.viskoView.View;
 import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
@@ -22,7 +22,11 @@ public class PackageSource extends RDFPackage {
 		private static final View timeSeriesPlot = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_TimeSeriesPlot);
 		private static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
 		private static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
-				
+
+		//data types
+		private static final OntResource variableWithLatLon = PackageWriter.getDataType("http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon");
+		private static final OntResource variableWithTime = PackageWriter.getDataType("http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_Time");
+		
 		//semantic types
 		private static final OntResource brightnessTemperature = PackageWriter.getDataType("http://giovanni.gsfc.nasa.gov/giovanni-data.owl#BrightnessTemperature");
 		private static final OntResource giovanniTimeSeries = PackageWriter.getDataType("http://giovanni.gsfc.nasa.gov/giovanni-data.owl#Giovanni_Time_Series_Data");
@@ -35,7 +39,6 @@ public class PackageSource extends RDFPackage {
 		String wsdlURL = getWSDLURL();
 		
 		String operationName = "gsn_csm_contour_map";
-		
 		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
 		service1.setComment("Generate contour map from 2D gridded netCDF");
 		service1.setLabel(operationName);
@@ -43,7 +46,7 @@ public class PackageSource extends RDFPackage {
 		service1.setInputFormat(Resources.netcdf);
 		service1.setOutputFormat(Resources.ps);
 		service1.setView(Resources.contourMap);
-		service1.setInputDataType(Resources.brightnessTemperature);		
+		service1.setInputDataType(Resources.variableWithLatLon);		
 		
 		operationName = "gsn_csm_contour_map_raster";
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
@@ -53,6 +56,7 @@ public class PackageSource extends RDFPackage {
 		service2.setInputFormat(Resources.netcdf);
 		service2.setOutputFormat(Resources.ps);
 		service2.setView(Resources.rasterMap);
+		service2.setInputDataType(Resources.variableWithLatLon);
 	
 		operationName = "gsn_csm_xy2_time_series";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
@@ -62,7 +66,7 @@ public class PackageSource extends RDFPackage {
 		service3.setInputFormat(Resources.netcdf);
 		service3.setOutputFormat(Resources.ps);
 		service3.setView(Resources.timeSeriesPlot);
-		service3.setInputDataType(Resources.giovanniTimeSeries);
+		service3.setInputDataType(Resources.variableWithTime);
 	}
 
 	@Override

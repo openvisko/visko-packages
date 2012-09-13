@@ -30,6 +30,12 @@
     
 
 
+    <!-- http://www.vtk.org/vtk-data.owl#1D_Array -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#1D_Array"/>
+    
+
+
     <!-- http://www.vtk.org/vtk-data.owl#vtkArrayData -->
 
     <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkArrayData">

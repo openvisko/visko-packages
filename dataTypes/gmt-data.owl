@@ -20,7 +20,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://gmt.soest.hawaii.edu/gmt-data.owl">
-        <owl:imports rdf:resource="http://www.unidata.ucar.edu/software/netcdf/netCDF-data.owl"/>
+        <owl:imports rdf:resource="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl"/>
     </owl:Ontology>
     
 
@@ -39,7 +39,7 @@
     <!-- http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS -->
 
     <owl:Class rdf:about="&gmt-data;2D_Grid_COARDS">
-        <rdfs:subClassOf rdf:resource="&netcdf-data;2D_Array"/>
+        <rdfs:subClassOf rdf:resource="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon"/>
     </owl:Class>
 </rdf:RDF>
 
