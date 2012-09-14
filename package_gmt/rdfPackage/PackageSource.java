@@ -31,7 +31,7 @@ public class PackageSource extends RDFPackage {
 		
 		//data types 		
 		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
-		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://www.unidata.ucar.edu/software/netcdf/netCDF-data.owl#2D_Grid_COARDS");
+		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS");
 	}
 
 	@Override
