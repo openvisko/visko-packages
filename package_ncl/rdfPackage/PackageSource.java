@@ -39,7 +39,7 @@ public class PackageSource extends RDFPackage {
 		String wsdlURL = getWSDLURL();
 		
 		String operationName = "gsn_csm_contour_map";
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service1.setComment("Generate contour map from 2D gridded netCDF");
 		service1.setLabel(operationName);
 		service1.setWSDLURL(wsdlURL);
@@ -49,7 +49,7 @@ public class PackageSource extends RDFPackage {
 		service1.setInputDataType(Resources.variableWithLatLon);		
 		
 		operationName = "gsn_csm_contour_map_raster";
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service2.setComment("Generate raster map from 2D gridded netCDF");
 		service2.setLabel(operationName);
 		service2.setWSDLURL(wsdlURL);
@@ -59,7 +59,7 @@ public class PackageSource extends RDFPackage {
 		service2.setInputDataType(Resources.variableWithLatLon);
 	
 		operationName = "gsn_csm_xy2_time_series";
-		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service3.setComment("Generate time series plot from set of 1D arrays");
 		service3.setLabel(operationName);
 		service3.setWSDLURL(wsdlURL);

@@ -13,144 +13,147 @@ import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 	
-	private static final class Resources {		
+	static final class Resources {		
 		//formats		
-		private static final Format littleEndianIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-INTEGERS.owl#LITTLE-ENDIAN-INTEGERS");
-		private static final Format littleEndianShortIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-SHORT-INTEGERS.owl#LITTLE-ENDIAN-SHORT-INTEGERS");
-		private static final Format littleEndianFloats = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-FLOATS.owl#LITTLE-ENDIAN-FLOATS");
-		private static final Format littleEndianUnsignedIntegers = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-UNSIGNED-INTEGERS.owl#LITTLE-ENDIAN-UNSIGNED-INTEGERS");
-		private static final Format xml = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/XML.owl#XML");
-		private static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
-		private static final Format tiff = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/TIFF.owl#TIFF");
-		
+		static final Format littleEndianSequence = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-SEQUENCE.owl#LITTLE-ENDIAN-SEQUENCE");
+		static final Format xml = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/XML.owl#XML");
+		static final Format jpeg = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JPEG.owl#JPEG");
+		static final Format spaceSeparatedValues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES");
 
-		// data types
-		private static final OntResource array1D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#1D_Array");
-		private static final OntResource vtkImageData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData");
-		private static final OntResource vtkImageDataShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageDataShortIntegers");
-		private static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkPolyData");
+		// data types		
+		static final OntResource array1D = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1D");
+		static final OntResource array1DFloats = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloats");
+		static final OntResource array1DIntegers = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DIntegers");
+		static final OntResource array1DUnsignedShortIntegers = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortIntegers");
+
+		static final OntResource vtkImageData3D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3D");
+		static final OntResource vtkImageData3DUnsignedShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers");
+		static final OntResource vtkImageData3DIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers");
+		static final OntResource vtkImageData3DFloats = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DFloats");
+
+		static final OntResource vtkImageData2D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData2D");
+		static final OntResource vtkImageData2DUnsignedShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData2DUnsignedShortIntegers");
+		static final OntResource vtkImageData2DIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData2DShortIntegers");
+		static final OntResource vtkImageData2DFloats = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData2DFloats");
+		
+		static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkPolyData");
 		
 		//views
-		private static final View isosurfaces = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_IsoSurfaceRendering);
-		private static final View rasterCube = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterCube);
-		private static final View volume = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_VolumeRendering);
-		
+		static final View surfacePlot = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_SurfacePlot);
+		static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
+		static final View isosurfaces = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_IsoSurfaceRendering);
+		static final View rasterCube = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterCube);
+		static final View volume = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_VolumeRendering);
+		static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
+				
 		//type uris
-		private static final OntResource velocityDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d14-0");
-		private static final OntResource velocityDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d2");
-		private static final OntResource velocityDataURI_3 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d2-1");
+		static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
 		
-		private static final OntResource coverageDataURI = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d7-0");
+		static final OntResource velocityDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d14-0");
+		static final OntResource velocityDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d2");
+		static final OntResource velocityDataURI_3 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d2-1");
+		
+		static final OntResource coverageDataURI = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d7-0");
+		static final OntResource griddedTimeURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d4-0");
+		static final OntResource griddedTimeURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d4");		
+		
+		static final OntResource dusumDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0");
+		static final OntResource dusumDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8");
+		
+		static String int2Short = "int2Short";
+		static String float2ShortThr = "float2ShortThr";
+		static String vtkPolyDataMapper = "vtkPolyDataMapper";
+		static String vtkVolume = "vtkVolume";
+		static String vtkDataObjectToDataSetFilter3DGravity = "vtkDataObjectToDataSetFilter3DGravityData";		
+		static String vtkShepardMethod = "vtkShepardMethod";
+		static String vtkSurfaceReconstructionFilter = "vtkSurfaceReconstructionFilter";
+		
+		static String vtkContourFilter = "vtkContourFilter";
+		static String vtkContourFilter2D = vtkContourFilter + "2D";
+		static String vtkContourFilter3D = vtkContourFilter + "3D";
+		
+		static String vtkDataSetMapper = "vtkDataSetMapper";
+		static String vtkDataSetMapper2D = vtkDataSetMapper + "2D";
+		static String vtkDataSetMapper3D = vtkDataSetMapper + "3D";
 
-		private static final OntResource griddedTimeURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d4-0");
-		private static final OntResource griddedTimeURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d4");		
+		static String vtkExtractVOI3D = "vtkExtractVOI3D";
+		static String vtkExtractVOI2D = "vtkExtractVOI2D";
 		
-		private static final OntResource dusumDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0");
-		private static final OntResource dusumDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8");		
+		static String vtkImageDataReader3DFloats = "vtkImageDataReader3DFloats";
+		static String vtkImageDataReader3DIntegers = "vtkImageDataReader3DIntegers";
+		static String vtkImageDataReader3DUnsignedShortIntegers = "vtkImageDataReader3DUnsignedShortIntegers";
 	}
 
 	@Override
 	public void populateServices() {
-		String wsdlURL = getWSDLURL();
-		String operationName = "int2Short";
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
-		service1.setInputFormat(Resources.littleEndianIntegers);
-		service1.setOutputFormat(Resources.littleEndianShortIntegers);
-		service1.setLabel(operationName);
-		service1.setComment("Converts integer arrays to short integers");
-		service1.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.array1D);
-		service1.setOutputDataType(Resources.array1D);
 		
-		operationName = "float2ShortThr";
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
-		service2.setInputFormat(Resources.littleEndianFloats);
-		service2.setOutputFormat(Resources.littleEndianShortIntegers);
-		service2.setLabel(operationName);
+		String wsdlURL = getWSDLURL();
+		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(Resources.int2Short, Resources.int2Short);
+		service1.setInputFormat(Resources.littleEndianSequence);
+		service1.setOutputFormat(Resources.littleEndianSequence);
+		service1.setLabel(Resources.int2Short);
+		service1.setComment("Converts integer arrays to unsigned short integers");
+		service1.setWSDLURL(wsdlURL);
+		service1.setInputDataType(Resources.array1DIntegers);
+		service1.setOutputDataType(Resources.array1DUnsignedShortIntegers);
+		
+		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(Resources.float2ShortThr, Resources.float2ShortThr);
+		service2.setInputFormat(Resources.littleEndianSequence);
+		service2.setOutputFormat(Resources.littleEndianSequence);
+		service2.setLabel(Resources.float2ShortThr);
 		service2.setComment("Converts float arrays to short ints");
 		service2.setWSDLURL(wsdlURL);
-		service2.setInputDataType(Resources.array1D);
-		service2.setOutputDataType(Resources.array1D);
+		service2.setInputDataType(Resources.array1DFloats);
+		service2.setOutputDataType(Resources.array1DUnsignedShortIntegers);
 		
-		operationName = "vtkImageDataReader";
-		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
-		service3.setInputFormat(Resources.littleEndianShortIntegers);
-		service3.setOutputFormat(Resources.xml);
-		service3.setLabel(operationName);
-		service3.setComment("Converts binary short integer arrays into vtk image data of short integers");
+		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(Resources.vtkPolyDataMapper, Resources.vtkPolyDataMapper);
+		service3.setInputFormat(Resources.xml);
+		service3.setOutputFormat(Resources.jpeg);
+		service3.setLabel(Resources.vtkPolyDataMapper);
+		service3.setComment("Converts vtkPolyData into JPEG images");
 		service3.setWSDLURL(wsdlURL);
-		service3.setInputDataType(Resources.array1D);
-		service3.setOutputDataType(Resources.vtkImageDataShortIntegers);
+		service3.setInputDataType(Resources.vtkPolyData);
 		
-		operationName = "vtkContourFilter";
-		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(Resources.vtkVolume, Resources.vtkVolume);
 		service4.setInputFormat(Resources.xml);
-		service4.setOutputFormat(Resources.xml);
-		service4.setLabel(operationName);
-		service4.setComment("Generates isosurfaces from vtkImageData");
+		service4.setOutputFormat(Resources.jpeg);
+		service4.setView(Resources.volume);
+		service4.setLabel(Resources.vtkVolume);
+		service4.setComment("Convert vtkImageData of short integers into a volume JPEG");
 		service4.setWSDLURL(wsdlURL);
-		service4.setInputDataType(Resources.vtkImageData);
-		service4.setOutputDataType(Resources.vtkPolyData);
-		service4.setView(Resources.isosurfaces);
+		service4.setInputDataType(Resources.vtkImageData3DUnsignedShortIntegers);
 		
-		operationName = "vtkPolyDataMapper";
-		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
-		service5.setInputFormat(Resources.xml);
-		service5.setOutputFormat(Resources.jpeg);
-		service5.setLabel(operationName);
-		service5.setComment("Converts poly data into JPEG");
+		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(Resources.vtkDataObjectToDataSetFilter3DGravity, Resources.vtkDataObjectToDataSetFilter3DGravity);
+		service5.setInputFormat(Resources.spaceSeparatedValues);
+		service5.setOutputFormat(Resources.xml);
+		service5.setLabel(Resources.vtkDataObjectToDataSetFilter3DGravity);
+		service5.setComment("Convert PACES gravity dataset into vtkPolyData of 3D Points");
 		service5.setWSDLURL(wsdlURL);
-		service5.setInputDataType(Resources.vtkPolyData);
+		service5.setInputDataType(Resources.gravityData);
+		service5.setOutputDataType(Resources.vtkPolyData);
 		
-		operationName = "vtkVolume";
-		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(Resources.vtkShepardMethod, Resources.vtkShepardMethod);
 		service6.setInputFormat(Resources.xml);
-		service6.setOutputFormat(Resources.jpeg);
-		service6.setView(Resources.volume);
-		service6.setLabel(operationName);
-		service6.setComment("Convert vtkImageData of short integers into a volume JPEG");
+		service6.setOutputFormat(Resources.xml);
+		service6.setLabel(Resources.vtkShepardMethod);
+		service6.setComment("3D interpolation routine that generates vtkImageData from unstructured points");
 		service6.setWSDLURL(wsdlURL);
-		service6.setInputDataType(Resources.vtkImageDataShortIntegers);		
+		service6.setInputDataType(Resources.vtkPolyData);
+		service6.setOutputDataType(Resources.vtkImageData3D);
 		
-		operationName = "vtkImageDataReaderFloat";
-		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(operationName);
-		service7.setInputFormat(Resources.littleEndianFloats);
+		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(Resources.vtkSurfaceReconstructionFilter, Resources.vtkSurfaceReconstructionFilter);
+		service7.setInputFormat(Resources.xml);
 		service7.setOutputFormat(Resources.xml);
-		service7.setLabel(operationName);
-		service7.setComment("Convert binary float arrays into vtkImageData");
+		service7.setLabel(Resources.vtkSurfaceReconstructionFilter);
+		service7.setComment("Generates a vktImageData surface that wraps unstructured vtkPolyData points");
 		service7.setWSDLURL(wsdlURL);
-		service7.setInputDataType(Resources.array1D);
-		service7.setOutputDataType(Resources.vtkImageData);
+		service7.setInputDataType(Resources.vtkPolyData);
+		service7.setOutputDataType(Resources.vtkImageData3D);
 		
-		operationName = "vtkTIFFReader";
-		PackageOperatorService service8 = getPackageWriter().createNewOperatorService(operationName);
-		service8.setInputFormat(Resources.tiff);
-		service8.setOutputFormat(Resources.xml);
-		service8.setLabel(operationName);
-		service8.setComment("Convert TIFF images into vtkImageData");
-		service8.setWSDLURL(wsdlURL);
-		service8.setOutputDataType(Resources.vtkImageData);
-
-		operationName = "vtkDataSetMapper";
-		PackageOperatorService service9 = getPackageWriter().createNewOperatorService(operationName);
-		service9.setInputFormat(Resources.xml);
-		service9.setOutputFormat(Resources.jpeg);
-		service9.setView(Resources.rasterCube);
-		service9.setLabel(operationName);
-		service9.setComment("Convert vtkImageData into a raster image");
-		service9.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.vtkImageData);
-		
-		operationName = "vtkImageDataReaderUnsignedInts";
-		PackageOperatorService service10 = getPackageWriter().createNewOperatorService(operationName);
-		service10.setInputFormat(Resources.littleEndianUnsignedIntegers);
-		service10.setOutputFormat(Resources.xml);
-		service10.setLabel(operationName);
-		service10.setComment("Convert binary unsigned interger array into vtkImageData");
-		service10.setWSDLURL(wsdlURL);
-		service10.setInputDataType(Resources.array1D);
-		service10.setInputDataType(Resources.vtkImageData);
-
+		VTKContourFilter.populateVTKContourFilters(wsdlURL, getPackageWriter());
+		VTKDataSetMapper.populateDataSetMappers(wsdlURL, getPackageWriter());
+		VTKExtractVOI.populateVTKExtractVOIs(wsdlURL, getPackageWriter());
+		VTKImageDataReader.populateVTKImageDataReaders(wsdlURL, getPackageWriter());
 	}
 
 	@Override
@@ -169,155 +172,172 @@ public class PackageSource extends RDFPackage {
 	public void addCoverageParameterBindings(PackageInputParameterBindings bindingsSet){
 		bindingsSet.addSemanticType(Resources.coverageDataURI);
 		
-		String operationName = "float2ShortThr";
+		// for vtkImageReader integers
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "littleEndian","true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataExtent", "0/229/0/24/0/67");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "readLowerLeft","true");
 		
-		operationName = "vtkImageDataReader";
-		// for vtkImageReader
-		bindingsSet.addInputBinding(operationName, "littleEndian","true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/229/0/24/0/67");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft","true");
-
-		operationName = "vtkContourFilter";
+		// for vtkImageReader unsigned short integers
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian","true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft","true");
+		
 		// for vtkContourFilter
-		bindingsSet.addInputBinding(operationName, "numContours", "35");
-		bindingsSet.addInputBinding(operationName, "scalarRange", "0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/9000.0");
 		
-		operationName = "vtkPolyDataMapper";
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(operationName, "scalarRange","0.0/9000.0");
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange","0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 		
-		operationName = "vtkVolume";
 		// for vtkVolume
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
-		bindingsSet.addInputBinding(operationName, "colorFunction", "20,1.0,0.0,0.3/80,1.0,0.0,0.3");
-		bindingsSet.addInputBinding(operationName, "opacityFunction", "0,0.0/40,1.0");		
+		bindingsSet.addInputBinding(Resources.vtkVolume, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "backgroundColor", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "20,1.0,0.0,0.3/80,1.0,0.0,0.3");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "0,0.0/40,1.0");
+		
+		// for vtkDataSetMapper		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
+
 	}
 
 	public void addGriddedTimeParameterBindings(PackageInputParameterBindings bindingsSet){
 		bindingsSet.addSemanticType(Resources.griddedTimeURI_1);
 		bindingsSet.addSemanticType(Resources.griddedTimeURI_2);
 		
-		String operationName = "float2ShortThr";
 		// for float2shortThr
-		bindingsSet.addInputBinding(operationName, "scalingFactor", "1000");
-		bindingsSet.addInputBinding(operationName, "offset", "0");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1000");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset", "0");
 		
-		operationName = "vtkImageDataReader";
-		// for vtkImageReader
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/230/0/25/0/68");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft", "true");
+		// for vtkImageReader floats
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/230/0/25/0/68");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "readLowerLeft", "true");
+
+		// for vtkImageReader unsigned short ints
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/230/0/25/0/68");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
 		
-		operationName = "vtkContourFilter";
 		// for vtkContourFilter
-		bindingsSet.addInputBinding(operationName, "numContours", "30");
-		bindingsSet.addInputBinding(operationName, "scalarRange", "0.0/30315.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "30");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/30315.0");
 	
-		operationName = "vtkPolyDataMapper";
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(operationName, "scalarRange", "0.0/30315.0");
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size","400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "0.0/30315.0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size","400/300");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 		
-		operationName = "vtkVolume";
 		// for vtkVolume
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
-		bindingsSet.addInputBinding(operationName, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
-		bindingsSet.addInputBinding(operationName, "opacityFunction", "20,0.0/255,0.2");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "20,0.0/255,0.2");
 		
-		operationName = "vtkImageDataReaderFloat";
-		// for vtkImageReaderFloat
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/230/0/25/0/68");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft", "true");	
+		// for vtkDataSetMapper		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
 	}
 	
 	public void addDuSumParameterBindings(PackageInputParameterBindings bindingsSet){
 		bindingsSet.addSemanticType(Resources.dusumDataURI_1);
 		bindingsSet.addSemanticType(Resources.dusumDataURI_2);
 		
-		String operationName = "float2ShortThr";
 		// for float2shortThr
-		bindingsSet.addInputBinding(operationName, "scalingFactor", "1");
-		bindingsSet.addInputBinding(operationName, "offset", "10000");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset", "10000");
 		
-		operationName = "vtkImageDataReader";
-		// for vtkImageReader
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/229/0/24/0/67");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft", "true");
+		// for vtkImageReader floats
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/229/0/24/0/67");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "readLowerLeft", "true");
 
-		operationName = "vtkContourFilter";
+		// for vtkImageReader unsigned short integers
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
+		
 		// for vtkContourFilter
-		bindingsSet.addInputBinding(operationName, "numContours", "35");
-		bindingsSet.addInputBinding(operationName, "scalarRange", "9997.0/10014.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "9997.0/10014.0");
 
-		operationName = "vtkPolyDataMapper";
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(operationName, "scalarRange", "9997.0/10014.0");
-		bindingsSet.addInputBinding(operationName, "xRotation", "90");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "9997.0/10014.0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "90");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 		
-		operationName = "vtkVolume";
 		// for vtkVolume
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
-		bindingsSet.addInputBinding(operationName, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
-		bindingsSet.addInputBinding(operationName, "opacityFunction", "20,0.0/255,0.2");
-		
-		operationName = "vtkImageDataReaderFloat";
-		// for vtkImageReaderFloat
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/230/0/25/0/68");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft", "true");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "20,0.0/255,0.2");
+				
+		// for vtkDataSetMapper		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
+
 	}
 	
 	public void addVelocityParameterBindings(PackageInputParameterBindings bindingsSet) {
@@ -325,66 +345,91 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addSemanticType(Resources.velocityDataURI_2);
 		bindingsSet.addSemanticType(Resources.velocityDataURI_3);
 		
-		String operationName = "float2ShortThr";
 		// for float2shortThr
-		bindingsSet.addInputBinding(operationName, "scalingFactor", "1000");
-		bindingsSet.addInputBinding(operationName, "offset","0");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1000");
+		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset","0");
 		
-		operationName = "vtkImageDataReader";
-		// for vtkImageReader
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/230/0/25/0/68");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft","true");
+		// for vtkImageReader unsigned short integers
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/230/0/25/0/68");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft","true");
 		
-		operationName = "vtkContourFilter";
+		// for vtkImageReader floats
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/230/0/25/0/68");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "numScalarComponents", "1");
+		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "readLowerLeft","true");
+		
 		// for vtkContourFilter
-		bindingsSet.addInputBinding(operationName, "numContours", "35");
-		bindingsSet.addInputBinding(operationName, "scalarRange", "0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter, "scalarRange", "0.0/9000.0");
 		
-		operationName = "vtkPolyDataMapper";
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(operationName, "scalarRange", "0.0/9000.0");
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 
-		operationName = "vtkVolume";
 		// for vtkVolume
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");
-		bindingsSet.addInputBinding(operationName, "colorFunction", "3000,1,1,0/5000,0.5,0.95,0/5600,0,0,1/6500,0.28,0.2,0.5/7000,1,0,0");
-		bindingsSet.addInputBinding(operationName, "opacityFunction", "4000,0.2/8000,0.5");
-		
-		operationName = "vtkImageDataReaderFloat";
-		// for vtkImageReaderFloat
-		bindingsSet.addInputBinding(operationName, "littleEndian", "true");
-		bindingsSet.addInputBinding(operationName, "dim", "3");
-		bindingsSet.addInputBinding(operationName, "dataOrigin", "0/0/0");
-		bindingsSet.addInputBinding(operationName, "dataSpacing", "1/1/1");
-		bindingsSet.addInputBinding(operationName, "dataExtent", "0/230/0/25/0/68");
-		bindingsSet.addInputBinding(operationName, "numScalarComponents", "1");
-		bindingsSet.addInputBinding(operationName, "readLowerLeft", "true");
-			
-		operationName = "vtkDataSetMapper";
-		// for vtkDataSetMapper
-		bindingsSet.addInputBinding(operationName, "xRotation", "105");
-		bindingsSet.addInputBinding(operationName, "yRotation", "0");
-		bindingsSet.addInputBinding(operationName, "zRotation", "0");
-		bindingsSet.addInputBinding(operationName, "size", "400/300");
-		bindingsSet.addInputBinding(operationName, "backgroundColor","1/1/1");
-		bindingsSet.addInputBinding(operationName, "magnification", "3");		
+		bindingsSet.addInputBinding(Resources.vtkVolume, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "3000,1,1,0/5000,0.5,0.95,0/5600,0,0,1/6500,0.28,0.2,0.5/7000,1,0,0");
+		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "4000,0.2/8000,0.5");
+				
+		// for vtkDataSetMapper		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
 	}
+	
+	public void addGravityDataParameterBindings(PackageInputParameterBindings bindingsSet) {
+		bindingsSet.addSemanticType(Resources.gravityData);
+		
+		// for vtkShepardMethod
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "sampleDimensions", "30/30/30");
+
+		// for vtkExtractVOI2D
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "sampleDimensions", "0/30/0/30/10");
+		
+		// for vtkContourFilter
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "20");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter, "scalarRange", "-260/-170");		
+		
+		// for vtkPolyDataMapper
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "-260/-170");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "-70");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
+
+		// for vtkDataSetMapper		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "-70");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");		
+	}
+	
 
 	@Override
 	public void populateParameterBindings() {
@@ -392,11 +437,13 @@ public class PackageSource extends RDFPackage {
 		PackageInputParameterBindings bindings2 = getPackageWriter().createNewInputParameterBindings();
 		PackageInputParameterBindings bindings3 = getPackageWriter().createNewInputParameterBindings();
 		PackageInputParameterBindings bindings4 = getPackageWriter().createNewInputParameterBindings();
+		PackageInputParameterBindings bindings5 = getPackageWriter().createNewInputParameterBindings();
 		
 		addCoverageParameterBindings(bindings1);
 		addDuSumParameterBindings(bindings2);
 		addVelocityParameterBindings(bindings3);
 		addGriddedTimeParameterBindings(bindings4);
+		addGravityDataParameterBindings(bindings5);
 	}
 	
 	@Override

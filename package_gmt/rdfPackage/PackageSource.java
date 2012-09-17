@@ -39,7 +39,7 @@ public class PackageSource extends RDFPackage {
 		String wsdlURL = getWSDLURL();
 		
 		String operationName = "grdcontour";
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service1.setComment("Generates contour map from netCDF 2D gridded dataset");
 		service1.setLabel("GMT grdcontour");
 		service1.setWSDLURL(wsdlURL);
@@ -50,7 +50,7 @@ public class PackageSource extends RDFPackage {
 		// not output type...system will set to owl:Thing
 		
 		operationName = "surface";
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service2.setComment("Employ tensioned splines to generate gridded data in netCDF from ascii tabular point data");
 		service2.setLabel("GMT surface");
 		service2.setWSDLURL(wsdlURL);
@@ -60,7 +60,7 @@ public class PackageSource extends RDFPackage {
 		service2.setOutputDataType(Resources.COARDS_2D_Grid);
 		
 		operationName = "nearneighbor";
-		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service3.setComment("Employ nearest neighbor to generate gridded data in netCDF from ascii tabular point data");
 		service3.setLabel("GMT nearneighbor");
 		service3.setWSDLURL(wsdlURL);
@@ -70,7 +70,7 @@ public class PackageSource extends RDFPackage {
 		service3.setOutputDataType(Resources.COARDS_2D_Grid);
 
 		operationName = "psxy";
-		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service4.setComment("Generate 2D Plot of point data");
 		service4.setLabel("GMT psxy");
 		service4.setWSDLURL(wsdlURL);
@@ -81,7 +81,7 @@ public class PackageSource extends RDFPackage {
 		// not output type...system will set to owl:Thing		
 		
 		operationName = "grdimage";
-		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service5.setComment("Generate raster map of gridded data encoded in netCDF");
 		service5.setLabel("GMT grdimage");
 		service5.setWSDLURL(wsdlURL);
@@ -92,7 +92,7 @@ public class PackageSource extends RDFPackage {
 		// not output type...system will set to owl:Thing
 		
 		operationName = "csv2tabular";
-		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName);
+		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(operationName, operationName);
 		service6.setComment("Convert comma separated values into ASCII tabular data");
 		service6.setLabel("CSV to Tabular ASCII");
 		service6.setWSDLURL(wsdlURL);

@@ -30,12 +30,6 @@
     
 
 
-    <!-- http://www.vtk.org/vtk-data.owl#1D_Array -->
-
-    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#1D_Array"/>
-    
-
-
     <!-- http://www.vtk.org/vtk-data.owl#vtkArrayData -->
 
     <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkArrayData">
@@ -82,18 +76,82 @@
     
 
 
-    <!-- http://www.vtk.org/vtk-data.owl#vtkImageDataFloats -->
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData2D -->
 
-    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageDataFloats">
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData2D">
         <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData"/>
     </owl:Class>
     
 
 
-    <!-- http://www.vtk.org/vtk-data.owl#vtkImageDataShortIntegers -->
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData2DFloats -->
 
-    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageDataShortIntegers">
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData2DFloats">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData2D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData2DIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData2DIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData2D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData2DUnsignedIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData2DUnsignedIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData2D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData2DUnsignedShortIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData2DUnsignedShortIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData2D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3D -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3D">
         <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DFloats -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DFloats">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers -->
+
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers">
+        <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
     </owl:Class>
     
 
@@ -138,9 +196,9 @@
     
 
 
-    <!-- http://www.vtk.org/vtk-data.owl#vtkUnstructuredPath -->
+    <!-- http://www.vtk.org/vtk-data.owl#vtkUnstructuredGrid -->
 
-    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkUnstructuredPath">
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkUnstructuredGrid">
         <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkPointSet"/>
     </owl:Class>
 </rdf:RDF>
