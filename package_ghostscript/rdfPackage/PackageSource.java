@@ -19,7 +19,7 @@ public class PackageSource extends RDFPackage {
 		String wsdlURL = getWSDLURL();	
 		
 		String operationName = "ps2pdf";
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(operationName, operationName);
+		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(null, operationName);
 		service1.setComment("Converts PostScript (PS) to Portable Document Format (PDF)");
 		service1.setLabel("PS to PDF");
 		service1.setWSDLURL(wsdlURL);
@@ -27,7 +27,7 @@ public class PackageSource extends RDFPackage {
 		service1.setOutputFormat(Resources.pdf);
 		
 		operationName = "ps2png";
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(operationName, operationName);
+		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(null, operationName);
 		service2.setComment("Converts PostScript (PS) to Portable Network Graphic (PNG)");
 		service2.setLabel("PS to PNG");
 		service2.setWSDLURL(wsdlURL);
@@ -35,7 +35,7 @@ public class PackageSource extends RDFPackage {
 		service2.setOutputFormat(Resources.png);
 				
 		operationName = "pdf2png";
-		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(operationName, operationName);
+		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(null, operationName);
 		service3.setComment("Converts Portable Document Format (PDF) to Portable Network Graphic (PNG)");
 		service3.setLabel("PDF to PNG");
 		service3.setWSDLURL(wsdlURL);

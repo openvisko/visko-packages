@@ -8,7 +8,7 @@ public class VTKImageDataReader {
 	
 	public static void populateVTKImageDataReaders(String wsdlURL, PackageWriter packageWriter){
 		
-		PackageOperatorService service1 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkImageDataReader3DFloats, PackageSource.Resources.vtkImageDataReader3DFloats);
+		PackageOperatorService service1 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkImageDataReader3DFloats);
 		service1.setInputFormat(PackageSource.Resources.littleEndianSequence);
 		service1.setOutputFormat(Resources.xml);
 		service1.setLabel(PackageSource.Resources.vtkImageDataReader3DFloats);
@@ -17,7 +17,7 @@ public class VTKImageDataReader {
 		service1.setInputDataType(Resources.array1DFloats);
 		service1.setOutputDataType(Resources.vtkImageData3DFloats);
 		
-		PackageOperatorService service2 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkImageDataReader3DIntegers, PackageSource.Resources.vtkImageDataReader3DIntegers);
+		PackageOperatorService service2 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkImageDataReader3DIntegers);
 		service2.setInputFormat(Resources.littleEndianSequence);
 		service2.setOutputFormat(Resources.xml);
 		service2.setLabel(PackageSource.Resources.vtkImageDataReader3DIntegers);
@@ -26,7 +26,7 @@ public class VTKImageDataReader {
 		service2.setInputDataType(Resources.array1DIntegers);
 		service2.setOutputDataType(Resources.vtkImageData3DIntegers);
 
-		PackageOperatorService service3 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers, PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers);
+		PackageOperatorService service3 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers);
 		service3.setInputFormat(Resources.littleEndianSequence);
 		service3.setOutputFormat(Resources.xml);
 		service3.setLabel(PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers);

@@ -8,7 +8,7 @@ public class VTKExtractVOI {
 	
 	public static void populateVTKExtractVOIs(String wsdlURL, PackageWriter packageWriter){
 
-		PackageOperatorService service1 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkExtractVOI3D, PackageSource.Resources.vtkExtractVOI3D);
+		PackageOperatorService service1 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOI3D);
 		service1.setInputFormat(Resources.xml);
 		service1.setOutputFormat(Resources.xml);
 		service1.setLabel(PackageSource.Resources.vtkExtractVOI3D);
@@ -17,7 +17,7 @@ public class VTKExtractVOI {
 		service1.setInputDataType(Resources.vtkImageData3D);
 		service1.setOutputDataType(Resources.vtkImageData3D);
 		
-		PackageOperatorService service2 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkExtractVOI2D, PackageSource.Resources.vtkExtractVOI2D);
+		PackageOperatorService service2 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOI2D);
 		service2.setInputFormat(Resources.xml);
 		service2.setOutputFormat(Resources.xml);
 		service2.setLabel(PackageSource.Resources.vtkExtractVOI2D);

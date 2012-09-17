@@ -88,7 +88,7 @@ public class PackageSource extends RDFPackage {
 	public void populateServices() {
 		
 		String wsdlURL = getWSDLURL();
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(Resources.int2Short, Resources.int2Short);
+		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(null, Resources.int2Short);
 		service1.setInputFormat(Resources.littleEndianSequence);
 		service1.setOutputFormat(Resources.littleEndianSequence);
 		service1.setLabel(Resources.int2Short);
@@ -97,7 +97,7 @@ public class PackageSource extends RDFPackage {
 		service1.setInputDataType(Resources.array1DIntegers);
 		service1.setOutputDataType(Resources.array1DUnsignedShortIntegers);
 		
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(Resources.float2ShortThr, Resources.float2ShortThr);
+		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(null, Resources.float2ShortThr);
 		service2.setInputFormat(Resources.littleEndianSequence);
 		service2.setOutputFormat(Resources.littleEndianSequence);
 		service2.setLabel(Resources.float2ShortThr);
@@ -106,7 +106,7 @@ public class PackageSource extends RDFPackage {
 		service2.setInputDataType(Resources.array1DFloats);
 		service2.setOutputDataType(Resources.array1DUnsignedShortIntegers);
 		
-		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(Resources.vtkPolyDataMapper, Resources.vtkPolyDataMapper);
+		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(null, Resources.vtkPolyDataMapper);
 		service3.setInputFormat(Resources.xml);
 		service3.setOutputFormat(Resources.jpeg);
 		service3.setLabel(Resources.vtkPolyDataMapper);
@@ -114,7 +114,7 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputDataType(Resources.vtkPolyData);
 		
-		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(Resources.vtkVolume, Resources.vtkVolume);
+		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(null, Resources.vtkVolume);
 		service4.setInputFormat(Resources.xml);
 		service4.setOutputFormat(Resources.jpeg);
 		service4.setView(Resources.volume);
@@ -123,7 +123,7 @@ public class PackageSource extends RDFPackage {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputDataType(Resources.vtkImageData3DUnsignedShortIntegers);
 		
-		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(Resources.vtkDataObjectToDataSetFilter3DGravity, Resources.vtkDataObjectToDataSetFilter3DGravity);
+		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(null, Resources.vtkDataObjectToDataSetFilter3DGravity);
 		service5.setInputFormat(Resources.spaceSeparatedValues);
 		service5.setOutputFormat(Resources.xml);
 		service5.setLabel(Resources.vtkDataObjectToDataSetFilter3DGravity);
@@ -132,7 +132,7 @@ public class PackageSource extends RDFPackage {
 		service5.setInputDataType(Resources.gravityData);
 		service5.setOutputDataType(Resources.vtkPolyData);
 		
-		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(Resources.vtkShepardMethod, Resources.vtkShepardMethod);
+		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(null, Resources.vtkShepardMethod);
 		service6.setInputFormat(Resources.xml);
 		service6.setOutputFormat(Resources.xml);
 		service6.setLabel(Resources.vtkShepardMethod);
@@ -141,7 +141,7 @@ public class PackageSource extends RDFPackage {
 		service6.setInputDataType(Resources.vtkPolyData);
 		service6.setOutputDataType(Resources.vtkImageData3D);
 		
-		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(Resources.vtkSurfaceReconstructionFilter, Resources.vtkSurfaceReconstructionFilter);
+		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, Resources.vtkSurfaceReconstructionFilter);
 		service7.setInputFormat(Resources.xml);
 		service7.setOutputFormat(Resources.xml);
 		service7.setLabel(Resources.vtkSurfaceReconstructionFilter);
