@@ -19,9 +19,9 @@ public class PackageSource extends RDFPackage {
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		
 		//views
-		private static final View timeSeriesPlot = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_TimeSeriesPlot);
-		private static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
-		private static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
+		private static final View timeSeriesPlot2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_TimeSeriesPlot);
+		private static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		private static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
 
 		//data types
 		private static final OntResource variableWithLatLon = PackageWriter.getDataType("http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon");
@@ -45,7 +45,7 @@ public class PackageSource extends RDFPackage {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netcdf);
 		service1.setOutputFormat(Resources.ps);
-		service1.setView(Resources.contourMap);
+		service1.setView(Resources.contourMap2D);
 		service1.setInputDataType(Resources.variableWithLatLon);		
 		
 		operationName = "gsn_csm_contour_map_raster";
@@ -55,7 +55,7 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.netcdf);
 		service2.setOutputFormat(Resources.ps);
-		service2.setView(Resources.rasterMap);
+		service2.setView(Resources.rasterMap2D);
 		service2.setInputDataType(Resources.variableWithLatLon);
 	
 		operationName = "gsn_csm_xy2_time_series";
@@ -65,7 +65,7 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.netcdf);
 		service3.setOutputFormat(Resources.ps);
-		service3.setView(Resources.timeSeriesPlot);
+		service3.setView(Resources.timeSeriesPlot2D);
 		service3.setInputDataType(Resources.variableWithTime);
 	}
 

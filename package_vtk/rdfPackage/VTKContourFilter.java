@@ -16,7 +16,7 @@ public class VTKContourFilter {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputDataType(Resources.vtkImageData3D);
 		service1.setOutputDataType(Resources.vtkPolyData);
-		service1.setView(PackageSource.Resources.isosurfaces);
+		service1.setView(PackageSource.Resources.isosurfaces3D);
 		
 		PackageOperatorService service2 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkContourFilter2D, PackageSource.Resources.vtkContourFilter);
 		service2.setInputFormat(Resources.xml);
@@ -26,7 +26,7 @@ public class VTKContourFilter {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputDataType(Resources.vtkImageData2D);
 		service2.setOutputDataType(Resources.vtkPolyData);
-		service2.setView(Resources.contourMap);
+		service2.setView(Resources.contourMap2D);
 		
 	}
 }

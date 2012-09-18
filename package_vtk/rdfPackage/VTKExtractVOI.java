@@ -25,6 +25,5 @@ public class VTKExtractVOI {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputDataType(Resources.vtkImageData3D);
 		service2.setOutputDataType(Resources.vtkImageData2D);
-		service2.setView(Resources.contourMap);			
 	}
 }

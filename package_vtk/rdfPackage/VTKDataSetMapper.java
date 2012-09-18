@@ -11,7 +11,7 @@ public class VTKDataSetMapper {
 		PackageOperatorService service1 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkDataSetMapper3D, PackageSource.Resources.vtkDataSetMapper);
 		service1.setInputFormat(Resources.xml);
 		service1.setOutputFormat(Resources.jpeg);
-		service1.setView(Resources.rasterCube);
+		service1.setView(Resources.rasterCube3D);
 		service1.setLabel(PackageSource.Resources.vtkDataSetMapper3D);
 		service1.setComment("Convert 3D vtkImageData into a raster cube");
 		service1.setWSDLURL(wsdlURL);
@@ -20,7 +20,7 @@ public class VTKDataSetMapper {
 		PackageOperatorService service2 = packageWriter.createNewOperatorService(PackageSource.Resources.vtkDataSetMapper2D, PackageSource.Resources.vtkDataSetMapper);
 		service2.setInputFormat(Resources.xml);
 		service2.setOutputFormat(Resources.jpeg);
-		service2.setView(Resources.rasterMap);
+		service2.setView(Resources.rasterMap2D);
 		service2.setLabel(PackageSource.Resources.vtkDataSetMapper2D);
 		service2.setComment("Convert 2D vtkImageData into a raster map");
 		service2.setWSDLURL(wsdlURL);

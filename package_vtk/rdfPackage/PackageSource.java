@@ -39,13 +39,14 @@ public class PackageSource extends RDFPackage {
 		static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkPolyData");
 		
 		//views
-		static final View surfacePlot = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_SurfacePlot);
-		static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
-		static final View isosurfaces = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_IsoSurfaceRendering);
-		static final View rasterCube = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterCube);
-		static final View volume = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_VolumeRendering);
-		static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
-				
+		static final View surfacePlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_SurfacePlot);
+		static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		static final View isosurfaces3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_IsoSurfaceRendering);
+		static final View rasterCube3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_RasterCube);
+		static final View volume3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_VolumeRendering);
+		static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
+		static final View pointsPlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_PointPlot);
+		
 		//type uris
 		static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
 		
@@ -66,7 +67,7 @@ public class PackageSource extends RDFPackage {
 		static String vtkVolume = "vtkVolume";
 		static String vtkDataObjectToDataSetFilter3DGravity = "vtkDataObjectToDataSetFilter3DGravityData";		
 		static String vtkShepardMethod = "vtkShepardMethod";
-		static String vtkSurfaceReconstructionFilter = "vtkSurfaceReconstructionFilter";
+		static String vtkSurfaceReconstructionAndContourFilter = "vtkSurfaceReconstructionAndContourFilter";
 		
 		static String vtkContourFilter = "vtkContourFilter";
 		static String vtkContourFilter2D = vtkContourFilter + "2D";
@@ -82,6 +83,8 @@ public class PackageSource extends RDFPackage {
 		static String vtkImageDataReader3DFloats = "vtkImageDataReader3DFloats";
 		static String vtkImageDataReader3DIntegers = "vtkImageDataReader3DIntegers";
 		static String vtkImageDataReader3DUnsignedShortIntegers = "vtkImageDataReader3DUnsignedShortIntegers";
+		
+		static String vtkGlyph3DSphereSource = "vtkGlyph3DSphereSource";
 	}
 
 	@Override
@@ -117,7 +120,7 @@ public class PackageSource extends RDFPackage {
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(null, Resources.vtkVolume);
 		service4.setInputFormat(Resources.xml);
 		service4.setOutputFormat(Resources.jpeg);
-		service4.setView(Resources.volume);
+		service4.setView(Resources.volume3D);
 		service4.setLabel(Resources.vtkVolume);
 		service4.setComment("Convert vtkImageData of short integers into a volume JPEG");
 		service4.setWSDLURL(wsdlURL);
@@ -141,14 +144,26 @@ public class PackageSource extends RDFPackage {
 		service6.setInputDataType(Resources.vtkPolyData);
 		service6.setOutputDataType(Resources.vtkImageData3D);
 		
-		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, Resources.vtkSurfaceReconstructionFilter);
+		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, Resources.vtkSurfaceReconstructionAndContourFilter);
 		service7.setInputFormat(Resources.xml);
 		service7.setOutputFormat(Resources.xml);
-		service7.setLabel(Resources.vtkSurfaceReconstructionFilter);
+		service7.setLabel(Resources.vtkSurfaceReconstructionAndContourFilter);
 		service7.setComment("Generates a vktImageData surface that wraps unstructured vtkPolyData points");
 		service7.setWSDLURL(wsdlURL);
+		service7.setView(Resources.surfacePlot3D);
 		service7.setInputDataType(Resources.vtkPolyData);
-		service7.setOutputDataType(Resources.vtkImageData3D);
+		service7.setOutputDataType(Resources.vtkPolyData);
+		
+		PackageOperatorService service8 = getPackageWriter().createNewOperatorService(null, Resources.vtkGlyph3DSphereSource);
+		service8.setInputFormat(Resources.xml);
+		service8.setOutputFormat(Resources.xml);
+		service8.setLabel(Resources.vtkGlyph3DSphereSource);
+		service8.setComment("Generates a plot of glyphs, where the glyphs have been hard coded to be spheres");
+		service8.setWSDLURL(wsdlURL);
+		service8.setView(Resources.pointsPlot3D);
+		service8.setInputDataType(Resources.vtkPolyData);
+		service8.setOutputDataType(Resources.vtkPolyData);
+
 		
 		VTKContourFilter.populateVTKContourFilters(wsdlURL, getPackageWriter());
 		VTKDataSetMapper.populateDataSetMappers(wsdlURL, getPackageWriter());
@@ -174,7 +189,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader integers
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "littleEndian","true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DIntegers, "dataExtent", "0/229/0/24/0/67");
@@ -183,7 +197,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader unsigned short integers
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian","true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
@@ -233,7 +246,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader floats
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/230/0/25/0/68");
@@ -242,7 +254,6 @@ public class PackageSource extends RDFPackage {
 
 		// for vtkImageReader unsigned short ints
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/230/0/25/0/68");
@@ -291,7 +302,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader floats
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/229/0/24/0/67");
@@ -300,7 +310,6 @@ public class PackageSource extends RDFPackage {
 
 		// for vtkImageReader unsigned short integers
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
@@ -351,7 +360,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader unsigned short integers
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/230/0/25/0/68");
@@ -360,7 +368,6 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkImageReader floats
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
-		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dim", "3");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataSpacing", "1/1/1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataExtent", "0/230/0/25/0/68");
@@ -369,7 +376,7 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkContourFilter
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
-		bindingsSet.addInputBinding(Resources.vtkContourFilter, "scalarRange", "0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/9000.0");
 		
 		// for vtkPolyDataMapper
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "0.0/9000.0");
@@ -403,14 +410,18 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addSemanticType(Resources.gravityData);
 		
 		// for vtkShepardMethod
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "sampleDimensions", "30/30/30");
+		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/30");
 
 		// for vtkExtractVOI2D
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "sampleDimensions", "0/30/0/30/10");
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI2D, "dataExtent", "0/30/0/30/10");
 		
-		// for vtkContourFilter
+		// for vtkContourFilter 2D
+		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "numContours", "20");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "scalarRange", "-260/-170");		
+		
+		// for vtkContourFilter 3D
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "20");
-		bindingsSet.addInputBinding(Resources.vtkContourFilter, "scalarRange", "-260/-170");		
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "-260/-170");	
 		
 		// for vtkPolyDataMapper
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "-260/-170");
@@ -427,7 +438,11 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
 		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");		
+		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
+
+		// for vtkGlyph3DShereSource
+		bindingsSet.addInputBinding(Resources.vtkGlyph3DSphereSource, "radius", "0.06");
+		bindingsSet.addInputBinding(Resources.vtkGlyph3DSphereSource, "scaleFactor", "0.25");
 	}
 	
 

@@ -25,9 +25,9 @@ public class PackageSource extends RDFPackage {
 		private static final OntResource griddedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12");
 		
 		//views
-		private static final View contourMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_ContourMap);
-		private static final View rasterMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_RasterMap);
-		private static final View pointPlotMap = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_PointPlot);
+		private static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		private static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
+		private static final View pointMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_PointMap);
 		
 		//data types 		
 		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
@@ -45,7 +45,7 @@ public class PackageSource extends RDFPackage {
 		service1.setWSDLURL(wsdlURL);
 		service1.setInputFormat(Resources.netCDF);
 		service1.setOutputFormat(Resources.ps);
-		service1.setView(Resources.contourMap);
+		service1.setView(Resources.contourMap2D);
 		service1.setInputDataType(Resources.COARDS_2D_Grid);
 		// not output type...system will set to owl:Thing
 		
@@ -76,7 +76,7 @@ public class PackageSource extends RDFPackage {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputFormat(Resources.spaceSeparatedValues);
 		service4.setOutputFormat(Resources.ps);
-		service4.setView(Resources.pointPlotMap);
+		service4.setView(Resources.pointMap2D);
 		service4.setInputDataType(Resources.xyzData);
 		// not output type...system will set to owl:Thing		
 		
@@ -87,7 +87,7 @@ public class PackageSource extends RDFPackage {
 		service5.setWSDLURL(wsdlURL);
 		service5.setInputFormat(Resources.netCDF);
 		service5.setOutputFormat(Resources.ps);
-		service5.setView(Resources.rasterMap);
+		service5.setView(Resources.rasterMap2D);
 		service5.setInputDataType(Resources.COARDS_2D_Grid);
 		// not output type...system will set to owl:Thing
 		
