@@ -61,8 +61,6 @@ public class PackageSource extends RDFPackage {
 		static final OntResource dusumDataURI_1 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#d8-0");
 		static final OntResource dusumDataURI_2 = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeWDO.owl#d8");
 		
-		static String int2Short = "int2Short";
-		static String float2ShortThr = "float2ShortThr";
 		static String vtkPolyDataMapper = "vtkPolyDataMapper";
 		static String vtkVolume = "vtkVolume";
 		static String vtkDataObjectToDataSetFilter3DGravity = "vtkDataObjectToDataSetFilter3DGravityData";		
@@ -90,25 +88,7 @@ public class PackageSource extends RDFPackage {
 	@Override
 	public void populateServices() {
 		
-		String wsdlURL = getWSDLURL();
-		PackageOperatorService service1 = getPackageWriter().createNewOperatorService(null, Resources.int2Short);
-		service1.setInputFormat(Resources.littleEndianSequence);
-		service1.setOutputFormat(Resources.littleEndianSequence);
-		service1.setLabel(Resources.int2Short);
-		service1.setComment("Converts integer arrays to unsigned short integers");
-		service1.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.array1DInteger);
-		service1.setOutputDataType(Resources.array1DUnsignedShortInteger);
-		
-		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(null, Resources.float2ShortThr);
-		service2.setInputFormat(Resources.littleEndianSequence);
-		service2.setOutputFormat(Resources.littleEndianSequence);
-		service2.setLabel(Resources.float2ShortThr);
-		service2.setComment("Converts float arrays to short ints");
-		service2.setWSDLURL(wsdlURL);
-		service2.setInputDataType(Resources.array1DFloat);
-		service2.setOutputDataType(Resources.array1DUnsignedShortInteger);
-		
+		String wsdlURL = getWSDLURL();		
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(null, Resources.vtkPolyDataMapper);
 		service3.setInputFormat(Resources.xml);
 		service3.setOutputFormat(Resources.jpeg);
@@ -240,10 +220,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addSemanticType(Resources.griddedTimeURI_1);
 		bindingsSet.addSemanticType(Resources.griddedTimeURI_2);
 		
-		// for float2shortThr
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1000");
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset", "0");
-		
 		// for vtkImageReader floats
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
@@ -295,11 +271,7 @@ public class PackageSource extends RDFPackage {
 	public void addDuSumParameterBindings(PackageInputParameterBindings bindingsSet){
 		bindingsSet.addSemanticType(Resources.dusumDataURI_1);
 		bindingsSet.addSemanticType(Resources.dusumDataURI_2);
-		
-		// for float2shortThr
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1");
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset", "10000");
-		
+				
 		// for vtkImageReader floats
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "littleEndian", "true");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "dataOrigin", "0/0/0");
@@ -353,11 +325,7 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addSemanticType(Resources.velocityDataURI_1);
 		bindingsSet.addSemanticType(Resources.velocityDataURI_2);
 		bindingsSet.addSemanticType(Resources.velocityDataURI_3);
-		
-		// for float2shortThr
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "scalingFactor", "1000");
-		bindingsSet.addInputBinding(Resources.float2ShortThr, "offset","0");
-		
+				
 		// for vtkImageReader unsigned short integers
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "littleEndian", "true");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataOrigin", "0/0/0");
@@ -411,7 +379,7 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkShepardMethod
 		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/10");
-		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "maximumDistance", "1");
+		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "maximumDistance", "0.2");
 
 		// for vtkExtractVOI2D
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/30/0/30/3");
@@ -426,11 +394,11 @@ public class PackageSource extends RDFPackage {
 		
 		// for vtkPolyDataMapper
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "-236/-177");
-		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "-70");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "-30");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "0/0/0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "0.5/0.5/0.5");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 
 		// for vtkDataSetMapper		

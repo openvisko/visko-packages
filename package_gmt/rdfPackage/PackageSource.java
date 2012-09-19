@@ -18,7 +18,6 @@ public class PackageSource extends RDFPackage {
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		private static final Format netCDF = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDF.owl#NETCDF");
 		private static final Format spaceSeparatedValues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES");
-		private static final Format commaSeparatedvalues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
 		
 		//semantic type uris
 		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
@@ -89,15 +88,7 @@ public class PackageSource extends RDFPackage {
 		service5.setOutputFormat(Resources.ps);
 		service5.setView(Resources.rasterMap2D);
 		service5.setInputDataType(Resources.COARDS_2D_Grid);
-		// not output type...system will set to owl:Thing
-		
-		operationName = "csv2tabular";
-		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(null, operationName);
-		service6.setComment("Convert comma separated values into ASCII tabular data");
-		service6.setLabel("CSV to Tabular ASCII");
-		service6.setWSDLURL(wsdlURL);
-		service6.setInputFormat(Resources.commaSeparatedvalues);
-		service6.setOutputFormat(Resources.spaceSeparatedValues);
+		// not output type...system will set to owl:Thing		
 	}
 
 	@Override
@@ -140,17 +131,11 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding("nearneighbor", "I", "0.02");
 		bindingsSet.addInputBinding("nearneighbor", "S", "0.2");
 		bindingsSet.addInputBinding("nearneighbor", "R", region);
-		bindingsSet.addInputBinding("nearneighbor", "indexOfX", "0");
-		bindingsSet.addInputBinding("nearneighbor", "indexOfY", "1");
-		bindingsSet.addInputBinding("nearneighbor", "indexOfZ", "2");
 		
 		// for GMT surface
 		bindingsSet.addInputBinding("surface", "I","0.02");
 		bindingsSet.addInputBinding("surface", "T","0.25");
 		bindingsSet.addInputBinding("surface", "C", "0.1");
-		bindingsSet.addInputBinding("surface", "indexOfX", "0");
-		bindingsSet.addInputBinding("surface", "indexOfY", "1");
-		bindingsSet.addInputBinding("surface", "indexOfZ", "2");
 		bindingsSet.addInputBinding("surface", "R", region);
 
 		// for GMT grdimage
