@@ -78,7 +78,7 @@ public class PackageSource extends RDFPackage {
 		static String vtkDataSetMapper3D = vtkDataSetMapper + "3D";
 
 		static String vtkExtractVOI3D = "vtkExtractVOI3D";
-		static String vtkExtractVOI2D = "vtkExtractVOI2D";
+		static String vtkExtractVOIXYPlane = "vtkExtractVOIXYPlane";
 		
 		static String vtkImageDataReader3DFloats = "vtkImageDataReader3DFloats";
 		static String vtkImageDataReader3DIntegers = "vtkImageDataReader3DIntegers";
@@ -410,26 +410,27 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addSemanticType(Resources.gravityData);
 		
 		// for vtkShepardMethod
-		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/30");
+		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/10");
+		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "maximumDistance", "1");
 
 		// for vtkExtractVOI2D
-		bindingsSet.addInputBinding(Resources.vtkExtractVOI2D, "dataExtent", "0/30/0/30/10");
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/30/0/30/3");
 		
 		// for vtkContourFilter 2D
 		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "numContours", "20");
-		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "scalarRange", "-260/-170");		
+		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "scalarRange", "-236/-177");		
 		
 		// for vtkContourFilter 3D
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "20");
-		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "-260/-170");	
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "-236/-177");	
 		
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "-260/-170");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange", "-236/-177");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "-70");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "1/1/1");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "0/0/0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
 
 		// for vtkDataSetMapper		

@@ -17,11 +17,11 @@ public class VTKExtractVOI {
 		service1.setInputDataType(Resources.vtkImageData3D);
 		service1.setOutputDataType(Resources.vtkImageData3D);
 		
-		PackageOperatorService service2 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOI2D);
+		PackageOperatorService service2 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOIXYPlane);
 		service2.setInputFormat(Resources.xml);
 		service2.setOutputFormat(Resources.xml);
-		service2.setLabel(PackageSource.Resources.vtkExtractVOI2D);
-		service2.setComment("Extracts a subset plane");
+		service2.setLabel(PackageSource.Resources.vtkExtractVOIXYPlane);
+		service2.setComment("Extracts a subset XY plane by specifying plane bounds and location on Z axix");
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputDataType(Resources.vtkImageData3D);
 		service2.setOutputDataType(Resources.vtkImageData2D);
