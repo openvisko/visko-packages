@@ -14,7 +14,7 @@ public class VTKImageDataReader {
 		service1.setLabel(PackageSource.Resources.vtkImageDataReader3DFloats);
 		service1.setComment("Converts 1D array of float values into 3D vtkImageData of float values");
 		service1.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.array1DFloats);
+		service1.setInputDataType(Resources.array1DFloat);
 		service1.setOutputDataType(Resources.vtkImageData3DFloats);
 		
 		PackageOperatorService service2 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkImageDataReader3DIntegers);
@@ -23,7 +23,7 @@ public class VTKImageDataReader {
 		service2.setLabel(PackageSource.Resources.vtkImageDataReader3DIntegers);
 		service2.setComment("Convert arrays of integer values into vtkImageData of integer values");
 		service2.setWSDLURL(wsdlURL);
-		service2.setInputDataType(Resources.array1DIntegers);
+		service2.setInputDataType(Resources.array1DInteger);
 		service2.setOutputDataType(Resources.vtkImageData3DIntegers);
 
 		PackageOperatorService service3 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers);
@@ -32,7 +32,7 @@ public class VTKImageDataReader {
 		service3.setLabel(PackageSource.Resources.vtkImageDataReader3DUnsignedShortIntegers);
 		service3.setComment("Convert array of unsigned short integers into vtkImageData of unsigned short integers values");
 		service3.setWSDLURL(wsdlURL);
-		service3.setInputDataType(Resources.array1DUnsignedShortIntegers);
-		service3.setInputDataType(Resources.vtkImageData3DUnsignedShortIntegers);		
+		service3.setInputDataType(Resources.array1DUnsignedShortInteger);
+		service3.setOutputDataType(Resources.vtkImageData3DUnsignedShortIntegers);		
 	}
 }

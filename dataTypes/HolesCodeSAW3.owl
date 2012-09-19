@@ -62,33 +62,21 @@
     
 
 
-    <!-- http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1D -->
-
-    <owl:Class rdf:about="&j.0;Array1D"/>
-    
-
-
     <!-- http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat -->
 
-    <owl:Class rdf:about="&j.0;Array1DFloat">
-        <rdfs:subClassOf rdf:resource="&j.0;Array1D"/>
-    </owl:Class>
+    <owl:Class rdf:about="&j.0;Array1DFloat"/>
     
 
 
     <!-- http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger -->
 
-    <owl:Class rdf:about="&j.0;Array1DInteger">
-        <rdfs:subClassOf rdf:resource="&j.0;Array1D"/>
-    </owl:Class>
+    <owl:Class rdf:about="&j.0;Array1DInteger"/>
     
 
 
-    <!-- http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DShortInteger -->
+    <!-- http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger -->
 
-    <owl:Class rdf:about="&j.0;Array1DShortInteger">
-        <rdfs:subClassOf rdf:resource="&j.0;Array1DInteger"/>
-    </owl:Class>
+    <owl:Class rdf:about="&j.0;Array1DUnsignedShortInteger"/>
     
 
 
@@ -854,8 +842,8 @@
     </owl:NamedIndividual>
     <rdf:Description>
         <rdf:type rdf:resource="&wdo;RectangularCoordinate"/>
-        <wdo:hasXCoordinateValue rdf:datatype="&xsd;long">451</wdo:hasXCoordinateValue>
-        <wdo:hasYCoordinateValue rdf:datatype="&xsd;long">52</wdo:hasYCoordinateValue>
+        <wdo:hasYCoordinateValue rdf:datatype="&xsd;long">-26</wdo:hasYCoordinateValue>
+        <wdo:hasXCoordinateValue rdf:datatype="&xsd;long">507</wdo:hasXCoordinateValue>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&wdo;RectangularCoordinate"/>
@@ -864,8 +852,8 @@
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&wdo;RectangularCoordinate"/>
-        <wdo:hasYCoordinateValue rdf:datatype="&xsd;long">-26</wdo:hasYCoordinateValue>
-        <wdo:hasXCoordinateValue rdf:datatype="&xsd;long">507</wdo:hasXCoordinateValue>
+        <wdo:hasXCoordinateValue rdf:datatype="&xsd;long">451</wdo:hasXCoordinateValue>
+        <wdo:hasYCoordinateValue rdf:datatype="&xsd;long">52</wdo:hasYCoordinateValue>
     </rdf:Description>
 </rdf:RDF>
 

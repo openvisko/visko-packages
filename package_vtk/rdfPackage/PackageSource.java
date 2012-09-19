@@ -22,9 +22,9 @@ public class PackageSource extends RDFPackage {
 
 		// data types		
 		static final OntResource array1D = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1D");
-		static final OntResource array1DFloats = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloats");
-		static final OntResource array1DIntegers = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DIntegers");
-		static final OntResource array1DUnsignedShortIntegers = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortIntegers");
+		static final OntResource array1DFloat = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat");
+		static final OntResource array1DInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger");
+		static final OntResource array1DUnsignedShortInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger");
 
 		static final OntResource vtkImageData3D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3D");
 		static final OntResource vtkImageData3DUnsignedShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers");
@@ -97,8 +97,8 @@ public class PackageSource extends RDFPackage {
 		service1.setLabel(Resources.int2Short);
 		service1.setComment("Converts integer arrays to unsigned short integers");
 		service1.setWSDLURL(wsdlURL);
-		service1.setInputDataType(Resources.array1DIntegers);
-		service1.setOutputDataType(Resources.array1DUnsignedShortIntegers);
+		service1.setInputDataType(Resources.array1DInteger);
+		service1.setOutputDataType(Resources.array1DUnsignedShortInteger);
 		
 		PackageOperatorService service2 = getPackageWriter().createNewOperatorService(null, Resources.float2ShortThr);
 		service2.setInputFormat(Resources.littleEndianSequence);
@@ -106,8 +106,8 @@ public class PackageSource extends RDFPackage {
 		service2.setLabel(Resources.float2ShortThr);
 		service2.setComment("Converts float arrays to short ints");
 		service2.setWSDLURL(wsdlURL);
-		service2.setInputDataType(Resources.array1DFloats);
-		service2.setOutputDataType(Resources.array1DUnsignedShortIntegers);
+		service2.setInputDataType(Resources.array1DFloat);
+		service2.setOutputDataType(Resources.array1DUnsignedShortInteger);
 		
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(null, Resources.vtkPolyDataMapper);
 		service3.setInputFormat(Resources.xml);
