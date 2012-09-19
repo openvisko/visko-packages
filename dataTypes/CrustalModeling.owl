@@ -64,7 +64,7 @@
     <!-- http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData -->
 
     <owl:Class rdf:about="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData">
-        <rdfs:subClassOf rdf:resource="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19"/>
+        <rdfs:subClassOf rdf:resource="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18"/>
     </owl:Class>
     
 
@@ -577,6 +577,15 @@ A well known algorithm is that presented by Nafe, J.E. and Drake, C.L.: Variatio
     <owl:NamedIndividual rdf:about="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl">
         <rdf:type rdf:resource="&wdo;WorkflowDrivenOntology"/>
     </owl:NamedIndividual>
+    <rdf:Description>
+        <rdf:type rdf:resource="&rdf;Statement"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&rdf;Statement"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&rdf;Statement"/>
+    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&rdf;Statement"/>
     </rdf:Description>
