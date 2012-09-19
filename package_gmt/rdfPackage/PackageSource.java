@@ -30,6 +30,7 @@ public class PackageSource extends RDFPackage {
 		
 		//data types 		
 		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
+		private static final OntResource fieldTrmmedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData");
 		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS");
 	}
 
@@ -55,7 +56,7 @@ public class PackageSource extends RDFPackage {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputFormat(Resources.spaceSeparatedValues);
 		service2.setOutputFormat(Resources.netCDF);
-		service2.setInputDataType(Resources.xyzData);
+		service2.setInputDataType(Resources.fieldTrmmedGravityData);
 		service2.setOutputDataType(Resources.COARDS_2D_Grid);
 		
 		operationName = "nearneighbor";
@@ -65,7 +66,7 @@ public class PackageSource extends RDFPackage {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputFormat(Resources.spaceSeparatedValues);
 		service3.setOutputFormat(Resources.netCDF);
-		service3.setInputDataType(Resources.xyzData);
+		service3.setInputDataType(Resources.fieldTrmmedGravityData);
 		service3.setOutputDataType(Resources.COARDS_2D_Grid);
 
 		operationName = "psxy";
