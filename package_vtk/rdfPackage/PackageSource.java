@@ -192,11 +192,11 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/24/0/67");
 		
 		// for vtkContourFilter
-		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
-		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "10");
+		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/40.0");
 		
 		// for vtkPolyDataMapper
-		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange","0.0/9000.0");
+		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "scalarRange","0.0/40.0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "xRotation", "105");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "yRotation", "0");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "zRotation", "0");
