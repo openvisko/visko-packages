@@ -70,12 +70,10 @@ public class PackageSource extends RDFPackage {
 		static String vtkContourFilter2D = vtkContourFilter + "2D";
 		static String vtkContourFilter3D = vtkContourFilter + "3D";
 		
-		static String vtkDataSetMapper = "vtkDataSetMapper";
-		static String vtkDataSetMapper2D = vtkDataSetMapper + "2D";
-		static String vtkDataSetMapper3D = vtkDataSetMapper + "3D";
-
 		static String vtkExtractVOI3D = "vtkExtractVOI3D";
 		static String vtkExtractVOIXYPlane = "vtkExtractVOIXYPlane";
+		static String vtkExtractVOIXZPlane = "vtkExtractVOIXZPlane";
+		static String vtkExtractVOIYZPlane = "vtkExtractVOIYZPlane";
 		
 		static String vtkImageDataReader3DFloats = "vtkImageDataReader3DFloats";
 		static String vtkImageDataReader3DIntegers = "vtkImageDataReader3DIntegers";
@@ -145,7 +143,6 @@ public class PackageSource extends RDFPackage {
 
 		
 		VTKContourFilter.populateVTKContourFilters(wsdlURL, getPackageWriter());
-		VTKDataSetMapper.populateDataSetMappers(wsdlURL, getPackageWriter());
 		VTKExtractVOI.populateVTKExtractVOIs(wsdlURL, getPackageWriter());
 		VTKImageDataReader.populateVTKImageDataReaders(wsdlURL, getPackageWriter());
 	}
@@ -181,6 +178,18 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft","true");
+
+		// for vtkExtractVOI
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/0/67");		
+		
+		// for vtkExtractVOIXY
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/30");
+		
+		// for vtkExtractVOIXZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/229/15/0/67");
+		
+		// for vtkExtractVOIYZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/24/0/67");
 		
 		// for vtkContourFilter
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
@@ -204,15 +213,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "20,1.0,0.0,0.3/80,1.0,0.0,0.3");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "0,0.0/40,1.0");
-		
-		// for vtkDataSetMapper		
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
-
 	}
 
 	public void addGriddedTimeParameterBindings(PackageInputParameterBindings bindingsSet){
@@ -234,6 +234,18 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/230/0/25/0/68");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
+
+		// for vtkExtractVOI
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/0/68");		
+		
+		// for vtkExtractVOIXY
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/30");
+		
+		// for vtkExtractVOIXZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/230/15/0/68");
+		
+		// for vtkExtractVOIYZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/25/0/68");
 		
 		// for vtkContourFilter
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "30");
@@ -257,14 +269,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "20,0.0/255,0.2");
-		
-		// for vtkDataSetMapper		
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
 	}
 	
 	public void addDuSumParameterBindings(PackageInputParameterBindings bindingsSet){
@@ -286,6 +290,18 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "dataExtent", "0/229/0/24/0/67");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "numScalarComponents", "1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
+
+		// for vtkExtractVOI
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/0/67");		
+		
+		// for vtkExtractVOIXY
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/30");
+		
+		// for vtkExtractVOIXZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/229/15/0/67");
+		
+		// for vtkExtractVOIYZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/24/0/67");
 		
 		// for vtkContourFilter
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
@@ -309,15 +325,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "0.0,0.0,0.0,0.0/1000.0,1.0,0.0,0.0/3000.0,0.0,0.0,1.0/5000.0,0.0,1.0,0.0/7000.0,0.0,0.2,0.0");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "20,0.0/255,0.2");
-				
-		// for vtkDataSetMapper		
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
-
 	}
 	
 	public void addVelocityParameterBindings(PackageInputParameterBindings bindingsSet) {
@@ -341,6 +348,18 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "numScalarComponents", "1");
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "readLowerLeft","true");
 		
+		// for vtkExtractVOI
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/0/68");		
+		
+		// for vtkExtractVOIXY
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/30");
+		
+		// for vtkExtractVOIXZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/230/15/0/68");
+		
+		// for vtkExtractVOIYZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/25/0/68");
+		
 		// for vtkContourFilter
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "numContours", "35");
 		bindingsSet.addInputBinding(Resources.vtkContourFilter3D, "scalarRange", "0.0/9000.0");
@@ -363,14 +382,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkVolume, "magnification", "3");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "colorFunction", "3000,1,1,0/5000,0.5,0.95,0/5600,0,0,1/6500,0.28,0.2,0.5/7000,1,0,0");
 		bindingsSet.addInputBinding(Resources.vtkVolume, "opacityFunction", "4000,0.2/8000,0.5");
-				
-		// for vtkDataSetMapper		
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "105");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
 	}
 	
 	public void addGravityDataParameterBindings(PackageInputParameterBindings bindingsSet) {
@@ -399,14 +410,6 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "size", "400/300");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "backgroundColor", "0.5/0.5/0.5");
 		bindingsSet.addInputBinding(Resources.vtkPolyDataMapper, "magnification", "3");
-
-		// for vtkDataSetMapper		
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "xRotation", "-70");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "yRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "zRotation", "0");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "size", "400/300");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "backgroundColor", "1/1/1");
-		bindingsSet.addInputBinding(Resources.vtkDataSetMapper3D, "magnification", "3");
 
 		// for vtkGlyph3DShereSource
 		bindingsSet.addInputBinding(Resources.vtkGlyph3DSphereSource, "radius", "0.06");

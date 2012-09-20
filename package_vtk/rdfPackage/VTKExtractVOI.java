@@ -25,5 +25,23 @@ public class VTKExtractVOI {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputDataType(Resources.vtkImageData3D);
 		service2.setOutputDataType(Resources.vtkImageData2D);
+		
+		PackageOperatorService service3 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOIXZPlane);
+		service3.setInputFormat(Resources.xml);
+		service3.setOutputFormat(Resources.xml);
+		service3.setLabel(PackageSource.Resources.vtkExtractVOIXZPlane);
+		service3.setComment("Extracts a subset XY plane by specifying plane bounds and location on Z axix");
+		service3.setWSDLURL(wsdlURL);
+		service3.setInputDataType(Resources.vtkImageData3D);
+		service3.setOutputDataType(Resources.vtkImageData2D);
+
+		PackageOperatorService service4 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOIYZPlane);
+		service4.setInputFormat(Resources.xml);
+		service4.setOutputFormat(Resources.xml);
+		service4.setLabel(PackageSource.Resources.vtkExtractVOIYZPlane);
+		service4.setComment("Extracts a subset XY plane by specifying plane bounds and location on Z axix");
+		service4.setWSDLURL(wsdlURL);
+		service4.setInputDataType(Resources.vtkImageData3D);
+		service4.setOutputDataType(Resources.vtkImageData2D);
 	}
 }
