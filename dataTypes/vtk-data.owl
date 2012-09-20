@@ -132,9 +132,9 @@
     
 
 
-    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers -->
+    <!-- http://www.vtk.org/vtk-data.owl#vtkImageData3DIntegers -->
 
-    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers">
+    <owl:Class rdf:about="http://www.vtk.org/vtk-data.owl#vtkImageData3DIntegers">
         <rdfs:subClassOf rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
     </owl:Class>
     

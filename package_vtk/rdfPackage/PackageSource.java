@@ -27,7 +27,7 @@ public class PackageSource extends RDFPackage {
 
 		static final OntResource vtkImageData3D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3D");
 		static final OntResource vtkImageData3DUnsignedShortIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers");
-		static final OntResource vtkImageData3DIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DShortIntegers");
+		static final OntResource vtkImageData3DIntegers = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DIntegers");
 		static final OntResource vtkImageData3DFloats = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData3DFloats");
 
 		static final OntResource vtkImageData2D = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkImageData2D");
