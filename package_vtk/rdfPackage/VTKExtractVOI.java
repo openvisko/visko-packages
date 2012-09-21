@@ -25,6 +25,7 @@ public class VTKExtractVOI {
 		service2.setWSDLURL(wsdlURL);
 		service2.setInputDataType(Resources.vtkImageData3D);
 		service2.setOutputDataType(Resources.vtkImageData2D);
+		service2.setAsDimensionFilter();
 		
 		PackageOperatorService service3 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOIXZPlane);
 		service3.setInputFormat(Resources.xml);
@@ -34,7 +35,8 @@ public class VTKExtractVOI {
 		service3.setWSDLURL(wsdlURL);
 		service3.setInputDataType(Resources.vtkImageData3D);
 		service3.setOutputDataType(Resources.vtkImageData2D);
-
+		service3.setAsDimensionFilter();
+		
 		PackageOperatorService service4 = packageWriter.createNewOperatorService(null, PackageSource.Resources.vtkExtractVOIYZPlane);
 		service4.setInputFormat(Resources.xml);
 		service4.setOutputFormat(Resources.xml);
@@ -43,5 +45,6 @@ public class VTKExtractVOI {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputDataType(Resources.vtkImageData3D);
 		service4.setOutputDataType(Resources.vtkImageData2D);
+		service4.setAsDimensionFilter();
 	}
 }

@@ -120,6 +120,7 @@ public class PackageSource extends RDFPackage {
 		service6.setWSDLURL(wsdlURL);
 		service6.setInputDataType(Resources.vtkPolyData);
 		service6.setOutputDataType(Resources.vtkImageData3D);
+		service6.setAsInterpolator();
 		
 		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, Resources.vtkSurfaceReconstructionAndContourFilter);
 		service7.setInputFormat(Resources.xml);
@@ -140,7 +141,6 @@ public class PackageSource extends RDFPackage {
 		service8.setView(Resources.pointsPlot3D);
 		service8.setInputDataType(Resources.vtkPolyData);
 		service8.setOutputDataType(Resources.vtkPolyData);
-
 		
 		VTKContourFilter.populateVTKContourFilters(wsdlURL, getPackageWriter());
 		VTKExtractVOI.populateVTKExtractVOIs(wsdlURL, getPackageWriter());
@@ -180,7 +180,7 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft","true");
 
 		// for vtkExtractVOI
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/0/67");		
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI3D, "dataExtent", "0/229/0/24/0/67");		
 		
 		// for vtkExtractVOIXY
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/30");
@@ -236,7 +236,7 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
 
 		// for vtkExtractVOI
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/0/68");		
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI3D, "dataExtent", "0/230/0/25/0/68");		
 		
 		// for vtkExtractVOIXY
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/30");
@@ -292,7 +292,7 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DUnsignedShortIntegers, "readLowerLeft", "true");
 
 		// for vtkExtractVOI
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/0/67");		
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI3D, "dataExtent", "0/229/0/24/0/67");		
 		
 		// for vtkExtractVOIXY
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/229/0/24/30");
@@ -349,7 +349,7 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkImageDataReader3DFloats, "readLowerLeft","true");
 		
 		// for vtkExtractVOI
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/0/68");		
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI3D, "dataExtent", "0/230/0/25/0/68");		
 		
 		// for vtkExtractVOIXY
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/230/0/25/30");
@@ -391,8 +391,15 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/10");
 		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "maximumDistance", "0.2");
 
-		// for vtkExtractVOI2D
+		// for vtkExtractVOIXY
 		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/30/0/30/3");
+
+		// for vtkExtractVOIXZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/229/15/0/67");
+		
+		// for vtkExtractVOIYZ
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/24/0/67");
+
 		
 		// for vtkContourFilter 2D
 		bindingsSet.addInputBinding(Resources.vtkContourFilter2D, "numContours", "20");

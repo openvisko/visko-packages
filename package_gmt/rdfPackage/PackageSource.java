@@ -58,6 +58,7 @@ public class PackageSource extends RDFPackage {
 		service2.setOutputFormat(Resources.netCDF);
 		service2.setInputDataType(Resources.fieldTrmmedGravityData);
 		service2.setOutputDataType(Resources.COARDS_2D_Grid);
+		service2.setAsInterpolator();
 		
 		operationName = "nearneighbor";
 		PackageOperatorService service3 = getPackageWriter().createNewOperatorService(null, operationName);
@@ -68,7 +69,8 @@ public class PackageSource extends RDFPackage {
 		service3.setOutputFormat(Resources.netCDF);
 		service3.setInputDataType(Resources.fieldTrmmedGravityData);
 		service3.setOutputDataType(Resources.COARDS_2D_Grid);
-
+		service3.setAsInterpolator();
+		
 		operationName = "psxy";
 		PackageOperatorService service4 = getPackageWriter().createNewOperatorService(null, operationName);
 		service4.setComment("Generate 2D Plot of point data");
