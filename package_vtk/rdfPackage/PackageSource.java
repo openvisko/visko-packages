@@ -391,14 +391,17 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "sampleDimensions", "30/30/10");
 		bindingsSet.addInputBinding(Resources.vtkShepardMethod, "maximumDistance", "0.2");
 
+		// for vtkExtractVOI
+		bindingsSet.addInputBinding(Resources.vtkExtractVOI3D, "dataExtent", "0/29/0/29/0/9");		
+		
 		// for vtkExtractVOIXY
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/30/0/30/3");
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXYPlane, "dataExtent", "0/29/0/29/3");
 
 		// for vtkExtractVOIXZ
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/229/15/0/67");
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIXZPlane, "dataExtent", "0/29/15/0/9");
 		
 		// for vtkExtractVOIYZ
-		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "100/0/24/0/67");
+		bindingsSet.addInputBinding(Resources.vtkExtractVOIYZPlane, "dataExtent", "15/0/29/0/9");
 
 		
 		// for vtkContourFilter 2D
