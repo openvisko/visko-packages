@@ -8,7 +8,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
-import edu.utep.trustlab.visko.ontology.viskoView.View;
+import edu.utep.trustlab.visko.ontology.viskoView.VisualizationAbstraction;
 import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
@@ -38,13 +38,13 @@ public class PackageSource extends RDFPackage {
 		static final OntResource vtkPolyData = PackageWriter.getDataType("http://www.vtk.org/vtk-data.owl#vtkPolyData");
 		
 		//views
-		static final View surfacePlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_SurfacePlot);
-		static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
-		static final View isosurfaces3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_IsoSurfaceRendering);
-		static final View rasterCube3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_RasterCube);
-		static final View volume3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_VolumeRendering);
-		static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
-		static final View pointsPlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_PointPlot);
+		static final VisualizationAbstraction surfacePlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_SurfacePlot);
+		static final VisualizationAbstraction contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		static final VisualizationAbstraction isosurfaces3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_IsoSurfaceRendering);
+		static final VisualizationAbstraction rasterCube3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_RasterCube);
+		static final VisualizationAbstraction volume3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_VolumeRendering);
+		static final VisualizationAbstraction rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
+		static final VisualizationAbstraction pointsPlot3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_PointPlot);
 		
 		//type uris
 		static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");

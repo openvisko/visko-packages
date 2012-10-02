@@ -8,7 +8,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
-import edu.utep.trustlab.visko.ontology.viskoView.View;
+import edu.utep.trustlab.visko.ontology.viskoView.VisualizationAbstraction;
 import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
@@ -19,9 +19,9 @@ public class PackageSource extends RDFPackage {
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		
 		//views
-		private static final View timeSeriesPlot2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_TimeSeriesPlot);
-		private static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
-		private static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
+		private static final VisualizationAbstraction timeSeriesPlot2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_TimeSeriesPlot);
+		private static final VisualizationAbstraction contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		private static final VisualizationAbstraction rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
 
 		//data types
 		private static final OntResource variableWithLatLon = PackageWriter.getDataType("http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon");

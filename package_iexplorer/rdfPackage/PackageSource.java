@@ -5,6 +5,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.viskoOperator.Viewer;
+import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
 
 public class PackageSource extends RDFPackage {
 
@@ -28,8 +29,9 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateToolkit() {
-		// TODO Auto-generated method stub
-		
+		Toolkit toolkit = getPackageWriter().createNewToolkit("internet-explorer");
+		toolkit.setComment("Internet Explorer");
+		toolkit.setLabel("Internet Explorer");		
 	}
 
 	@Override

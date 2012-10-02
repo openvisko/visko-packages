@@ -5,9 +5,13 @@ import com.hp.hpl.jena.ontology.OntResource;
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageInputParameterBindings;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
+import edu.utep.trustlab.visko.installation.packages.rdf.PackageViewerSet;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
+import edu.utep.trustlab.visko.ontology.viskoOperator.Viewer;
 import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
+import edu.utep.trustlab.visko.ontology.viskoView.VisualizationAbstraction;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 
@@ -15,8 +19,11 @@ public class PackageSource extends RDFPackage {
 		//formats
 		private static final Format spaceSeparatedValues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES");
 		private static final Format commaSeparatedvalues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/CSV.owl#CSV");
-		static final Format littleEndianSequence = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-SEQUENCE.owl#LITTLE-ENDIAN-SEQUENCE");
+		private static final Format littleEndianSequence = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/LITTLE-ENDIAN-SEQUENCE.owl#LITTLE-ENDIAN-SEQUENCE");
 
+		private static final Format rdfxml = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/RDFXML.owl#RDFXML");
+		private static final Format json = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JSON.owl#JSON");
+		
 		//semantic type uris
 		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
 		private static final OntResource fieldTrmmedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData");
@@ -33,10 +40,18 @@ public class PackageSource extends RDFPackage {
 
 		
 		//data types 				
-		static final OntResource array1DFloat = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat");
-		static final OntResource array1DInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger");
-		static final OntResource array1DUnsignedShortInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger");
-
+		private static final OntResource array1DFloat = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat");
+		private static final OntResource array1DInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger");
+		private static final OntResource array1DUnsignedShortInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger");
+		
+		private static final OntResource dataTransformationPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#DataTransformationPaths");
+		private static final OntResource operatorPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#OperatorPaths");
+		private static final OntResource instanceSummary = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#InstanceSummary");
+		private static final OntResource knoweldgeBase = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#KnowledgeBase");
+		
+		//views
+		private static final VisualizationAbstraction barChart = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_BarChart);
+		private static final VisualizationAbstraction forceGraph = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ForceGraph);
 	}
 
 	@Override
@@ -80,6 +95,36 @@ public class PackageSource extends RDFPackage {
 		service4.setWSDLURL(wsdlURL);
 		service4.setInputDataType(Resources.array1DFloat);
 		service4.setOutputDataType(Resources.array1DUnsignedShortInteger);
+		
+		operationName = "jsonGraph_OperatorPaths";
+		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(null, operationName);
+		service5.setInputFormat(Resources.rdfxml);
+		service5.setOutputFormat(Resources.json);
+		service5.setLabel(operationName);
+		service5.setComment("Converts a Visko KB to Operator Paths encoded in JSON");
+		service5.setWSDLURL(wsdlURL);
+		service5.setInputDataType(Resources.knoweldgeBase);
+		service5.setOutputDataType(Resources.operatorPaths);
+		
+		operationName = "jsonGraph_DataTransformations";
+		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(null, operationName);
+		service6.setInputFormat(Resources.rdfxml);
+		service6.setOutputFormat(Resources.json);
+		service6.setLabel(operationName);
+		service6.setComment("Converts a Visko KB to Data Transformation Paths encoded in JSON");
+		service6.setWSDLURL(wsdlURL);
+		service6.setInputDataType(Resources.knoweldgeBase);
+		service6.setOutputDataType(Resources.dataTransformationPaths);
+
+		operationName = "jsonBars_Instances";
+		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, operationName);
+		service7.setInputFormat(Resources.rdfxml);
+		service7.setOutputFormat(Resources.json);
+		service7.setLabel(operationName);
+		service7.setComment("Converts a Visko KB to instance summary encoded in JSON");
+		service7.setWSDLURL(wsdlURL);
+		service7.setInputDataType(Resources.knoweldgeBase);
+		service7.setOutputDataType(Resources.instanceSummary);
 	}
 
 	@Override
@@ -90,9 +135,31 @@ public class PackageSource extends RDFPackage {
 	}
 
 	@Override
-	public void populateViewerSets() {
-		// TODO Auto-generated method stub
+	public void populateViewerSets() {		
+		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("data-driven-documents");
+		viewerSet.setComment("Data Driven Documents Viewer Set");
+		viewerSet.setLabel("D3 Viewer Set");
 		
+		Viewer viewer1 = viewerSet.createNewViewer("operator-paths-force-graph-viewer");
+		viewer1.setLabel("Force Graph Viewer for Visko Operator Paths");
+		viewer1.setComment("Force Graph Viewer for Visko Operator Paths");
+		viewer1.addInputFormat(Resources.json);
+		viewer1.addInputDataType(Resources.operatorPaths);
+		viewer1.setVisualizationAbstraction(Resources.forceGraph);
+		
+		Viewer viewer2 = viewerSet.createNewViewer("visko-kb-bar-chart-viewer");
+		viewer2.setLabel("Bar Chart Viewer for Visko KB");
+		viewer2.setComment("Bar Chart Viewer for Visko KB");
+		viewer2.addInputFormat(Resources.json);
+		viewer2.addInputDataType(Resources.instanceSummary);
+		viewer2.setVisualizationAbstraction(Resources.barChart);
+		
+		Viewer viewer3 = viewerSet.createNewViewer("data-transformations-paths-force-graph-viewer");
+		viewer3.setLabel("Force Graph Viewer for Visko Data Transformation Paths");
+		viewer3.setComment("Force Graph Viewer for Visko Data Transformation Paths");
+		viewer3.addInputFormat(Resources.json);
+		viewer3.addInputDataType(Resources.dataTransformationPaths);
+		viewer3.setVisualizationAbstraction(Resources.forceGraph);
 	}
 
 	@Override

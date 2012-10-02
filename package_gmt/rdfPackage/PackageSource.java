@@ -8,7 +8,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageOperatorService;
 import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
-import edu.utep.trustlab.visko.ontology.viskoView.View;
+import edu.utep.trustlab.visko.ontology.viskoView.VisualizationAbstraction;
 import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
@@ -24,9 +24,9 @@ public class PackageSource extends RDFPackage {
 		private static final OntResource griddedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d12");
 		
 		//views
-		private static final View contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
-		private static final View rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
-		private static final View pointMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_PointMap);
+		private static final VisualizationAbstraction contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
+		private static final VisualizationAbstraction rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
+		private static final VisualizationAbstraction pointMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_PointMap);
 		
 		//data types 		
 		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
