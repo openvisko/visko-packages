@@ -44,14 +44,15 @@ public class PackageSource extends RDFPackage {
 		private static final OntResource array1DInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger");
 		private static final OntResource array1DUnsignedShortInteger = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger");
 		
-		private static final OntResource dataTransformationPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#DataTransformationPaths");
-		private static final OntResource operatorPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#OperatorPaths");
-		private static final OntResource instanceSummary = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#InstanceSummary");
-		private static final OntResource knoweldgeBase = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#KnowledgeBase");
+		private static final OntResource viskoDataTransformationPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_DataTransformationPaths");
+		private static final OntResource viskoOperatorPaths = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_OperatorPaths");
+		private static final OntResource viskoInstanceSummary = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_InstanceSummary");
+		private static final OntResource viskoKnoweldgeBase = PackageWriter.getDataType("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_KnowledgeBase");
 		
 		//views
-		private static final VisualizationAbstraction barChart = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_BarChart);
-		private static final VisualizationAbstraction forceGraph = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ForceGraph);
+		private static final VisualizationAbstraction viskoInstancesBarChart = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_VisKo_Instances_BarChart);
+		private static final VisualizationAbstraction viskoOperatorPathsforceGraph = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_VisKo_OperatorPaths_ForceGraph);
+		private static final VisualizationAbstraction viskoDataTransformationsForceGraph = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_VisKo_DataTransformations_ForceGraph);
 	}
 
 	@Override
@@ -103,8 +104,8 @@ public class PackageSource extends RDFPackage {
 		service5.setLabel(operationName);
 		service5.setComment("Converts a Visko KB to Operator Paths encoded in JSON");
 		service5.setWSDLURL(wsdlURL);
-		service5.setInputDataType(Resources.knoweldgeBase);
-		service5.setOutputDataType(Resources.operatorPaths);
+		service5.setInputDataType(Resources.viskoKnoweldgeBase);
+		service5.setOutputDataType(Resources.viskoOperatorPaths);
 		
 		operationName = "jsonGraph_DataTransformations";
 		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(null, operationName);
@@ -113,8 +114,8 @@ public class PackageSource extends RDFPackage {
 		service6.setLabel(operationName);
 		service6.setComment("Converts a Visko KB to Data Transformation Paths encoded in JSON");
 		service6.setWSDLURL(wsdlURL);
-		service6.setInputDataType(Resources.knoweldgeBase);
-		service6.setOutputDataType(Resources.dataTransformationPaths);
+		service6.setInputDataType(Resources.viskoKnoweldgeBase);
+		service6.setOutputDataType(Resources.viskoDataTransformationPaths);
 
 		operationName = "jsonBars_Instances";
 		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, operationName);
@@ -123,8 +124,8 @@ public class PackageSource extends RDFPackage {
 		service7.setLabel(operationName);
 		service7.setComment("Converts a Visko KB to instance summary encoded in JSON");
 		service7.setWSDLURL(wsdlURL);
-		service7.setInputDataType(Resources.knoweldgeBase);
-		service7.setOutputDataType(Resources.instanceSummary);
+		service7.setInputDataType(Resources.viskoKnoweldgeBase);
+		service7.setOutputDataType(Resources.viskoInstanceSummary);
 	}
 
 	@Override
@@ -140,26 +141,26 @@ public class PackageSource extends RDFPackage {
 		viewerSet.setComment("Data Driven Documents Viewer Set");
 		viewerSet.setLabel("D3 Viewer Set");
 		
-		Viewer viewer1 = viewerSet.createNewViewer("operator-paths-force-graph-viewer");
+		Viewer viewer1 = viewerSet.createNewViewer("visko-operator-paths-viewer");
 		viewer1.setLabel("Force Graph Viewer for Visko Operator Paths");
 		viewer1.setComment("Force Graph Viewer for Visko Operator Paths");
 		viewer1.addInputFormat(Resources.json);
-		viewer1.addInputDataType(Resources.operatorPaths);
-		viewer1.setVisualizationAbstraction(Resources.forceGraph);
+		viewer1.addInputDataType(Resources.viskoOperatorPaths);
+		viewer1.setVisualizationAbstraction(Resources.viskoOperatorPathsforceGraph);
 		
-		Viewer viewer2 = viewerSet.createNewViewer("visko-kb-bar-chart-viewer");
+		Viewer viewer2 = viewerSet.createNewViewer("visko-instances-viewer");
 		viewer2.setLabel("Bar Chart Viewer for Visko KB");
 		viewer2.setComment("Bar Chart Viewer for Visko KB");
 		viewer2.addInputFormat(Resources.json);
-		viewer2.addInputDataType(Resources.instanceSummary);
-		viewer2.setVisualizationAbstraction(Resources.barChart);
+		viewer2.addInputDataType(Resources.viskoInstanceSummary);
+		viewer2.setVisualizationAbstraction(Resources.viskoInstancesBarChart);
 		
-		Viewer viewer3 = viewerSet.createNewViewer("data-transformations-paths-force-graph-viewer");
+		Viewer viewer3 = viewerSet.createNewViewer("visko-data-transformations-viewer");
 		viewer3.setLabel("Force Graph Viewer for Visko Data Transformation Paths");
 		viewer3.setComment("Force Graph Viewer for Visko Data Transformation Paths");
 		viewer3.addInputFormat(Resources.json);
-		viewer3.addInputDataType(Resources.dataTransformationPaths);
-		viewer3.setVisualizationAbstraction(Resources.forceGraph);
+		viewer3.addInputDataType(Resources.viskoDataTransformationPaths);
+		viewer3.setVisualizationAbstraction(Resources.viskoDataTransformationsForceGraph);
 	}
 
 	@Override
