@@ -147,6 +147,7 @@ public class PackageSource extends RDFPackage {
 		viewer1.addInputFormat(Resources.json);
 		viewer1.addInputDataType(Resources.viskoOperatorPaths);
 		viewer1.setVisualizationAbstraction(Resources.viskoOperatorPathsforceGraph);
+		viewer1.setEndpointURL("http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Graph_OperatorPaths.html");
 		
 		Viewer viewer2 = viewerSet.createNewViewer("visko-instances-viewer");
 		viewer2.setLabel("Bar Chart Viewer for Visko KB");
@@ -154,6 +155,7 @@ public class PackageSource extends RDFPackage {
 		viewer2.addInputFormat(Resources.json);
 		viewer2.addInputDataType(Resources.viskoInstanceSummary);
 		viewer2.setVisualizationAbstraction(Resources.viskoInstancesBarChart);
+		viewer2.setEndpointURL("http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Bars_Instances.html");
 		
 		Viewer viewer3 = viewerSet.createNewViewer("visko-data-transformations-viewer");
 		viewer3.setLabel("Force Graph Viewer for Visko Data Transformation Paths");
@@ -161,6 +163,7 @@ public class PackageSource extends RDFPackage {
 		viewer3.addInputFormat(Resources.json);
 		viewer3.addInputDataType(Resources.viskoDataTransformationPaths);
 		viewer3.setVisualizationAbstraction(Resources.viskoDataTransformationsForceGraph);
+		viewer3.setEndpointURL("http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Graph_DataTransformations.html");
 	}
 
 	@Override
