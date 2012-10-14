@@ -29,7 +29,6 @@ public class PackageSource extends RDFPackage {
 		private static final VisualizationAbstraction pointMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_PointMap);
 		
 		//data types 		
-		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
 		private static final OntResource fieldTrmmedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData");
 		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS");
 	}
@@ -79,7 +78,7 @@ public class PackageSource extends RDFPackage {
 		service4.setInputFormat(Resources.spaceSeparatedValues);
 		service4.setOutputFormat(Resources.ps);
 		service4.setView(Resources.pointMap2D);
-		service4.setInputDataType(Resources.xyzData);
+		service4.setInputDataType(Resources.fieldTrmmedGravityData);
 		// not output type...system will set to owl:Thing		
 		
 		operationName = "grdimage";
