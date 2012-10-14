@@ -5,6 +5,7 @@ import edu.utep.trustlab.visko.installation.packages.rdf.PackageWriter;
 import edu.utep.trustlab.visko.ontology.pmlp.Format;
 import edu.utep.trustlab.visko.ontology.viskoService.Toolkit;
 import edu.utep.trustlab.visko.ontology.viskoView.VisualizationAbstraction;
+import edu.utep.trustlab.visko.ontology.vocabulary.ViskoV;
 
 public class PackageSource extends RDFPackage {
 
@@ -13,7 +14,7 @@ public class PackageSource extends RDFPackage {
 		private static final Format fits = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/FITS.owl#FITS");
 		private static final Format png = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/PNG.owl#PNG");
 		
-		private static final VisualizationAbstraction spherizedImage = PackageWriter.getView("https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-view.owl#2D_SpherizedRaster");
+		private static final VisualizationAbstraction spherizedImage = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_SpherizedRaster);
 	}
 	
 	@Override

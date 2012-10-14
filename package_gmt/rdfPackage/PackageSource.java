@@ -18,6 +18,7 @@ public class PackageSource extends RDFPackage {
 		private static final Format ps = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/POSTSCRIPT.owl#POSTSCRIPT");
 		private static final Format netCDF = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/NETCDF.owl#NETCDF");
 		private static final Format spaceSeparatedValues = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES");
+		private static final Format esriGridded = PackageWriter.getFormat("https://raw.github.com/nicholasdelrio/visko/master/resources/formats/ESRIGRID.owl#ESRIGRID");
 		
 		//semantic type uris
 		private static final OntResource gravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19");
@@ -27,8 +28,10 @@ public class PackageSource extends RDFPackage {
 		private static final VisualizationAbstraction contourMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_ContourMap);
 		private static final VisualizationAbstraction rasterMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_RasterMap);
 		private static final VisualizationAbstraction pointMap2D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_2D_PointMap);
+		private static final VisualizationAbstraction barchart3D = PackageWriter.getView(ViskoV.INDIVIDUAL_URI_3D_BarChart);
 		
-		//data types 		
+		//data types
+		private static final OntResource xyzData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18");
 		private static final OntResource fieldTrmmedGravityData = PackageWriter.getDataType("http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#FieldTrimmedGravityData");
 		private static final OntResource COARDS_2D_Grid = PackageWriter.getDataType("http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS");
 	}
@@ -80,7 +83,7 @@ public class PackageSource extends RDFPackage {
 		service4.setView(Resources.pointMap2D);
 		service4.setInputDataType(Resources.fieldTrmmedGravityData);
 		// not output type...system will set to owl:Thing		
-		
+				
 		operationName = "grdimage";
 		PackageOperatorService service5 = getPackageWriter().createNewOperatorService(null, operationName);
 		service5.setComment("Generate raster map of gridded data encoded in netCDF");
@@ -90,7 +93,37 @@ public class PackageSource extends RDFPackage {
 		service5.setOutputFormat(Resources.ps);
 		service5.setView(Resources.rasterMap2D);
 		service5.setInputDataType(Resources.COARDS_2D_Grid);
-		// not output type...system will set to owl:Thing		
+		// not output type...system will set to owl:Thing
+		
+		operationName = "grd2xyz";
+		PackageOperatorService service6 = getPackageWriter().createNewOperatorService(null, operationName);
+		service6.setComment("Convert NetCDF COARDS compliant dataset to listing of XYZ values");
+		service6.setLabel("GMT grd2xyz");
+		service6.setWSDLURL(wsdlURL);
+		service6.setInputFormat(Resources.netCDF);
+		service6.setOutputFormat(Resources.spaceSeparatedValues);
+		service6.setInputDataType(Resources.COARDS_2D_Grid);
+		service6.setOutputDataType(Resources.xyzData);	
+
+		operationName = "grd2xyz_esri";
+		PackageOperatorService service7 = getPackageWriter().createNewOperatorService(null, operationName);
+		service7.setComment("Convert NetCDF COARDS compliant dataset to an ESRI ArcInfo ASCII Grid");
+		service7.setLabel("GMT grd2xyz_esri");
+		service7.setWSDLURL(wsdlURL);
+		service7.setInputFormat(Resources.netCDF);
+		service7.setOutputFormat(Resources.esriGridded);
+		service7.setInputDataType(Resources.COARDS_2D_Grid);
+		
+		operationName = "psxyz";
+		PackageOperatorService service8 = getPackageWriter().createNewOperatorService(null, operationName);
+		service8.setComment("Generate 3D bar chart of XYZ data");
+		service8.setLabel("GMT psxyz");
+		service8.setWSDLURL(wsdlURL);
+		service8.setInputFormat(Resources.spaceSeparatedValues);
+		service8.setOutputFormat(Resources.ps);
+		service8.setView(Resources.barchart3D);
+		service8.setInputDataType(Resources.xyzData);
+		// not output type...system will set to owl:Thing
 	}
 
 	@Override
