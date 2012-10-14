@@ -155,6 +155,12 @@ public class PackageSource extends RDFPackage {
 		
 		bindingsSet.addSemanticType(Resources.gravityData);
 		
+		// for grd2xyz
+		bindingsSet.addInputBinding("grd2xyz", "N", "0");
+
+		// for grd2xyz_esri
+		bindingsSet.addInputBinding("grd2xyz_esri", "N", "0");
+		
 		// for GMT psxy
 		bindingsSet.addInputBinding("psxy", "S", "c0.04c");
 		bindingsSet.addInputBinding("psxy", "R", region);
@@ -207,6 +213,12 @@ public class PackageSource extends RDFPackage {
 
 		bindingsSet.addSemanticType(Resources.griddedGravityData);
 
+		// for grd2xyz
+		bindingsSet.addInputBinding("grd2xyz", "N", "0");
+
+		// for grd2xyz_esri
+		bindingsSet.addInputBinding("grd2xyz_esri", "N", "0");
+		
 		// for GMT psxyz
 		bindingsSet.addInputBinding("psxyz", "B", "1/1/50");
 		bindingsSet.addInputBinding("psxyz", "J", "x6c");
