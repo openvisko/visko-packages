@@ -1,5 +1,7 @@
 package package_gmt.rdfPackage;
 
+import javax.jws.WebParam;
+
 import com.hp.hpl.jena.ontology.OntResource;
 
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
@@ -162,6 +164,16 @@ public class PackageSource extends RDFPackage {
 		bindingsSet.addInputBinding("psxy", "indexOfX", "0");
 		bindingsSet.addInputBinding("psxy", "indexOfY", "1");
 		
+		// for GMT psxyz
+		bindingsSet.addInputBinding("psxyz", "B", "1/1/50");
+		bindingsSet.addInputBinding("psxyz", "J", "x6c");
+		bindingsSet.addInputBinding("psxyz", "JZ", "5c");
+		bindingsSet.addInputBinding("psxyz", "R", region + "/-300/-100");
+		bindingsSet.addInputBinding("psxyz", "E", "200/30");
+		bindingsSet.addInputBinding("psxyz", "S", "o0.1");
+		bindingsSet.addInputBinding("psxyz", "W", "thinnest");		
+		bindingsSet.addInputBinding("psxyz", "G", "lightgray");
+				
 		// for GMT nearneighbor
 		bindingsSet.addInputBinding("nearneighbor", "I", "0.02");
 		bindingsSet.addInputBinding("nearneighbor", "S", "0.2");
@@ -195,6 +207,16 @@ public class PackageSource extends RDFPackage {
 
 		bindingsSet.addSemanticType(Resources.griddedGravityData);
 
+		// for GMT psxyz
+		bindingsSet.addInputBinding("psxyz", "B", "1/1/50");
+		bindingsSet.addInputBinding("psxyz", "J", "x6c");
+		bindingsSet.addInputBinding("psxyz", "JZ", "5c");
+		bindingsSet.addInputBinding("psxyz", "R", region + "/-300/-100");
+		bindingsSet.addInputBinding("psxyz", "E", "200/30");
+		bindingsSet.addInputBinding("psxyz", "S", "o0.1");
+		bindingsSet.addInputBinding("psxyz", "W", "thinnest");		
+		bindingsSet.addInputBinding("psxyz", "G", "lightgray");
+		
 		// for GMT grdcontour
 		bindingsSet.addInputBinding("grdcontour", "C", "10");
 		bindingsSet.addInputBinding("grdcontour", "A", "20");
