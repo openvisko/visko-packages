@@ -1,0 +1,10 @@
+<ServiceDoc>
+	<ToolkitHomepage>None</ToolkitHomepage>
+	<ToolkitAccessibility>Java</ToolkitAccessibility>
+	<NeededVariablesForTomcat>
+		<Path>
+			<Variable></Variable>
+			<Value></Value>
+		</Path>
+	</NeededVariablesForTomcat>
+</ServiceDoc>
