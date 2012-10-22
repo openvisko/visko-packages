@@ -1,7 +1,5 @@
 package package_gmt.rdfPackage;
 
-import javax.jws.WebParam;
-
 import com.hp.hpl.jena.ontology.OntResource;
 
 import edu.utep.trustlab.visko.installation.packages.RDFPackage;
