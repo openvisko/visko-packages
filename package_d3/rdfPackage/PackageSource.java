@@ -41,7 +41,7 @@ public class PackageSource extends RDFPackage {
 
 	@Override
 	public void populateViewerSets() {		
-		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("data-driven-documents");
+		PackageViewerSet viewerSet = getPackageWriter().createNewViewerSet("d3-viewer-set");
 		viewerSet.setComment("Data Driven Documents Viewer Set");
 		viewerSet.setLabel("D3 Viewer Set");
 		
