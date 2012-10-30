@@ -1,0 +1,54 @@
+<rdf:RDF
+    xmlns:viskoV="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-view.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owlsService="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:owlsProcess="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:viskoS="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-service.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:viskoO="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-operator.owl#">
+  <viskoO:Viewer rdf:about="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#visko-instances-viewer">
+    <viskoO:hasEndpoint>http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Bars_Instances.html</viskoO:hasEndpoint>
+    <viskoO:partOfViewerSet>
+      <viskoO:ViewerSet rdf:about="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#d3-viewer-set">
+        <rdfs:label>D3 Viewer Set</rdfs:label>
+        <rdfs:comment>Data Driven Documents Viewer Set</rdfs:comment>
+      </viskoO:ViewerSet>
+    </viskoO:partOfViewerSet>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visko-instances-viewer</pmlp:hasName>
+    <viskoO:mapsTo rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-view.owl#2D_VisKo_Instances_BarChart"/>
+    <viskoO:hasInputDataType rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_InstanceSummary"/>
+    <viskoO:hasInputFormat rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JSON.owl#JSON"/>
+    <rdfs:label>Bar Chart Viewer for Visko KB</rdfs:label>
+    <rdfs:comment>Bar Chart Viewer for Visko KB</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoO:Viewer rdf:about="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#visko-data-transformations-viewer">
+    <viskoO:hasEndpoint>http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Graph_DataTransformations.html</viskoO:hasEndpoint>
+    <viskoO:partOfViewerSet rdf:resource="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#d3-viewer-set"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visko-data-transformations-viewer</pmlp:hasName>
+    <viskoO:mapsTo rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-view.owl#2D_VisKo_DataTransformations_ForceGraph"/>
+    <viskoO:hasInputDataType rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_DataTransformationPaths"/>
+    <viskoO:hasInputFormat rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JSON.owl#JSON"/>
+    <rdfs:label>Force Graph Viewer for Visko Data Transformation Paths</rdfs:label>
+    <rdfs:comment>Force Graph Viewer for Visko Data Transformation Paths</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoO:Viewer rdf:about="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#visko-operator-paths-viewer">
+    <viskoO:hasEndpoint>http://iw.cs.utep.edu:8080/d3-viewers/Parameterized_Graph_OperatorPaths.html</viskoO:hasEndpoint>
+    <viskoO:partOfViewerSet rdf:resource="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#d3-viewer-set"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visko-operator-paths-viewer</pmlp:hasName>
+    <viskoO:mapsTo rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko-view.owl#2D_VisKo_OperatorPaths_ForceGraph"/>
+    <viskoO:hasInputDataType rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/ontology/visko.owl#VisKo_OperatorPaths"/>
+    <viskoO:hasInputFormat rdf:resource="https://raw.github.com/nicholasdelrio/visko/master/resources/formats/JSON.owl#JSON"/>
+    <rdfs:label>Force Graph Viewer for Visko Operator Paths</rdfs:label>
+    <rdfs:comment>Force Graph Viewer for Visko Operator Paths</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoS:Toolkit rdf:about="https://raw.github.com/nicholasdelrio/visko-packages-rdf/master/package_d3.owl#data-driven-documents">
+    <rdfs:label>Data Driven Documents</rdfs:label>
+    <rdfs:comment>Data Driven Documents</rdfs:comment>
+  </viskoS:Toolkit>
+</rdf:RDF>
