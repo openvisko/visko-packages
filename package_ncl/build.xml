@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" name="VisKo Installer Tools">
+	
+	<!-- WebApp Configurations -->
+	<property name="server-path" value="/usr/local/tomcat/"/>
+	<property name="server-url" value="http://iw.cs.utep.edu:8080/"/>	
+	
+	<!-- DO NOT CHANGE SETTINGS BELOW -->
+	
+	<!-- web.xml paths -->
+	<property name="web-xml-template" value="webxml-template/web.xml"/>
+	<property name="web-xml-deployment-dir" value="webxml-complete/"/>
+	<property name="config-file" value="webxml-complete/web.xml"/>
+	
+	<!-- build properties -->
+	<property name="web-content" value="WebContent/"/>
+	<property name="toolkits-war" value="toolkits.war"/>
+	<property name="lib" value="WebContent/WEB-INF/lib/"/>
+	<property name="build" value="build"/>
+	<property name="src" value="src"/>
+	<property name="servlet-lib" value="tomcat/servlet-api.jar"/>
+	
+	<target name="build" depends="build-web-configuration" description="Creates the VisKo Webapp WAR file">
+	
+		<war destfile="${toolkits-war}" webxml="${config-file}">
+			<lib dir="${lib}"/>
+			<fileset dir="${web-content}"/>
+			<classes dir="${build}/"/>
+		</war>
+	</target>	
+
+	<target name="build-web-configuration" depends="compile" description="Generate web.xml file">
+		<java classname="edu.utep.trustlab.toolkitOperators.util.WebAppConfiguration">
+			<arg value="${web-xml-template}"/>
+			<arg value="${server-path}"/>
+			<arg value="${server-url}"/>
+			<arg value="${web-xml-deployment-dir}"/>
+			
+			<classpath>
+				<pathelement location="${build}"/>
+			</classpath>
+		</java>		
+	</target>
+
+	
+	<target name="compile" depends="clean" description="Compile toolkits">	
+		<mkdir dir="${build}"/>
+		<javac destdir="${build}/" srcdir="${src}" target="1.6"> 
+	    	<include name="**/*.java"/>
+			<classpath>	
+				<fileset dir="${lib}">
+					<include name="*.jar"/>
+				</fileset>
+				<pathelement location="${servlet-lib}"/>
+			</classpath>			
+		</javac> 
+	</target>
+	
+	<target name="clean" description="Delete the Build Directory and the WAR File">
+		<delete dir="${build}" />
+		<delete file="${toolkits-war}" />
+	</target>	
+</project>
