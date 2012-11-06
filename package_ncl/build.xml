@@ -30,7 +30,7 @@
 	</target>	
 
 	<target name="build-web-configuration" depends="compile" description="Generate web.xml file">
-		<java classname="edu.utep.trustlab.toolkitOperators.util.WebAppConfiguration">
+		<java classname="toolkitOperators.util.WebAppConfiguration">
 			<arg value="${web-xml-template}"/>
 			<arg value="${server-path}"/>
 			<arg value="${server-url}"/>

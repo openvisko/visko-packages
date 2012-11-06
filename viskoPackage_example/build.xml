@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" basedir="." name="VisKo Installer Tools">
+	
+	<!-- WebApp Configurations -->
+	<property name="server-path" value="/usr/local/tomcat/"/>
+	<property name="server-url" value="http://iw.cs.utep.edu:8080/"/>	
+	
+	<!-- DO NOT CHANGE SETTINGS BELOW -->
+	
+	<!-- web.xml paths -->
+	<property name="web-xml-template" value="webxml-template/web.xml"/>
+	<property name="web-xml-deployment-dir" value="webxml-complete/"/>
+	<property name="config-file" value="webxml-complete/web.xml"/>
+	
+	<!-- build properties -->
+	<property name="web-content" value="WebContent/"/>
+	<basename property="package-name" file="${basedir}"/>
+	<property name="warfile-name" value="${package-name}.war"/>
+	
+	<property name="installation-tools-ant" value="../../visko/installation-tools/build-installation-visko.xml"/>
+	<property name="installation-tools-jar" value="../../visko/installation-tools/installation-tools.jar"/>
+	<property name="installation-tools-build" value="../../visko/installation-tools/build"/>
+
+	<property name="lib" value="WebContent/WEB-INF/lib/"/>
+	<property name="build" value="build"/>
+	
+	<target name="build" depends="build-service-web-configuration" description="Creates the VisKo Webapp WAR file">
+	
+		<copy file="${installation-tools-jar}" todir="${lib}"/>
+		
+		<war destfile="${warfile-name}" webxml="${config-file}">
+			<lib dir="${lib}"/>
+			<fileset dir="${web-content}"/>
+			<classes dir="${build}/"/>
+		</war>
+	</target>	
+
+	<target name="build-service-web-configuration" description="Generate web.xml file">
+		<ant antfile="${installation-tools-ant}" target="build" inheritAll="false" />
+		
+		<java classname="edu.utep.trustlab.visko.installation.packages.service.operators.util.WebAppConfiguration">
+			<arg value="${web-xml-template}"/>
+			<arg value="${server-path}"/>
+			<arg value="${server-url}"/>
+			<arg value="${web-xml-deployment-dir}"/>
+			
+			<classpath>
+				<pathelement location="${installation-tools-jar}"/>
+			</classpath>
+		</java>		
+	</target>
+
+		
+	<target name="clean" description="Delete the WAR File">
+		<delete file="${toolkits-war}" />
+	</target>	
+</project>
