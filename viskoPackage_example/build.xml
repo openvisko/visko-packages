@@ -66,5 +66,6 @@
 		
 	<target name="clean" description="Delete the WAR File">
 		<delete file="${toolkits-war}" />
+		<delete file="${build}" />
 	</target>	
 </project>
