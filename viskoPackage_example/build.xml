@@ -16,14 +16,17 @@
 	<basename property="package-name" file="${basedir}"/>
 	<property name="warfile-name" value="${package-name}.war"/>
 	
+	<property name="jena-lib-jar" value="../../visko/api/lib/jena-2.7.3\jena-core-2.7.3.jar"/>
 	<property name="installation-tools-ant" value="../../visko/installation-tools/build-installation-visko.xml"/>
 	<property name="installation-tools-jar" value="../../visko/installation-tools/installation-tools.jar"/>
+	<property name="visko-api-jar" value="../../visko/api/visko-api.jar"/>
 	<property name="installation-tools-build" value="../../visko/installation-tools/build"/>
 
+	<property name="src" value="src"/>
 	<property name="lib" value="WebContent/WEB-INF/lib/"/>
 	<property name="build" value="build"/>
 	
-	<target name="build" depends="build-service-web-configuration" description="Creates the VisKo Webapp WAR file">
+	<target name="build" depends="build-service-web-configuration,compile" description="Creates the VisKo Webapp WAR file">
 	
 		<copy file="${installation-tools-jar}" todir="${lib}"/>
 		
@@ -49,6 +52,17 @@
 		</java>		
 	</target>
 
+	<target name="compile" depends="clean" description="Compile toolkits">	
+		<mkdir dir="${build}"/>
+		<javac destdir="${build}/" srcdir="${src}" target="1.6"> 
+	    	<include name="**/*.java"/>
+			<classpath>	
+				<pathelement location="${jena-lib-jar}"/>
+				<pathelement location="${installation-tools-jar}"/>
+				<pathelement location="${visko-api-jar}"/>
+			</classpath>			
+		</javac> 
+	</target>
 		
 	<target name="clean" description="Delete the WAR File">
 		<delete file="${toolkits-war}" />
