@@ -57,7 +57,7 @@
 			<src path="${dir.src}" />
 			<src path="${dir.sdk.src}" />			
 			<classpath refid="classpath" />
-			<compilerarg value="-Xlint"/>
+			<compilerarg value="-Xlint:-path"/>
 		</javac>
 
 		<!-- make sure non-java files get included in the jar since they are not included by javac ant target -->
@@ -144,7 +144,7 @@
     			<fileset dir="${basedir}/webapp/WEB-INF/lib">
     				<include name="**/*.jar" />
     			</fileset>
-    			<fileset dir="${basedir}/webapp/WEB-INF/lib">
+    			<fileset dir="${basedir}/lib">
     				<include name="**/*.jar" />
     			</fileset>
     			<pathelement location="${dir.classes}"/>		
