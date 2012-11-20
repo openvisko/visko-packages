@@ -52,12 +52,14 @@
 	</target>
 
 	<target name="compile-java" depends="init" description="Compiles the Java source code">
+		<property name="myclasspath" refid="classpath"/>
+		<echo message="Classpath = ${myclasspath}"/>
 		<mkdir dir="${dir.classes}" />
 		<javac destdir="${dir.classes}" deprecation="on" debug="on" target="1.6" source="1.6">
 			<src path="${dir.src}" />
 			<src path="${dir.sdk.src}" />			
 			<classpath refid="classpath" />
-			<compilerarg value="-Xlint"/>
+			<compilerarg value="-Xlint:-path"/>
 		</javac>
 
 		<!-- make sure non-java files get included in the jar since they are not included by javac ant target -->
@@ -144,7 +146,7 @@
     			<fileset dir="${basedir}/webapp/WEB-INF/lib">
     				<include name="**/*.jar" />
     			</fileset>
-    			<fileset dir="${basedir}/webapp/WEB-INF/lib">
+    			<fileset dir="${basedir}/lib">
     				<include name="**/*.jar" />
     			</fileset>
     			<pathelement location="${dir.classes}"/>		
