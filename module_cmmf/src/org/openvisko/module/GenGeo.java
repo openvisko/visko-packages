@@ -1,7 +1,7 @@
 package org.openvisko.module;
-import edu.utep.trustlab.toolkitOperators.SimulationOperator;
-import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import org.openvisko.module.operators.SimulationOperator;
+import org.openvisko.module.util.CommandRunner;
+import org.openvisko.module.util.AbstractOperatorFileUtils;
 
 
 public class GenGeo extends SimulationOperator
@@ -40,7 +40,7 @@ public class GenGeo extends SimulationOperator
 		//FileUtils.getOutputURLPrefix();
 		//FileUtils.getWorkspace();
 		
-		CommandRunner.run(cmd, FileUtils.getWorkspace());
+		CommandRunner.run(cmd, AbstractOperatorFileUtils.getWorkspace());
 		
 		addOutputFile("pts", jobname + ".pts");
 		addOutputFile("cfg", jobname + ".cfg");

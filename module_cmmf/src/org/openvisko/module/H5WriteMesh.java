@@ -1,7 +1,7 @@
 package org.openvisko.module;
-import edu.utep.trustlab.toolkitOperators.SimulationOperator;
-import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import org.openvisko.module.operators.SimulationOperator;
+import org.openvisko.module.util.CommandRunner;
+import org.openvisko.module.util.AbstractOperatorFileUtils;
 
 
 public class H5WriteMesh extends SimulationOperator
@@ -21,17 +21,17 @@ public class H5WriteMesh extends SimulationOperator
 	 */
 	public String transform()
 	{
-		String FileNameRandomString = FileUtils.getRandomString();
+		String FileNameRandomString = AbstractOperatorFileUtils.getRandomString();
 		String h5FileName = "Mesh" + FileNameRandomString + ".h5";
 		String xmfFileName = "Mesh" + FileNameRandomString + ".xmf";
 		
 		//The command string that will be passed to the shell
 		String cmd = "/share/apps/cmmf/h5WriteMesh " + h5FileName;
-		CommandRunner.run(cmd, FileUtils.getWorkspace());
+		CommandRunner.run(cmd, AbstractOperatorFileUtils.getWorkspace());
 		
 		cmd = "/share/apps/cmmf/h5WriteXmfMesh " + h5FileName + " " + xmfFileName; 
-		CommandRunner.run(cmd, FileUtils.getWorkspace());
+		CommandRunner.run(cmd, AbstractOperatorFileUtils.getWorkspace());
 
-		return FileUtils.getOutputURLPrefix() + xmfFileName;
+		return AbstractOperatorFileUtils.getOutputURLPrefix() + xmfFileName;
 	}
 }

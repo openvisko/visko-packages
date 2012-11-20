@@ -1,6 +1,6 @@
 package org.openvisko.module;
-import edu.utep.trustlab.toolkitOperators.SimulationOperator;
-import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
+import org.openvisko.module.operators.SimulationOperator;
+import org.openvisko.module.util.CommandRunner;
 
 
 public class Feawd extends SimulationOperator

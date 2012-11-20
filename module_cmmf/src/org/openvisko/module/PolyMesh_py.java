@@ -1,7 +1,7 @@
 package org.openvisko.module;
-import edu.utep.trustlab.toolkitOperators.SimulationOperator;
-import edu.utep.trustlab.toolkitOperators.util.CommandRunner;
-import edu.utep.trustlab.toolkitOperators.util.FileUtils;
+import org.openvisko.module.operators.SimulationOperator;
+import org.openvisko.module.util.CommandRunner;
+import org.openvisko.module.util.AbstractOperatorFileUtils;
 
 
 public class PolyMesh_py extends SimulationOperator
@@ -41,7 +41,7 @@ public class PolyMesh_py extends SimulationOperator
 			 " -mid_edge " + mid + " " +
 			 " -edge_factor " + edge + " ";
 		
-		CommandRunner.run(cmd, FileUtils.getWorkspace());
+		CommandRunner.run(cmd, AbstractOperatorFileUtils.getWorkspace());
 
 		/*
 		     Vertices – CSV file containing the vertex id’s and coordinates
