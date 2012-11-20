@@ -42,7 +42,7 @@ public class ModuleRDFRegistration extends AbstractModuleRDFRegistration {
 			service1.setOutputFormat(Resources.xdmf);
 			service1.setView(Resources.mesh);
 			
-			operationName = "PolyMesh";
+			operationName = "PolyMesh_py";
 			ModuleOperatorService service2 = getPackageWriter().createNewOperatorService(null, operationName);
 			service2.setComment(operationName);
 			service2.setLabel(operationName);
@@ -74,6 +74,8 @@ public class ModuleRDFRegistration extends AbstractModuleRDFRegistration {
 
 		@Override
 		public String getWSDLURL() {
-			return "http://visko.pnl.gov/toolkits/services/ToolkitServices?wsdl";
-		}
+			//return "http://visko.pnl.gov/toolkits/services/ToolkitServices?wsdl";
+		    String wsdlUrl = getWebServerUrl() + "/" + getWebappName() + "/services/ModuleService?wsdl";
+		    return wsdlUrl;
+	}
 }
