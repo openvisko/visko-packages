@@ -8,10 +8,29 @@ public class AbstractOperatorFileUtils{
 	private static String SERVER;
 	private static String OUTPUT;
 	private static String SCRIPTS;
+	private static String WEBAPP;
 
-	private static final String WEBAPP = "toolkits/";
 	private static final String OUTPUT_DIR_NAME = "output/";
 	private static final String SCRIPTS_DIR_NAME = "scripts/";
+
+	static {    
+		try {  
+			// Initialize properties
+			Properties props = new Properties();  
+			InputStream propsFile = FileUtils.class.getResourceAsStream("/module.properties");  
+			props.load(propsFile);
+			
+			AbstractOperatorFileUtils.setServerURL(props.getProperty("module.server.url"));
+				      
+			WEBAPP = props.getProperty("module.server.webapp.name");  
+			File tomcatHome = new File(props.getProperty("module.server.tomcat.home"));
+			
+			AbstractOperatorFileUtils.setDeploymentPath(tomcatHome.getAbsolutePath());
+					      
+		    } catch (Throwable e) {
+		      e.printStackTrace();
+		    }
+		}
 	
 	public static void setDeploymentPath(String serverBasePath){
 		String basePath;
@@ -21,6 +40,9 @@ public class AbstractOperatorFileUtils{
 		else
 			basePath = serverBasePath + "/";
 		
+		if(! WEBAPP.endsWith("/"))
+			WEBAPP = WEBAPP + "/";
+			
 		OUTPUT = basePath + "webapps/" + WEBAPP + OUTPUT_DIR_NAME;
 		SCRIPTS = basePath + "webapps/" + WEBAPP + SCRIPTS_DIR_NAME;
 	}
