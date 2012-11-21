@@ -64,7 +64,9 @@ public class FileUtils{
     return OUTPUT_DIR;
   }
 
-
+  public static File getWebappDir() {
+    return WEBAPP_DIR;
+  }
 
   public static File getScriptsDir() {
     return SCRIPTS_DIR;
