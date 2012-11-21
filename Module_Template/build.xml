@@ -88,11 +88,22 @@
 	</target>
 	
 	<!-- create clean war file -->
-	<target name="war" depends="clean, war-incremental" />
+	<target name="war">
+		<property file="${basedir}/webapp/WEB-INF/classes/module.properties"/>
+		<echo>build.war = ${build.war}</echo>
+		<antcall target="war-not-supported"/>
+		<antcall target="war-check"/>
+	</target>
 	
-	<!-- create incremental war (only do incremental compile) -->
-	<target name="war-incremental" depends="package-jar">
+	<target name="war-not-supported" unless="${build.war}">
+		 <echo>A war component is not included in this module.</echo> 
+	</target>
 
+	<target name="war-check" if="${build.war}">
+		<antcall target="war-impl"/>
+	</target>
+	
+	<target name="war-impl" if="${build.war}" depends="clean, package-jar">
 		<mkdir dir="${dir.war}"/>
 		
 		<copy todir="${dir.war}" overwrite="true">
@@ -122,6 +133,7 @@
 	
 	<target name="register-module" depends="compile-java" description="Generate RDF and register package to Visko">
 		<echo level="info">content management server = ${content.management.server.url}</echo>
+		<mkdir dir="${dir.dist}" />
 		<java classname="org.openvisko.module.installation.Installer_ContentManager" fork="true">
 		
 			<jvmarg value="-Djava.security.policy=${policy}"/>
